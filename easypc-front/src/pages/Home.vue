@@ -1,44 +1,43 @@
 <template>
-  <div id='home' class="pt-4  container-fluid">
+  <div id='home' class="py-5 container-fluid">
+      <Footer/>
       <img alt="logo" class="img-fluid mx-auto" src="../assets/logo2.png"/>
-      <p id = "parrafo" class="pt-4">
+      <p id = "parrafo" class="py-5">
           EASY-PC
       </p>
-      
+      <div class="p-1">
         <vs-button 
-        id = "boton"  
-        color="rgb(59,22,100)"
-        floating
-        circle
-        icon
-        block
-        xl
-        animation-type="vertical"
-        to="QuizBeg"
-        @click="openLoading">
+          id = "boton"  
+          color="rgb(59,22,100)"
+          floating
+          circle
+          xl
+          block
+          animation-type="vertical"
+          to="QuizBeg"
+          @click="openLoading">
           Comenzar!
           <template #animate >
               <vs-row>
                 <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="12">
-                  <img alt="limon" class="img-fluid mx-auto" src="../assets/limon.png" width=10%/> Squezy 
-              </vs-col>
-              
+                  <img alt="limon" class="img-fluid mx-auto" src="../assets/limon.png" width=7%/> Squezy 
+                </vs-col>
                </vs-row>
-              
           </template>
         </vs-button>
-      
-      
+      </div>
+        
+     
   </div>
 </template>
 
 <script>
-
+import Footer from '../components/Footer.vue'
 
 export default {
     name: 'Home',
     components: {
-
+      Footer,
     },
     methods: {
         openLoading() {
@@ -52,16 +51,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   #home{
     font-size: 10px;
   }
   h1{
-    animation-name: animacion;
-    position: relative;
-    animation-duration: 3s;  
-    animation-delay: 0,7s;
-    animation-fill-mode: backwards;
     font-size: 10vw;
   }
   @keyframes animacion {
@@ -70,7 +64,12 @@ export default {
       100% {right: 0px;}
   }
   #parrafo {
-    font-size: 5vw;
+    animation-name: animacion;
+    position: relative;
+    animation-duration: 3s;  
+    animation-delay: 0,7s;
+    animation-fill-mode: backwards;
+    font-size: 7vw;
   }
 
   #boton{
@@ -79,5 +78,6 @@ export default {
     font-size: 5vw;
     border: none;
   }
+  
 
 </style>
