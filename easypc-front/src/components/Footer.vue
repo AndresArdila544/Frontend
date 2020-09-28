@@ -1,6 +1,6 @@
 <template>
     <div class="center examplex">
-        <vs-navbar color="#7d33ff" hideScroll text-white notLine fixed center-collapsed v-model="active">
+        <vs-navbar color="#3b1664" hideScroll text-white notLine fixed center-collapsed v-model="active">
         <template #left>
           <img alt="limon_nav" class="img-fluid" src="../assets/limon.png" width=40%/>
         </template>
