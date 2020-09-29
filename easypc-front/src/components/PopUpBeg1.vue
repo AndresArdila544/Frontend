@@ -1,7 +1,7 @@
 <template>
   <div class="center">
     <vs-button class="vbnext" border :active="active == 0" @click="active = !active">Siguiente</vs-button>
-    <vs-dialog overflow-hidden full-screen class="d1" v-if= "valor=='1'" not-close v-model="active" >
+    <vs-dialog prevent-close blur overflow-hidden  class="d1" v-if= "valor=='1'" not-close v-model="active" >
       <template>
          <p id="pregunta11" class="pt-11">¿Qué videojuegos quieres correr?</p>
       <pregunta11/>
@@ -24,7 +24,7 @@
       </template>
     </vs-dialog>
  
-    <vs-dialog overflow-hidden full-screen class="d2" v-if= "valor=='2'" not-close v-model="active" >
+    <vs-dialog prevent-close blur overflow-hidden  class="d2" v-if= "valor=='2'" not-close v-model="active" >
       <template>
          <p id="pregunta21" class="pt-21">¿Qué programas quieres correr?</p>
       <pregunta21/>
@@ -47,7 +47,7 @@
       </template>
     </vs-dialog>
     
-    <vs-dialog overflow-hidden full-screen class="d3" v-if= "valor=='3'" not-close v-model="active" > 
+    <vs-dialog prevent-close blur overflow-hidden  class="d3" v-if= "valor=='3'" not-close v-model="active" > 
       <template>
          <p id="pregunta31" class="pt-31">¿Qué programas necesitas correr?</p>
       <pregunta31/>
