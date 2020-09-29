@@ -1,5 +1,5 @@
 <template>
-  <div><H1>ADMINCREATE</H1></div>
+  <div></div>
 </template>
 
 <script>

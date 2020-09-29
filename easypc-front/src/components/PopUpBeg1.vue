@@ -1,17 +1,17 @@
 <template>
   <div class="center">
     <vs-button class="vbnext" border :active="active == 0" @click="active = !active">Siguiente</vs-button>
-    <vs-dialog not-close v-model="active">
+    <vs-dialog class="d1" v-if= "valor=='1'" not-close v-model="active" >
       <template>
-         <p id="pregunta1" class="pt-1">¿Qué videojuegos quieres correr?</p>
+         <p id="pregunta11" class="pt-11">¿Qué videojuegos quieres correr?</p>
       <pregunta11/>
       </template>
       <template>
-         <p id="pregunta1" class="pt-1">¿Con qué propósito jugarás videojuegos?</p>
+         <p id="pregunta12" class="pt-12">¿Con qué propósito jugarás videojuegos?</p>
       <pregunta12/>
       </template>
       <template>
-         <p id="pregunta1" class="pt-1">¿Cómo quieres que se vean los juegos?</p>
+         <p id="pregunta13" class="pt-13">¿Cómo quieres que se vean los juegos?</p>
       <pregunta13/>
       </template>
 
@@ -23,18 +23,18 @@
         </div>
       </template>
     </vs-dialog>
-     <!--
-    <vs-dialog not-close v-model="active">
+ 
+    <vs-dialog class="d2" v-if= "valor=='2'" not-close v-model="active" >
       <template>
-         <p id="pregunta1" class="pt-1">¿Qué programas quieres correr?</p>
+         <p id="pregunta21" class="pt-21">¿Qué programas quieres correr?</p>
       <pregunta21/>
       </template>
       <template>
-         <p id="pregunta1" class="pt-1">¿Qué tanto almacenamiento necesitas??</p>
+         <p id="pregunta22" class="pt-22">¿Qué tanto almacenamiento necesitas??</p>
       <pregunta22/>
       </template>
       <template>
-         <p id="pregunta1" class="pt-1">¿Con qué calidad realizas tu trabajo?</p>
+         <p id="pregunta23" class="pt-23">¿Con qué calidad realizas tu trabajo?</p>
       <pregunta23/>
       </template>
 
@@ -46,18 +46,18 @@
         </div>
       </template>
     </vs-dialog>
-
-    <vs-dialog not-close v-model="active">
+    
+    <vs-dialog class="d3" v-if= "valor=='3'" not-close v-model="active" > 
       <template>
-         <p id="pregunta1" class="pt-1">¿Qué programas necesitas correr?</p>
+         <p id="pregunta31" class="pt-31">¿Qué programas necesitas correr?</p>
       <pregunta31/>
       </template>
       <template>
-         <p id="pregunta1" class="pt-1">¿Sueles hacer muchas tareas a la vez?</p>
+         <p id="pregunta32" class="pt-32">¿Sueles hacer muchas tareas a la vez?</p>
       <pregunta32/>
       </template>
       <template>
-         <p id="pregunta1" class="pt-1">¿Qué tanto almacenamiento necesitas?</p>
+         <p id="pregunta33" class="pt-33">¿Qué tanto almacenamiento necesitas?</p>
       <pregunta33/>
       </template>
 
@@ -69,7 +69,7 @@
         </div>
       </template>
     </vs-dialog>
-    -->
+
 
   </div>
 </template>
@@ -79,30 +79,30 @@ import Pregunta11 from "./Pregunta1.1"
 import Pregunta12 from "./Pregunta1.2"
 import Pregunta13 from "./Pregunta1.3"
 
-/*import Pregunta21 from "./Pregunta2.1"
+import Pregunta21 from "./Pregunta2.1"
 import Pregunta22 from "./Pregunta2.2"
 import Pregunta23 from "./Pregunta2.3"
 
 import Pregunta31 from "./Pregunta3.1"
 import Pregunta32 from "./Pregunta3.2"
 import Pregunta33 from "./Pregunta3.3"
-*/
+
 
 
 export default {
-  name: "QuizB",
+  name: "PopUpBeg1",
   components: {
     Pregunta11,
     Pregunta12,
     Pregunta13,
-    /*Pregunta21,
+    Pregunta21,
     Pregunta22,
     Pregunta23,
     Pregunta31,
     Pregunta32,
-    Pregunta33*/
+    Pregunta33
   },
-
+  props: ['valor'],
 
   data: () => ({
     active: false,

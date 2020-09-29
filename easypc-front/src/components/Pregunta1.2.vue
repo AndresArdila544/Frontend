@@ -10,6 +10,7 @@
 export default {
   data: () => ({
     picked: 1,
+    val: ""
   }),
 };
 </script>

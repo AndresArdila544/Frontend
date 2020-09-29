@@ -5,26 +5,41 @@
 
       <p id="Epregunta1" class="pt-1">¿Para qué quieres usar tu pc?</p>
       <p id="p1"><Pregunta1/></p>
+      <p  ></p>
     </div>
-    <PopUpBeg1/>
+    
+   
   </div>
 </template>
 
 <script>
 
 
-import PopUpBeg1 from '../components/PopUpBeg1.vue'
+//import PopUpBeg1 from '../components/PopUpBeg1.vue'
 import Pregunta1 from '../components/Pregunta1.vue'
+var picked;
 
 export default {
-  name: "QuizB",
+  name: "QuizBeg",
+   
   components: {
-    PopUpBeg1,
+    //PopUpBeg1,
     Pregunta1
   },
-  methods: {},
+  methods: {
+     option(e){
+      picked= e,
+      console.log(e)
+    },
+    option1(){
+      picked= '0',
+      console.log(picked)
+    }
+
+  },
   data: () => ({
-    picked: 1,
+    //isPicked: this.picked,
+    active: false,
   }),
 };
 </script>
