@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div class="">
-      <p id="pregunta" class="pt-3 d-flex justify-content-start">¿Con qué propósito jugarás videojuegos?</p>
-      <vs-radio v-model="picked" val="1" class="d-flex justify-content-start"> Ocio en mi tiempo libre </vs-radio>
-      <vs-radio v-model="picked" val="2" class="d-flex justify-content-start"> Quiero hacer streams de mis juegos </vs-radio>
+    <div class="center">
+      <vs-radio v-model="picked" val="1"> Ocio en mi tiempo libre </vs-radio>
+      <vs-radio v-model="picked" val="2"> Quiero hacer streams de mis juegos </vs-radio>
     </div>
   </div>
 </template>
@@ -15,8 +14,3 @@ export default {
   }),
 };
 </script>
-<style  >
-#pregunta {
-  font-size: 4vw;
-}
-</style>

@@ -1,44 +1,44 @@
 <template>
-  <div class="container-fluid">
-    <p>{{sendValue(picked)}}</p>
+  <div class="p1">
+    <ul>
+    <li><vs-radio v-model="picked" val="1" v-on:change="$emit('option', val)"> Videojuegos </vs-radio></li>
+    <li><vs-radio v-model="picked" val="2" v-on:change="$emit('option', val)">
+      Diseño/edición de fotos o video
+    </vs-radio></li>
+    <li><vs-radio v-model="picked" val="3" v-on:change="$emit('option', val)"> Trabajo </vs-radio></li>
+    </ul>
 
- 
-        <p id="pregunta" class="d-flex justify-content-start">¿Para qué quieres usar tu pc?</p>
-        <div id="radio" class="d-flex flex-column">
-          <vs-radio v-model="picked" val="1" class="justify-content-start">Videojuegos</vs-radio>
-          <vs-radio v-model="picked" val="2" class="justify-content-start">Diseño/edición de fotos o video</vs-radio>
-          <vs-radio v-model="picked" val="3" class="justify-content-start">Trabajo</vs-radio>
-        </div>
-     
-    
+     <PopUpBeg1  v-bind:valor="picked"></PopUpBeg1>
+
   </div>
 </template>
 
   <script>
+import PopUpBeg1 from '../components/PopUpBeg1.vue'
+
+
 export default {
   data: () => ({
     picked: 0,
     active: false,
   }),
-  components: {},
-  methods: {
-    sendValue(number) {
-      this.$store.commit("changeValue", number);
-    },
+  components: {
+    PopUpBeg1,
+
   },
-  computed: {},
 };
 </script>
 
-<style scoped>
-
-#pregunta {
-  font-size: 4vw
-  
+<style>
+.p1 {
+  text-align: left;
+  position: relative;
+  vertical-align: middle;
 }
-
-#radio {
-  font-size: 2.7vw
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 </style>

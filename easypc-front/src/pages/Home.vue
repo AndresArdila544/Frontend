@@ -12,7 +12,7 @@
           
           block
           animation-type="vertical"
-          to="QuizB"
+          to="QuizBeg"
           @click="openLoading">
           Comenzar!
           <template #animate >
