@@ -21,6 +21,7 @@ const store = new Vuex.Store({
     count: 0
     
   },
+  
   getters: {
     getCount: state => {
       return state.count
