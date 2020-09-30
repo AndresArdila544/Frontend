@@ -1,6 +1,7 @@
 
 <template>
     <div class="center">
+      <!-- Lineas -->
       <h1>Crear un Componente</h1>
       <p class="left">Seleccione un tipo de componente</p>
       <vs-select  placeholder="Select" color="warn" v-model="value">
