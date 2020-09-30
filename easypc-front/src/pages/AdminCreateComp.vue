@@ -4,40 +4,40 @@
       <h1>Crear un Componente</h1>
       <p class="left">Seleccione un tipo de componente</p>
       <vs-select  placeholder="Select" color="warn" v-model="value">
-        <vs-option label="CPU" value="1">
+        <vs-option label="CPU" value="A">
           CPU
         </vs-option>
-        <vs-option label="TarjetaMadre" value="2">
+        <vs-option label="TarjetaMadre" value="B">
           Tarjeta Madre
         </vs-option>
-        <vs-option label="RAM" value="3">
+        <vs-option label="RAM" value="C">
           RAM
         </vs-option>
-        <vs-option label="GPU" value="4">
+        <vs-option label="GPU" value="D">
           GPU
         </vs-option>
-        <vs-option label="Cooling" value="5">
+        <vs-option label="Cooling" value="E">
           Cooling
         </vs-option>
-        <vs-option label="Case" value="6">
+        <vs-option label="Case" value="F">
           Case
         </vs-option>
-        <vs-option label="PowerSupply" value="7">
+        <vs-option label="PowerSupply" value="G">
           Power Supply
         </vs-option>
-        <vs-option label="HDD" value="8">
+        <vs-option label="HDD" value="H">
           HDD
         </vs-option>
-        <vs-option label="SSD" value="9">
+        <vs-option label="SSD" value="I">
           SSD
         </vs-option>
-        <vs-option label="Mouse" value="10">
+        <vs-option label="Mouse" value="J">
           Mouse
         </vs-option>
-        <vs-option label="Teclado" value="10">
+        <vs-option label="Teclado" value="K">
           Teclado
         </vs-option>
-        <vs-option label="Monitor" value="10">
+        <vs-option label="Monitor" value="L">
           Monitor
         </vs-option>
 
@@ -53,7 +53,7 @@
         label="Modelo"
       />
 <vs-input
-        v-if= "value==1 || value==2 || value==3 || value==4 || value==5 || value==8 || value==9"
+        v-if= "value== 'A' || value== 'B' || value== 'C' || value== 'D' || value== 'E' || value== 'H' || value== 'I'"
         class="py-4 "
         warn
         type="number"
@@ -61,7 +61,7 @@
         label="Poder"
       />
 <vs-input
-        v-if= "value==1"
+        v-if= "value== 'A'"
         warn
         class="py-4"
         type="number"
@@ -70,7 +70,7 @@
       />
 <vs-input
 
-        v-if= "value==1 || value==3 || velocidad==8 || value==9"
+        v-if= "value== 'A' || value== 'C' || value== 'H' || value== 'I'"
         class="py-4"
         warn
         type="number"
@@ -79,7 +79,7 @@
       />
 
 <vs-input
-        v-if= "value==2"
+        v-if= "value== 'B'"
         class="py-4"
         warn
         type="text"
@@ -87,7 +87,7 @@
         label="Marca"
       />
 <vs-input
-        v-if= "value==3 || value==4 || value==8 || value==9"
+        v-if= "value== 'C' || value== 'D' || value== 'H' || value== 'I'"
         class="py-4"
         warn
         type="number"
@@ -96,7 +96,7 @@
       />
 
 <vs-input
-        v-if= "value==7"
+        v-if= "value== 'G'"
         class="py-4"
         warn
         type="number"
@@ -119,6 +119,15 @@
         type="number"
         v-model="PrecioTauret"
         label="Precio Tauret"
+      />
+
+<vs-input
+        v-if= "value"
+        class="py-4"
+        warn
+        type="number"
+        v-model="PrecioCyP"
+        label="Precio CyP"
       />
 
 <vs-input
@@ -176,6 +185,22 @@
     export default {
       data:() => ({
         value: '',
+        Modelo: '',
+        Poder: 0,
+        Nucleos: 0,
+        Velocidad: 0,
+        Marca: '',
+        Memoria: 0,
+        MaxPower: 0,
+        PrecioSL: 0,
+        PrecioTauret: 0,
+        PrecioCyP: 0,
+        linkSL: '',
+        linkTauret: '',
+        linkCyP: '',
+        Benchmark: '',
+        linkFoto: ''
+
       })
     }
     
