@@ -4,6 +4,8 @@ import Home from '@/pages/Home'
 import QuizBeg from '@/pages/QuizBeg'
 import AdminC from '@/pages/AdminCreateComp'
 import AdminD from '@/pages/AdminDeleteComp'
+import Admin from '@/pages/Admin'
+import ListOfComponents from '@/pages/ListOfComponents'
 
 Vue.use(Router)
 
@@ -20,6 +22,11 @@ export default new Router({
             component: QuizBeg
         },
         {
+            path: '/Admin',
+            name: 'Admin',
+            component: Admin
+        },
+        {
             path: '/AdminC',
             name: 'AdminC',
             component: AdminC
@@ -28,6 +35,11 @@ export default new Router({
             path: '/AdminD',
             name: 'AdminD',
             component: AdminD
+        },
+        {
+            path: '/ListOfComponents',
+            name: 'ListOfComponents',
+            component: ListOfComponents
         }
 
     ]

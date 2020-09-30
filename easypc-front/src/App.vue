@@ -1,5 +1,7 @@
 <template>
-  <div id="app">
+
+  <div id="app" class="shadow p-4 container-fluid">
+
     <router-view/>
   </div>
 </template>
@@ -17,11 +19,11 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #339EB7;
+  background-color: #FF9941;
 }
 </style>
