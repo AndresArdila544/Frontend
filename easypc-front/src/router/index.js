@@ -41,5 +41,6 @@ export default new Router({
             name: 'ListOfComponents',
             component: ListOfComponents
         }
+
     ]
 })

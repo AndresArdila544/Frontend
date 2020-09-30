@@ -1,12 +1,12 @@
 <template>
+
   <div id="app" class="shadow p-4 container-fluid">
+
     <router-view/>
   </div>
 </template>
 
 <script>
-
-
 
 export default {
   name: 'App',
