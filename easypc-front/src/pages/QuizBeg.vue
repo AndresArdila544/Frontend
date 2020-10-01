@@ -1,29 +1,22 @@
 <template>
   <div>
+    <Footer/>
     <div class="pt-4 container-fluid">
       <p id="parrafo" class="pt-3">Cuentanos tus necesidades!</p>
-
-      
-      <p ><Pregunta1/></p>
+      <p ><PreguntaInicial/></p>
     </div>
-    <PopUpBeg1/>
-    
-   
   </div>
 </template>
 
 <script>
-
-import Pregunta1 from '../components/Pregunta1.vue'
-import PopUpBeg1 from "../components/PopUpBeg1.vue"
-
-
+import PreguntaInicial from '../components/QuizBeg/PreguntaInicial.vue'
+import Footer from "../components/Footer.vue"
 
 export default {
   name: "QuizBeg",
   components: {
-    Pregunta1,
-    PopUpBeg1,
+    PreguntaInicial,
+    Footer
   },
   methods: {
     increment() {
@@ -39,10 +32,7 @@ export default {
     count () {
       return this.$store.getters["getCount"]
     },
-
   }
-  
-  
 };
 </script>
 

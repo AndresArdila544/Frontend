@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style scope lang="scss">
+<style lang="scss">
 
 
   #boton{

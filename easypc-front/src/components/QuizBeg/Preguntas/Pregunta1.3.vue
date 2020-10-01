@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="pb-4 center">
+    <div id="radio" class="pb-4 d-flex flex-column">
       <p  id="pregunta" class="pt-4 d-flex justify-content-start">¿Cómo quieres que se vean los juegos?</p>
       <vs-radio v-model="picked" val="1" class="d-flex justify-content-start"> Normal, quiero jugar sin darle tanta importancia a la calidad </vs-radio>
       <vs-radio v-model="picked" val="2" class="d-flex justify-content-start"> Bien, me importa la calidad pero no es lo más importante </vs-radio>
@@ -17,6 +17,9 @@ export default {
 </script>
 <style  scoped>
 #pregunta {
-  font-size: 4vw;
+  font-size: 4vw
+}
+#radio {
+  font-size: 2.7vw
 }
 </style>

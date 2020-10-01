@@ -4,7 +4,7 @@ import QuizBeg from '@/pages/QuizBeg'
 import AdminC from '@/pages/AdminCreateComp'
 import AdminD from '@/pages/AdminDeleteComp'
 import Admin from '@/pages/Admin'
-import prueba from '@/pages/prueba'
+import Home from '@/pages/Home'
 import ListOfComponents from '@/pages/ListOfComponents'
 
 Vue.use(Router)
@@ -14,7 +14,7 @@ export default new Router({
         {
             path: '/',
             name: 'Home',
-            component: prueba
+            component: Home
         },
         {
             path: '/QuizB',
