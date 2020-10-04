@@ -1,14 +1,14 @@
 <template>
 <div>
   <div class="container-fluid p-4 d-flex justify-content-center flex-column">
-    <vs-table v-model="selected">
-      <template #thead>
+    <vs-table id="table" class="px-5 "  v-model="selected">
+      <template  #thead>
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == cases.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, cases)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -18,46 +18,54 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(cas, i) in cases"
+          :data="cas"
+          :is-selected="!!selected.includes(cas)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="cas" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ cas.idCase }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ cas.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-  </div>
-   <vs-row>
+    <!--<span class="data">
+      <pre>
+  {{ selected.length > 0 ? selected : "Select an item in the table" }}
+        </pre
+      >
+    </span> -->
+    </div>
+       <vs-row>
       <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4"> 
       </vs-col>
       <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4">
         <div class=" d-flex justify-content-center">
-         <vs-button @click="deleteCPUS(selected)">Eliminar </vs-button>
+         <vs-button @click="deleteCASES(selected)">Eliminar </vs-button>
          </div>
       </vs-col>
 
     </vs-row>
-  </div>
+   
+    
+
+   
+</div>
 </template>
  
 <script>
-
-import EasyPCService from "../../services/EasyPCService";
-
+import { http } from "../../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "cases-list",
   data() {
     return {
-      cpus: [],
+      cases: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -66,35 +74,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
-      EasyPCService.getAllCPUs()
+    retrieveCASES() {
+      http
+        .get("/cases")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.cases = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      EasyPCService.deleteCPU()
-        .delete("/cpu/" + id).catch((e) => {
+    deleteCASE(id) {
+      http.delete("/case/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveCASES();
     },
-    deleteCP(selected) {
+    deleteCASES(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idCase;
+        this.deleteCASE(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveCASES();
   },
 };
 </script>
@@ -102,7 +110,10 @@ export default {
 <style>
 .list {
   text-align: left;
-  max-width: 450px;
+  max-width: 1vw;
   margin: auto;
+}
+#table {
+  size: 5vw;
 }
 </style>

@@ -6,9 +6,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == coolings.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, coolings)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -18,18 +18,18 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(cooling, i) in coolings"
+          :data="cooling"
+          :is-selected="!!selected.includes(cooling)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="cooling" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ cooling.idCooling }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ cooling.model }}
           </vs-td>
         </vs-tr>
       </template>
@@ -40,7 +40,7 @@
       </vs-col>
       <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4">
         <div class=" d-flex justify-content-center">
-         <vs-button @click="deleteCPUS(selected)">Eliminar </vs-button>
+         <vs-button @click="deleteCOOLINGS(selected)">Eliminar </vs-button>
          </div>
       </vs-col>
 
@@ -49,15 +49,13 @@
 </template>
  
 <script>
-
-import EasyPCService from "../../services/EasyPCService";
-
+import { http } from "../../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "coolings-list",
   data() {
     return {
-      cpus: [],
+      coolings: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -66,35 +64,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
-      EasyPCService.getAllCPUs()
+    retrieveCOOLINGS() {
+      http
+        .get("/coolings")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.coolings = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      EasyPCService.deleteCPU()
-        .delete("/cpu/" + id).catch((e) => {
+    deleteCOOLING(id) {
+      http.delete("/cooling/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveCOOLINGS();
     },
-    deleteCP(selected) {
+    deleteCOOLINGS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idCooling;
+        this.deleteCOOLING(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveCOOLINGS();
   },
 };
 </script>

@@ -6,9 +6,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == hdds.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, hdds)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -18,46 +18,45 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(hdd, i) in hdds"
+          :data="hdd"
+          :is-selected="!!selected.includes(hdd)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="hdd" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ hdd.idHDD }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ hdd.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
   </div>
-   <vs-row>
+       <vs-row>
       <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4"> 
       </vs-col>
       <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4">
         <div class=" d-flex justify-content-center">
-         <vs-button @click="deleteCPUS(selected)">Eliminar </vs-button>
-         </div>
+         <vs-button @click="deleteHDDS(selected)">Eliminar </vs-button>
+        </div>
       </vs-col>
 
     </vs-row>
+
   </div>
 </template>
  
 <script>
-
-import EasyPCService from "../../services/EasyPCService";
-
+import { http } from "../../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "hdds-list",
   data() {
     return {
-      cpus: [],
+      hdds: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -66,35 +65,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
-      EasyPCService.getAllCPUs()
+    retrieveHDDS() {
+      http
+        .get("/hdds")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.hdds = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      EasyPCService.deleteCPU()
-        .delete("/cpu/" + id).catch((e) => {
+    deleteHDD(id) {
+      http.delete("/hdd/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveHDDS();
     },
-    deleteCP(selected) {
+    deleteHDDS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idHDD;
+        this.deleteHDD(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveHDDS();
   },
 };
 </script>
