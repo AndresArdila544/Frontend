@@ -49,7 +49,9 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+
+import EasyPCService from "../../services/EasyPCService";
+
 
 export default {
   name: "cpus-list",
@@ -65,8 +67,7 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveCPUS() {
-      http
-        .get("/cpus")
+      EasyPCService.getAllCPUs()
         .then((response) => {
           this.cpus = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -76,7 +77,8 @@ export default {
         });
     },
     deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+      EasyPCService.deleteCPU()
+        .delete("/cpu/" + id).catch((e) => {
         console.log(e);
       });
     },
