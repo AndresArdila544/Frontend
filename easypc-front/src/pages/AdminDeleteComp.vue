@@ -1,21 +1,22 @@
 
 <template>
-  <div class="center">
-    <h1>Eliminar un Componente</h1>
-    <p class="left">Seleccione un tipo de componente</p>
-    <vs-select placeholder="Select" color="warn" v-model="value">
-      <vs-option label="CPU" value="A"> CPU </vs-option>
-      <vs-option label="TarjetaMadre" value="B"> Tarjeta Madre </vs-option>
-      <vs-option label="RAM" value="C"> RAM </vs-option>
-      <vs-option label="GPU" value="D"> GPU </vs-option>
-      <vs-option label="Cooling" value="E"> Cooling </vs-option>
-      <vs-option label="Case" value="F"> Case </vs-option>
-      <vs-option label="PowerSupply" value="G"> Power Supply </vs-option>
-      <vs-option label="HDD" value="H"> HDD </vs-option>
-      <vs-option label="SSD" value="I"> SSD </vs-option>
-      <vs-option label="Mouse" value="J"> Mouse </vs-option>
-      <vs-option label="Teclado" value="K"> Teclado </vs-option>
-      <vs-option label="Monitor" value="L"> Monitor </vs-option>
+<div>
+  <div class="pt-5 container-fluid ">
+    <h1 id="titulo" >Eliminar un Componente</h1>
+    <p id="subtitulo" class="left">Seleccione un tipo de componente:</p>
+    <vs-select  id="select" placeholder="Select" color="warn" v-model="value">
+      <vs-option label="CPU" value="A"><p id="select"> CPU </p> </vs-option>
+      <vs-option label="TarjetaMadre" value="B"> <p id="select"> Tarjeta Madre </p> </vs-option>
+      <vs-option label="RAM" value="C"><p id="select"> RAM </p> </vs-option>
+      <vs-option label="GPU" value="D"><p id="select"> GPU </p> </vs-option>
+      <vs-option label="Cooling" value="E"><p id="select"> Cooling </p> </vs-option>
+      <vs-option label="Case" value="F"><p id="select"> Case </p> </vs-option>
+      <vs-option label="PowerSupply" value="G"> <p id="select"> Power Supply </p> </vs-option>
+      <vs-option label="HDD" value="H"> <p id="select"> HDD  </p> </vs-option>
+      <vs-option label="SSD" value="I"><p id="select"> SSD  </p>  </vs-option>
+      <vs-option label="Mouse" value="J"><p id="select"> Mouse  </p> </vs-option>
+      <vs-option label="Teclado" value="K"><p id="select">Teclado  </p> </vs-option>
+      <vs-option label="Monitor" value="L"><p id="select"> Monitor  </p> </vs-option>
     </vs-select>
 
     <CPUlist v-if= "value == 'A'" />
@@ -30,6 +31,9 @@
     <MOUSElist v-if= "value == 'J'" />
     <KEYBlist v-if= "value == 'K'" />
     <MONlist v-if= "value == 'L'" />
+    
+    </div>
+    <Footer/>
   </div>
 </template>
 
@@ -47,7 +51,7 @@ import MOUSElist from "../components/ListComp/MOUSElist";
 import KEYBlist from "../components/ListComp/KEYBlist";
 import MONlist from "../components/ListComp/MONlist";
 import MOTHERlist from "../components/ListComp/MOTHERlist";
-
+import Footer from "../components/Footer"
 export default {
   data: () => ({
     value: "",
@@ -65,11 +69,25 @@ export default {
     KEYBlist,
     MONlist,
     MOTHERlist,
+    Footer,
   },
 };
 </script>
 
-  <style >
+<style >
+#titulo {
+  font-size: 3vw;
+
+}
+#subtitulo{
+  font-size: 1.5vw;
+  text-align: left;
+
+}
+#select{
+  font-size: 1.34vw;
+
+}
 </style>
 
         

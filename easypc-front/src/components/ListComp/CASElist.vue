@@ -1,7 +1,8 @@
 <template>
-  <div class="center">
-    <vs-table v-model="selected">
-      <template #thead>
+<div>
+  <div class="container-fluid p-4 d-flex justify-content-center flex-column">
+    <vs-table id="table" class="px-5 "  v-model="selected">
+      <template  #thead>
         <vs-tr>
           <vs-th>
             <vs-checkbox
@@ -38,13 +39,27 @@
   {{ selected.length > 0 ? selected : "Select an item in the table" }}
         </pre
       >
-    </span> -->>
-    <vs-button @click="deleteCASES(selected)">Eliminar </vs-button>
-  </div>
+    </span> -->
+    </div>
+       <vs-row>
+      <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4"> 
+      </vs-col>
+      <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4">
+        <div class=" d-flex justify-content-center">
+         <vs-button @click="deleteCASES(selected)">Eliminar </vs-button>
+         </div>
+      </vs-col>
+
+    </vs-row>
+   
+    
+
+   
+</div>
 </template>
  
 <script>
-import { http } from "../http-common";
+import { http } from "../../http-common";
 
 export default {
   name: "cases-list",
@@ -97,5 +112,8 @@ export default {
   text-align: left;
   max-width: 1vw;
   margin: auto;
+}
+#table {
+  size: 5vw;
 }
 </style>

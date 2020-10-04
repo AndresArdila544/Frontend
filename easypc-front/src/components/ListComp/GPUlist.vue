@@ -1,5 +1,6 @@
 <template>
-  <div class="center">
+<div>
+  <div class="container-fluid p-4 d-flex justify-content-center flex-column">
     <vs-table v-model="selected">
       <template #thead>
         <vs-tr>
@@ -33,12 +34,22 @@
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteGPUS(selected)">Eliminar </vs-button>
+  </div>
+     <vs-row>
+      <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4"> 
+      </vs-col>
+      <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4">
+        <div class=" d-flex justify-content-center">
+         <vs-button @click="deleteGPUS(selected)">Eliminar </vs-button>
+         </div>
+      </vs-col>
+
+    </vs-row>
   </div>
 </template>
  
 <script>
-import { http } from "../http-common";
+import { http } from "../../http-common";
 
 export default {
   name: "gpus-list",
