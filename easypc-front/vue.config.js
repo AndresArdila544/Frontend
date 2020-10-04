@@ -1,11 +1,11 @@
 module.exports = {
+  
     configureWebpack: {
       plugins: [
 
       ],
       devServer:{
-          hot:false,
-          hotOnly:true
+        port: 4200
       }
     }
   }
