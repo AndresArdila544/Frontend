@@ -5,9 +5,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == gpus.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, gpus)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -17,23 +17,23 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(gpu, i) in gpus"
+          :data="gpu"
+          :is-selected="!!selected.includes(gpu)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="gpu" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ gpu.idGPU }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ gpu.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteCP(selected)">Eliminar </vs-button>
+    <vs-button @click="deleteGPUS(selected)">Eliminar </vs-button>
   </div>
 </template>
  
@@ -41,10 +41,10 @@
 import { http } from "../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "gpus-list",
   data() {
     return {
-      cpus: [],
+      gpus: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -53,35 +53,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
+    retrieveGPUS() {
       http
-        .get("/cpus")
+        .get("/gpus")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.gpus = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+    deleteGPU(id) {
+      http.delete("/gpu/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveGPUS();
     },
-    deleteCP(selected) {
+    deleteGPUS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idGPU;
+        this.deleteGPU(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveGPUS();
   },
 };
 </script>

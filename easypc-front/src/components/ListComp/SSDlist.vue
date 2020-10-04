@@ -5,9 +5,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == ssds.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, ssds)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -17,23 +17,23 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(ssd, i) in ssds"
+          :data="ssd"
+          :is-selected="!!selected.includes(ssd)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="ssd" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ ssd.idSSD }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ ssd.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteCP(selected)">Eliminar </vs-button>
+    <vs-button @click="deleteSSDS(selected)">Eliminar </vs-button>
   </div>
 </template>
  
@@ -41,10 +41,10 @@
 import { http } from "../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "ssds-list",
   data() {
     return {
-      cpus: [],
+      ssds: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -53,35 +53,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
+    retrieveSSDS() {
       http
-        .get("/cpus")
+        .get("/ssds")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.ssds = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+    deleteSSD(id) {
+      http.delete("/ssd/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveSSDS();
     },
-    deleteCP(selected) {
+    deleteSSDS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idSSD;
+        this.deleteSSD(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveSSDS();
   },
 };
 </script>

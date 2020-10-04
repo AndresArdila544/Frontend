@@ -5,9 +5,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == keyboards.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, keyboards)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -17,23 +17,24 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(keyboard, i) in keyboards"
+          :data="keyboard"
+          :is-selected="!!selected.includes(keyboard)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="keyboard" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ keyboard.idRam }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ keyboard.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteCP(selected)">Eliminar </vs-button>
+
+    <vs-button @click="deleteKEYBOARDS(selected)">Eliminar </vs-button>
   </div>
 </template>
  
@@ -41,10 +42,10 @@
 import { http } from "../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "keyboards-list",
   data() {
     return {
-      cpus: [],
+      keyboards: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -53,35 +54,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
+    retrieveKEYBOARDS() {
       http
-        .get("/cpus")
+        .get("/keyboards")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.keyboards = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+    deleteKEYBOARD(id) {
+      http.delete("/keyboard/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveKEYBOARDS();
     },
-    deleteCP(selected) {
+    deleteKEYBOARDS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idKeyboard;
+        this.deleteKEYBOARD(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveKEYBOARDS();
   },
 };
 </script>

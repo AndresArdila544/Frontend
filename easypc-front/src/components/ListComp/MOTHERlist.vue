@@ -5,9 +5,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == motherboards.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, motherboards)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -17,23 +17,23 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(motherboard, i) in motherboards"
+          :data="motherboard"
+          :is-selected="!!selected.includes(motherboard)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="motherboard" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ motherboard.idMotherboard }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ motherboard.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteCP(selected)">Eliminar </vs-button>
+    <vs-button @click="deleteMOTHERBOARDS(selected)">Eliminar </vs-button>
   </div>
 </template>
  
@@ -41,10 +41,10 @@
 import { http } from "../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "motherboards-list",
   data() {
     return {
-      cpus: [],
+      motherboards: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -53,35 +53,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
+    retrieveMOTHERBOARDS() {
       http
-        .get("/cpus")
+        .get("/motherboards")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.motherboards = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+    deleteMOTHERBOARD(id) {
+      http.delete("/motherboard/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveMOTHERBOARDS();
     },
-    deleteCP(selected) {
+    deleteMOTHERBOARDS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idMotherboard;
+        this.deleteMOTHERBOARD(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveMOTHERBOARDS();
   },
 };
 </script>

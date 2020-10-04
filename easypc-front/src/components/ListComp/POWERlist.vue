@@ -5,9 +5,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == powers.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, powers)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -17,23 +17,23 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(power, i) in powers"
+          :data="power"
+          :is-selected="!!selected.includes(power)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="power" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ power.idPowerSupply }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ power.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteCP(selected)">Eliminar </vs-button>
+    <vs-button @click="deletePOWERS(selected)">Eliminar </vs-button>
   </div>
 </template>
  
@@ -41,10 +41,10 @@
 import { http } from "../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "powers-list",
   data() {
     return {
-      cpus: [],
+      powers: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -53,35 +53,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
+    retrievePOWERS() {
       http
-        .get("/cpus")
+        .get("/power-supplies")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.powers = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+    deletePOWER(id) {
+      http.delete("/power-supply/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrievePOWERS();
     },
-    deleteCP(selected) {
+    deletePOWERS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idPowerSupply;
+        this.deletePOWER(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrievePOWERS();
   },
 };
 </script>

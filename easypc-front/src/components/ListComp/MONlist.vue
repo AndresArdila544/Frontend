@@ -5,9 +5,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == monitors.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, monitors)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -17,23 +17,23 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(monitor, i) in monitors"
+          :data="monitor"
+          :is-selected="!!selected.includes(monitor)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="monitor" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ monitor.idMonitor }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ monitor.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteCP(selected)">Eliminar </vs-button>
+    <vs-button @click="deleteMONITORS(selected)">Eliminar </vs-button>
   </div>
 </template>
  
@@ -41,10 +41,10 @@
 import { http } from "../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "monitors-list",
   data() {
     return {
-      cpus: [],
+      monitors: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -53,35 +53,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
+    retrieveMONITORS() {
       http
-        .get("/cpus")
+        .get("/monitors")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.monitors = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+    deleteMONITOR(id) {
+      http.delete("/monitor/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveMONITORS();
     },
-    deleteCP(selected) {
+    deleteMONITORS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idMonitor;
+        this.deleteMONITOR(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveMONITORS();
   },
 };
 </script>

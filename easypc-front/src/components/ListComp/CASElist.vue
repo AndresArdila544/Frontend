@@ -5,9 +5,9 @@
         <vs-tr>
           <vs-th>
             <vs-checkbox
-              :indeterminate="selected.length == cpus.length"
+              :indeterminate="selected.length == cases.length"
               v-model="allCheck"
-              @change="selected = $vs.checkAll(selected, cpus)"
+              @change="selected = $vs.checkAll(selected, cases)"
             />
           </vs-th>
           <vs-th> Id </vs-th>
@@ -17,23 +17,29 @@
       <template #tbody>
         <vs-tr
           :key="i"
-          v-for="(cpu, i) in cpus"
-          :data="cpu"
-          :is-selected="!!selected.includes(cpu)"
+          v-for="(cas, i) in cases"
+          :data="cas"
+          :is-selected="!!selected.includes(cas)"
         >
           <vs-td checkbox>
-            <vs-checkbox :val="cpu" v-model="selected" />
+            <vs-checkbox :val="cas" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ cpu.idCPU }}
+            {{ cas.idCase }}
           </vs-td>
           <vs-td>
-            {{ cpu.model }}
+            {{ cas.model }}
           </vs-td>
         </vs-tr>
       </template>
     </vs-table>
-    <vs-button @click="deleteCP(selected)">Eliminar </vs-button>
+    <!--<span class="data">
+      <pre>
+  {{ selected.length > 0 ? selected : "Select an item in the table" }}
+        </pre
+      >
+    </span> -->>
+    <vs-button @click="deleteCASES(selected)">Eliminar </vs-button>
   </div>
 </template>
  
@@ -41,10 +47,10 @@
 import { http } from "../http-common";
 
 export default {
-  name: "cpus-list",
+  name: "cases-list",
   data() {
     return {
-      cpus: [],
+      cases: [],
       data: "",
       allCheck: false,
       selected: [],
@@ -53,35 +59,35 @@ export default {
   },
   methods: {
     /* eslint-disable no-console */
-    retrieveCPUS() {
+    retrieveCASES() {
       http
-        .get("/cpus")
+        .get("/cases")
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.cases = response.data; // JSON are parsed automatically.
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      http.delete("/cpu/" + id).catch((e) => {
+    deleteCASE(id) {
+      http.delete("/case/" + id).catch((e) => {
         console.log(e);
       });
     },
     refreshList() {
-      this.retrieveCPUS();
+      this.retrieveCASES();
     },
-    deleteCP(selected) {
+    deleteCASES(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        var key = selected[i].idCase;
+        this.deleteCASE(key);
       }
       window.location.reload();
     },
   },
   mounted() {
-    this.retrieveCPUS();
+    this.retrieveCASES();
   },
 };
 </script>
@@ -89,7 +95,7 @@ export default {
 <style>
 .list {
   text-align: left;
-  max-width: 450px;
+  max-width: 1vw;
   margin: auto;
 }
 </style>
