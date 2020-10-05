@@ -1,7 +1,7 @@
 
 <template>
 <div>
-  <!--Pull request--> 
+  <!--Pull request :D --> 
   <div class="pt-5 container-fluid ">
     <h1 id="titulo" >Eliminar un Componente</h1>
     <p id="subtitulo" class="left">Seleccione un tipo de componente:</p>
