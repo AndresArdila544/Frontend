@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div  class="p-5">
+    <div class="p-5">
       <vs-row>
         <vs-col justify="center" vs-align="center" w="4">
           <div class="d-flex justify-content-center">
