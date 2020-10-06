@@ -76,8 +76,7 @@ export default {
           console.log(e);
         });
     },
-    deleteCPUS(id) {
-      EasyPCService.deleteCPU()
+    deleteCPU(id) {
       EasyPCService.deleteCPU(id).catch((e) => {
         console.log(e);
       });
@@ -85,10 +84,10 @@ export default {
     refreshList() {
       this.retrieveCPUS();
     },
-    deleteCP(selected) {
+    deleteCPUS(selected) {
       for (var i = 0; i < selected.length; i++) {
         var key = selected[i].idCPU;
-        this.deleteCPUS(key);
+        this.deleteCPU(key);
       }
       window.location.reload();
     },
