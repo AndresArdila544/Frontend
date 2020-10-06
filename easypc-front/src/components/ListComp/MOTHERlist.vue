@@ -49,7 +49,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "motherboards-list",
@@ -65,8 +65,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveMOTHERBOARDS() {
-      http
-        .get("/motherboards")
+      EasyPCService
+        .getAllMotherboards()
         .then((response) => {
           this.motherboards = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -76,7 +76,7 @@ export default {
         });
     },
     deleteMOTHERBOARD(id) {
-      http.delete("/motherboard/" + id).catch((e) => {
+      EasyPCService.deleteMotherboard(id).catch((e) => {
         console.log(e);
       });
     },

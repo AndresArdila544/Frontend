@@ -49,7 +49,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "rams-list",
@@ -65,8 +65,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveRAMS() {
-      http
-        .get("/rams")
+      EasyPCService
+        .getAllRAMs
         .then((response) => {
           this.rams = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -76,7 +76,7 @@ export default {
         });
     },
     deleteRAM(id) {
-      http.delete("/ram/" + id).catch((e) => {
+      EasyPCService.deleteRAM(id).catch((e) => {
         console.log(e);
       });
     },

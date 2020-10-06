@@ -49,7 +49,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "coolings-list",
@@ -65,8 +65,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveCOOLINGS() {
-      http
-        .get("/coolings")
+      EasyPCService
+        .getAllCoolings()
         .then((response) => {
           this.coolings = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -76,7 +76,7 @@ export default {
         });
     },
     deleteCOOLING(id) {
-      http.delete("/cooling/" + id).catch((e) => {
+      EasyPCService.deleteCooling(id).catch((e) => {
         console.log(e);
       });
     },

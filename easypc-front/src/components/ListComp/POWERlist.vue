@@ -51,7 +51,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "powers-list",
@@ -67,8 +67,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrievePOWERS() {
-      http
-        .get("/power-supplies")
+      EasyPCService
+        .getAllPowerSupplies()
         .then((response) => {
           this.powers = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -78,7 +78,7 @@ export default {
         });
     },
     deletePOWER(id) {
-      http.delete("/power-supply/" + id).catch((e) => {
+      EasyPCService.deletePowerSupply(id).catch((e) => {
         console.log(e);
       });
     },

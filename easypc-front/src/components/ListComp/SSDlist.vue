@@ -48,7 +48,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "ssds-list",
@@ -64,8 +64,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveSSDS() {
-      http
-        .get("/ssds")
+      EasyPCService
+        .getAllSSDs()
         .then((response) => {
           this.ssds = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -75,7 +75,7 @@ export default {
         });
     },
     deleteSSD(id) {
-      http.delete("/ssd/" + id).catch((e) => {
+      EasyPCService.deleteSSD(id).catch((e) => {
         console.log(e);
       });
     },

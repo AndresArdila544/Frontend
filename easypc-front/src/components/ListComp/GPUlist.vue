@@ -49,7 +49,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "gpus-list",
@@ -65,8 +65,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveGPUS() {
-      http
-        .get("/gpus")
+      EasyPCService
+        .getAllGPUs()
         .then((response) => {
           this.gpus = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -76,7 +76,7 @@ export default {
         });
     },
     deleteGPU(id) {
-      http.delete("/gpu/" + id).catch((e) => {
+      EasyPCService.deleteGPU(id).catch((e) => {
         console.log(e);
       });
     },
