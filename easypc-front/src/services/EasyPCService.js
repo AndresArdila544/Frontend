@@ -14,7 +14,7 @@ class EasyPCService {
     }
   
     deleteCPU(id) {
-      return http.delete("/cpu/" + id);
+      return http.delete("/motherboards/" + id);
     }
 
     getAllMotherboards() {
@@ -22,7 +22,7 @@ class EasyPCService {
     }
     
     getMotherboardById(id) {
-      return http.get("/cpu/" + id);
+      return http.get("/motherboards/" + id);
     }
 
     createMotherboard(data) {
@@ -30,7 +30,7 @@ class EasyPCService {
     }
   
     deleteMotherboard(id) {
-      return http.delete("/cpu/" + id);
+      return http.delete("/motherboards/" + id);
     }
 
     getAllRAMs() {
