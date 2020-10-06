@@ -50,7 +50,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "keyboards-list",
@@ -66,8 +66,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveKEYBOARDS() {
-      http
-        .get("/keyboards")
+      EasyPCService
+        .getAllKeyboards()
         .then((response) => {
           this.keyboards = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -77,7 +77,7 @@ export default {
         });
     },
     deleteKEYBOARD(id) {
-      http.delete("/keyboard/" + id).catch((e) => {
+      EasyPCService.deleteKeyboard(id).catch((e) => {
         console.log(e);
       });
     },

@@ -59,7 +59,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "cases-list",
@@ -75,8 +75,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveCASES() {
-      http
-        .get("/cases")
+      EasyPCService
+        .getAllCases()
         .then((response) => {
           this.cases = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -86,7 +86,7 @@ export default {
         });
     },
     deleteCASE(id) {
-      http.delete("/case/" + id).catch((e) => {
+      EasyPCService.deleteCase(id).catch((e) => {
         console.log(e);
       });
     },

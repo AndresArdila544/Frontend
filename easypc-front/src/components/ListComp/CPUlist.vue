@@ -78,7 +78,7 @@ export default {
     },
     deleteCPUS(id) {
       EasyPCService.deleteCPU()
-        .delete("/cpu/" + id).catch((e) => {
+      EasyPCService.deleteCPU(id).catch((e) => {
         console.log(e);
       });
     },

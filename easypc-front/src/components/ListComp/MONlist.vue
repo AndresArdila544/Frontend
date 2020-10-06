@@ -49,7 +49,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "monitors-list",
@@ -65,8 +65,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveMONITORS() {
-      http
-        .get("/monitors")
+      EasyPCService
+        .getAllMonitors()
         .then((response) => {
           this.monitors = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -76,7 +76,7 @@ export default {
         });
     },
     deleteMONITOR(id) {
-      http.delete("/monitor/" + id).catch((e) => {
+      EasyPCService.deleteMonitor(id).catch((e) => {
         console.log(e);
       });
     },

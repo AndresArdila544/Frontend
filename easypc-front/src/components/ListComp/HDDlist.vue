@@ -50,7 +50,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "hdds-list",
@@ -66,8 +66,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveHDDS() {
-      http
-        .get("/hdds")
+      EasyPCService
+        .getAllHDDs()
         .then((response) => {
           this.hdds = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -77,7 +77,7 @@ export default {
         });
     },
     deleteHDD(id) {
-      http.delete("/hdd/" + id).catch((e) => {
+      EasyPCService.deleteHDD(id).catch((e) => {
         console.log(e);
       });
     },

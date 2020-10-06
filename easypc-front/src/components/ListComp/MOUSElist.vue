@@ -49,7 +49,7 @@
 </template>
  
 <script>
-import { http } from "../../http-common";
+import EasyPCService from '../../services/EasyPCService';
 
 export default {
   name: "mice-list",
@@ -65,8 +65,8 @@ export default {
   methods: {
     /* eslint-disable no-console */
     retrieveMICE() {
-      http
-        .get("/mice")
+      EasyPCService
+        .getAllMice()
         .then((response) => {
           this.mice = response.data; // JSON are parsed automatically.
           console.log(response.data);
@@ -76,7 +76,7 @@ export default {
         });
     },
     deleteMOUSE(id) {
-      http.delete("/mouse/" + id).catch((e) => {
+      EasyPCService.deleteMouse(id).catch((e) => {
         console.log(e);
       });
     },
