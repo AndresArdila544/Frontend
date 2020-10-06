@@ -10,7 +10,7 @@
           <vs-input label="Link Tauret Computadores" type="text" v-model="keyboard.linkTauret"  class="py-4"/>
           <vs-input label="Link Clones y Perifericos" type="text" v-model="keyboard.linkCyP" class="py-4"/>
           <vs-input label="Link Imagen" type="text" v-model="keyboard.linkPicture" class="py-4"/>
-          <vs-button @click="saveKeyboard">Añadir Monitor </vs-button>
+          <vs-button @click="saveKeyboard">Añadir Teclado </vs-button>
       </div>
       <div v-else>
         <h4>Has añadido un Teclado!</h4>
@@ -59,7 +59,7 @@ export default {
         linkPicture: this.keyboard.linkPicture,
       };
 
-      EasyPCService.createMonitor(data)
+      EasyPCService.createKeyboard(data)
         .then(response => {
           this.keyboard.idKeyboard = response.data.id;
           console.log(response.data);
