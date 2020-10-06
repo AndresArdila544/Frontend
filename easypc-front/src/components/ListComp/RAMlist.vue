@@ -66,7 +66,7 @@ export default {
     /* eslint-disable no-console */
     retrieveRAMS() {
       EasyPCService
-        .getAllRAMs
+        .getAllRAMs()
         .then((response) => {
           this.rams = response.data; // JSON are parsed automatically.
           console.log(response.data);
