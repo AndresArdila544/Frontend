@@ -26,7 +26,7 @@
             <vs-checkbox :val="ram" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ ram.idRam }}
+            {{ ram.idRAM }}
           </vs-td>
           <vs-td>
             {{ ram.model }}
@@ -85,7 +85,7 @@ export default {
     },
     deleteRAMS(selected) {
       for (var i = 0; i < selected.length; i++) {
-        var key = selected[i].idRam;
+        var key = selected[i].idRAM;
         this.deleteRAM(key);
       }
       window.location.reload();

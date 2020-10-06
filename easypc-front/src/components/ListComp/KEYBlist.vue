@@ -26,7 +26,7 @@
             <vs-checkbox :val="keyboard" v-model="selected" />
           </vs-td>
           <vs-td>
-            {{ keyboard.idRam }}
+            {{ keyboard.idKeyboard }}
           </vs-td>
           <vs-td>
             {{ keyboard.model }}
