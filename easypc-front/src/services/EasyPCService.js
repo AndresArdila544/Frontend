@@ -192,6 +192,22 @@ class EasyPCService {
     deleteKeyboard(id) {
       return http.delete("/keyboard/" + id);
     }
+
+    getAllBuilds() {
+      return http.get("/builds/");
+    }
+    
+    getBuildById(id) {
+      return http.get("/build/" + id);
+    }
+
+    createBuild(data) {
+      return http.post("/build", data);
+    }
+  
+    deleteBuild(id) {
+      return http.delete("/build/" + id);
+    }
 }
   
   export default new EasyPCService();
