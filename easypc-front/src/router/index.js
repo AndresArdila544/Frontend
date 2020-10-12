@@ -5,6 +5,7 @@ import AdminC from '@/pages/AdminCreateComp'
 import AdminD from '@/pages/AdminDeleteComp'
 import Admin from '@/pages/Admin'
 import Home from '@/pages/Home'
+import Summary from '@/pages/Summary'
 import CPUlist from '@/components/ListComp/CPUlist'
 
 Vue.use(Router)
@@ -40,7 +41,11 @@ export default new Router({
             path: '/CPUs',
             name: 'CPUs',
             component: CPUlist
-        }
-
+        },
+        {
+            path: '/Summary',
+            name: 'Summary',
+            component: Summary
+        },
     ]
 })
