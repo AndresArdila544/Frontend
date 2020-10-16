@@ -6,6 +6,7 @@ import AdminD from '@/pages/AdminDeleteComp'
 import Admin from '@/pages/Admin'
 import Home from '@/pages/Home'
 import CPUlist from '@/components/ListComp/CPUlist'
+import ShowRec from '@/pages/ShowRecommendation'
 
 Vue.use(Router)
 
@@ -40,7 +41,12 @@ export default new Router({
             path: '/CPUs',
             name: 'CPUs',
             component: CPUlist
-        }
+        },
+        {
+            path: '/ShowRec',
+            name: 'ShowRec',
+            component: ShowRec
+        },
 
     ]
 })
