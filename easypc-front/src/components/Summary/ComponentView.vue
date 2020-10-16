@@ -12,47 +12,58 @@
       </vs-col>
       <vs-col class="col" direction="column" w="4">
         <vs-col w="12">
-          <div class="d-flex justify-content-left">
+          <div class="d-flex justify-content-left" v-if="Parte.linkSL || Parte.priceSL">
             <a
               class="texto"
               :href="Parte.linkSL"
+              v-if="Parte.linkSL"
               >Link SpeedLogic</a
             >
+            <div class="texto" v-else>Tienda SpeedLogic</div>
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="py-4 d-flex justify-content-left">
+          <div class="py-4 d-flex justify-content-left" v-if="Parte.linkTauret || Parte.priceTauret">
             <a
               class="texto"
               :href="Parte.linkTauret"
+              v-if="Parte.linkTauret"
               >Link Tauret Computadores</a
             >
+            <div class="texto" v-else>Tienda SpeedLogic</div>
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="d-flex justify-content-left">
+          <div class="d-flex justify-content-left" v-if="Parte.linkCyP || Parte.priceCyP">
             <a
               class="texto"
               :href="Parte.linkCyP"
+              v-if="Parte.linkCyP"
               >Link Clones y Perifericos</a
             >
+            <div class="texto" v-else>Tienda SpeedLogic</div>
           </div>
         </vs-col>
       </vs-col>
       <vs-col class="col" direction="column" w="4">
         <vs-col align="flex-end" w="12">
-          <div class="d-flex justify-content-left">
-            <div class="texto">${{Parte.priceSL}}</div>
+          <div class="d-flex justify-content-left" v-if="Parte.linkSL || Parte.priceSL">
+            <div class="texto" v-if="Parte.priceSL">${{Parte.priceSL}}</div>
+            <div class="texto" v-else>No tiene precio actualmente</div>
+
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="py-4 d-flex justify-content-left">
-            <div class="texto">${{Parte.priceTauret}}</div>
+          <div class="py-4 d-flex justify-content-left" v-if="Parte.linkTauret || Parte.priceTauret">
+            <div class="texto" v-if="Parte.priceTauret">${{Parte.priceTauret}}</div>
+            <div class="texto" v-else>No tiene precio actualmente</div>
+
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="d-flex justify-content-left">
-            <div class="texto">${{Parte.priceCyP}}</div>
+          <div class="d-flex justify-content-left" v-if="Parte.linkCyP || Parte.priceCyP">
+            <div class="texto" v-if="Parte.priceCyP" >${{Parte.priceCyP}}</div>
+            <div class="texto" v-else>No tiene precio actualmente</div>
           </div>
         </vs-col>
       </vs-col>
