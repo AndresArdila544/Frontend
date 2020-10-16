@@ -208,6 +208,8 @@ class EasyPCService {
     deleteBuild(id) {
       return http.delete("/build/" + id);
     }
+
+    
 }
   
   export default new EasyPCService();

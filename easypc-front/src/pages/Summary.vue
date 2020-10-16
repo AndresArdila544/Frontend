@@ -1,9 +1,17 @@
 <template>
   <div>
-      <ComponentView/>
-      <ComponentView/>
-      <ComponentView/>
-
+      <ComponentView v-bind:Parte="CurrentCPU" v-if="CurrentCPU" tipo="CPU"/>
+      <ComponentView v-bind:Parte="CurrentGPU" v-if="CurrentGPU" tipo="GPU"/>
+      <ComponentView v-bind:Parte="CurrentMotherboard" v-if="CurrentMotherboard" tipo="Motherboard"/>
+      <ComponentView v-bind:Parte="CurrentRAM" v-if="CurrentRAM" tipo="RAM"/>
+      <ComponentView v-bind:Parte="CurrentCooling" v-if="CurrentCooling" tipo="Cooling"/>
+      <ComponentView v-bind:Parte="CurrentSSD" v-if="CurrentSSD" tipo="SSD"/>
+      <ComponentView v-bind:Parte="CurrentHDD" v-if="CurrentHDD" tipo="HDD"/>
+      <ComponentView v-bind:Parte="CurrentPowerSupply" v-if="CurrentPowerSupply" tipo="PowerSupply"/>
+      <ComponentView v-bind:Parte="CurrentMouse" v-if="CurrentMouse" tipo="Mouse"/>
+      <ComponentView v-bind:Parte="CurrentKeyboard" v-if="CurrentKeyboard" tipo="Keyboard"/>
+      <ComponentView v-bind:Parte="CurrentMonitor" v-if="CurrentMonitor" tipo="Monitor"/>
+      <ComponentView v-bind:Parte="CurrentCase" v-if="CurrentCase" tipo="Case"/>
   </div>
 </template>
 
@@ -29,84 +37,32 @@ export default {
             CurrentPowerSupply: [],
             CurrentMouse: [],
             CurrentKeyboard: [],
-            CurrentMonitor: []
+            CurrentMonitor: [],
+            CurrentCase: [],
         }
     },
     methods: {
         retrieveBuildFromDB(id){
             EasyPCService.getBuildById(id).then((response) => {
                 this.CurrentBuild = response.data;
+                this.CurrentCPU=this.CurrentBuild.cpu;
+                this.CurrentGPU=this.CurrentBuild.gpu;
+                this.CurrentMotherboard=this.CurrentBuild.motherboard;
+                this.CurrentRAM=this.CurrentBuild.ram;
+                this.CurrentCooling=this.CurrentBuild.cooling;
+                this.CurrentSSD=this.CurrentBuild.ssd;
+                this.CurrentHDD=this.CurrentBuild.hdd;
+                this.CurrentPowerSupply=this.CurrentBuild.powerSupply;
+                this.CurrentMouse=this.CurrentBuild.mouse;
+                this.CurrentKeyboard=this.CurrentBuild.keyboard;
+                this.CurrentMonitor=this.CurrentBuild.monitor;
+                this.CurrentCase=this.CurrentBuild.caseObj;
             } ).catch( (e) => {console.log(e)} )
         },
-        retrieveCPUbyId(id){
-            EasyPCService.getCPUById(id).then((response) => {
-                this.CurrentCPU = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveGPUbyId(id){
-            EasyPCService.getGPUById(id).then((response) => {
-                this.CurrentGPU = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveMotherBoardbyId(id){
-            EasyPCService.getMotherboardById(id).then((response) => {
-                this.CurrentMotherboard = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveRAMbyId(id){
-            EasyPCService.getRAMById(id).then((response) => {
-                this.CurrentRAM = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveCoolingbyId(id){
-            EasyPCService.getCoolingById(id).then((response) => {
-                this.CurrentCooling = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveSSDbyId(id){
-            EasyPCService.getSSDById(id).then((response) => {
-                this.CurrentSSD = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveHDDbyId(id){
-            EasyPCService.getHDDById(id).then((response) => {
-                this.CurrentHDD = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrievePowerSupplybyId(id){
-            EasyPCService.getPowerSupplyById(id).then((response) => {
-                this.CurrentPowerSupply = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveMousebyId(id){
-            EasyPCService.getMouseById(id).then((response) => {
-                this.CurrentMouse = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveKeyboardbyId(id){
-            EasyPCService.getKeyboardById(id).then((response) => {
-                this.CurrentKeyboard = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
-        retrieveMonitorbyId(id){
-            EasyPCService.getMonitorById(id).then((response) => {
-                this.CurrentMonitor = response.data;
-            } ).catch( (e) => {console.log(e)} )
-        },
+
     },
     mounted() {
-        this.retrieveBuildFromDB();
-        this.retrieveCPUbyId(this.CurrentBuild.cpu)
-        this.retrieveGPUbyId(this.CurrentBuild.GPU)
-        this.retrieveMotherBoardbyId(this.CurrentBuild.motherboard)
-        this.retrieveRAMbyId(this.CurrentBuild.ram)
-        this.retrieveCoolingbyId(this.CurrentBuild.cooling)
-        this.retrieveSSDbyId(this.CurrentBuild.ssd)
-        this.retrieveHDDbyId(this.CurrentBuild.hdd)
-        this.retrievePowerSupplybyId(this.CurrentBuild.powerSupply)
-        this.retrieveMousebyId(this.CurrentBuild.mouse)
-        this.retrieveKeyboardbyId(this.CurrentBuild.keyboard)
-        this.retrieveMonitorbyId(this.CurrentBuild.monitor)
+        this.retrieveBuildFromDB(1);
     }
 }
 </script>
