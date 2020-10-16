@@ -1,16 +1,17 @@
 <template>
   <div>
-    <p><img v-bind:src="imgURL" height="70" /></p>
+    <a :href="'' + URL">{{ txt }}</a>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ShowImage",
+  name: "ShowLink",
   components: {},
-  props: ["imgURL"],
+  props: ["URL", "txt"],
   data: () => ({
-    imgURL: "",
+    URL: "",
+    txt: "",
   }),
 };
 </script>

@@ -1,25 +1,27 @@
 <template>
   <div>
-    <ShowCPU/>
+    <div class="container"></div>
+    <h1 class="page-header">Este es tu PC</h1>
+    <ShowCPU />
+    <ShowCPU />
+    <ShowCPU />
+    <ShowCPU />
+    <ShowCPU />
+    <ShowCPU />
   </div>
 </template>
 
 <script>
-
-import ShowCPU from '../components/ShowRecommendation/ShowCPU.vue'
-
+import ShowCPU from "../components/ShowRecommendation/ShowCPU.vue";
 
 export default {
-    name: "ShowRec",
-    components: {
-    ShowCPU
+  name: "ShowRec",
+  components: {
+    ShowCPU,
   },
-    data: () => ({
-    path: "https://cpu.userbenchmark.com/Intel-Core-i5-9600K/Rating/4031",
-  }),
-}
+  data: () => ({}),
+};
 </script>
 
 <style>
-
 </style>
