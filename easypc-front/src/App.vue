@@ -1,20 +1,25 @@
-<template>
+  <template>
 
   <div id="app" class="shadow p-4 container-fluid">
-
-    <router-view/>
+    <v-app><router-view/></v-app>
   </div>
 </template>
 
+
 <script>
+
 
 export default {
   name: 'App',
-  components: {
-    
 
-  }
-}
+  components: {
+
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
 <style>

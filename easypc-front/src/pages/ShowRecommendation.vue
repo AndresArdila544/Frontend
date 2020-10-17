@@ -2,22 +2,18 @@
   <div>
     <div class="container"></div>
     <h1 class="page-header">Este es tu PC</h1>
-    <ShowCPU />
-    <ShowCPU />
-    <ShowCPU />
-    <ShowCPU />
-    <ShowCPU />
-    <ShowCPU />
+    <ShowComp />
+
   </div>
 </template>
 
 <script>
-import ShowCPU from "../components/ShowRecommendation/ShowCPU.vue";
+import ShowComp from "../components/ShowRecommendation/ShowComp.vue";
 
 export default {
   name: "ShowRec",
   components: {
-    ShowCPU,
+    ShowComp,
   },
   data: () => ({}),
 };

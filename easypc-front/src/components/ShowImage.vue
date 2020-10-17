@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><img v-bind:src="imgURL" height="70" /></p>
+    <p><img v-bind:src="imgURL" height="400" /></p>
   </div>
 </template>
 
@@ -10,7 +10,6 @@ export default {
   components: {},
   props: ["imgURL"],
   data: () => ({
-    imgURL: "",
   }),
 };
 </script>

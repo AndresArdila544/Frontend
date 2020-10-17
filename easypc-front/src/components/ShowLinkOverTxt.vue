@@ -10,8 +10,7 @@ export default {
   components: {},
   props: ["URL", "txt"],
   data: () => ({
-    URL: "",
-    txt: "",
+
   }),
 };
 </script>
