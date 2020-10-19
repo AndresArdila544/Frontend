@@ -1,15 +1,28 @@
 <template>
   <div class="container">
     <div class="container">
-      
-        <div class="row align-items-center">
+      <div class="row align-items-center">
         <div class="col">
-          <ShowImage v-bind:imgURL="Parte.linkPicture"> </ShowImage>
+          <ShowImage v-bind:imgURL= "Parte.linkPicture" > </ShowImage>
+          
         </div>
         <div class="col-8">
           <v-row align="center">
             <v-col cols="12">
-              <RecomSelect v-bind:partesList="partes" :defaultPart="Parte.model" />
+              <!--<RecomSelect
+                v-bind:partesList="partes"
+                :defaultPart="Parte.model"
+              />-->
+              <v-select
+              :items="parte_models"
+              dense
+              outlined
+              hide-details
+              menu-props="auto"
+              single-line
+              v-model="defaultPart"
+              return-object
+            ></v-select>
               
             </v-col>
           </v-row>
@@ -17,6 +30,7 @@
       </div>
       <!--<RecomSelect v-bind:partesList="partes" :defaultPart="Parte.model" />-->
     </div>
+   <!--<p>{{cpu_models}}</p>-->
   </div>
 </template>
 
@@ -26,20 +40,21 @@
 <script>
 import ShowImage from "../ShowImage.vue";
 import EasyPCService from "../../services/EasyPCService";
-import RecomSelect from "./RecomSelect.vue";
 
 export default {
   name: "RecomListItem",
   components: {
     ShowImage,
-    RecomSelect,
   },
   data: () => ({
     partes: [],
     id: 2,
-    flag:false,
-    cpu:"",
-    Selected:""
+    flag: false,
+    cpu: "",
+    selected: "",
+    cpus: [],
+    parte_models: [],
+    parte_pics: []
   }),
   props: {
     tipo: String,
@@ -50,37 +65,46 @@ export default {
       priceCyP: Number,
       linkPicture: String,
     },
+    defaultPart: String,
   },
   methods: {
     buildArray() {
-      if(this.flag==false){
-        this.flag=true
-        this.partes.push(this.Parte.model)
+      if (this.flag == false) {
+        this.flag = true;
+        this.partes.push(this.Parte.model);
         //this.partes.push(this.cpu)
       }
     },
 
-    retrieveCPU(id) {
-      EasyPCService.getCPUById(id)
+    retrieveParts() {
+      EasyPCService.getAll(this.tipo)
         .then((response) => {
-          this.cpu=response.data;
+          this.partes = response.data;
           console.log(response.data);
+          for (var i=0;i<this.partes.length;i++) {
+            this.parte_models.push(this.partes[i].model)
+            this.parte_pics.push(this.partes[i].linkPicture)
+          }
+          // JSON are parsed automatically.
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    
 
-
+    selectedValue() {
+      if (this.flag == false) {
+        this.flag = true;
+        this.selected = this.defaultPart;
+      }
+    },
   },
   mounted() {
-     //this.retrieveCPU(this.id) 
-
+    this.retrieveParts();
   },
-  beforeUpdate(){
-    this.buildArray()
-  }
+  beforeUpdate() {
+    this.buildArray();
+  },
 };
 </script>
 

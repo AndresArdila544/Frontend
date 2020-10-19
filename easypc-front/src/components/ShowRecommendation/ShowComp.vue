@@ -15,19 +15,18 @@
       </div>
     </div>
      -->
-    <RecomListItem v-bind:Parte="CurrentCPU" v-if="CurrentCPU" />
-    <RecomListItem v-bind:Parte="CurrentGPU" v-if="CurrentGPU" />
-    <RecomListItem v-bind:Parte="CurrentMotherboard" v-if="CurrentMotherboard" />
-    <RecomListItem v-bind:Parte="CurrentRAM" v-if="CurrentRAM" />
-    <RecomListItem v-bind:Parte="CurrentCooling" v-if="CurrentCooling" />
-    <RecomListItem v-bind:Parte="CurrentSSD" v-if="CurrentSSD" />
-    <RecomListItem v-bind:Parte="CurrentHDD" v-if="CurrentHDD" />
-    <RecomListItem v-bind:Parte="CurrentPowerSupply" v-if="CurrentPowerSupply" />
-    <RecomListItem v-bind:Parte="CurrentMouse" v-if="CurrentMouse" />
-    <RecomListItem v-bind:Parte="CurrentKeyboard" v-if="CurrentKeyboard" />
-    <RecomListItem v-bind:Parte="CurrentMonitor" v-if="CurrentMonitor" />
-    <RecomListItem v-bind:Parte="CurrentCase" v-if="CurrentCase" />
-
+    <RecomListItem v-bind:Parte="CurrentCPU" v-bind:tipo="'cpus'" v-bind:defaultPart="CurrentCPU.model" v-if="CurrentCPU"  />
+    <RecomListItem v-bind:Parte="CurrentGPU" v-bind:tipo="'gpus'" v-bind:defaultPart="CurrentGPU.model" v-if="CurrentGPU" />
+    <RecomListItem v-bind:Parte="CurrentMotherboard" v-bind:tipo="'motherboards'" v-bind:defaultPart="CurrentMotherboard.model" v-if="CurrentMotherboard" />
+    <RecomListItem v-bind:Parte="CurrentRAM" v-bind:tipo="'rams'" v-bind:defaultPart="CurrentRAM.model" v-if="CurrentRAM" />
+    <RecomListItem v-bind:Parte="CurrentCooling" v-bind:tipo="'coolings'" v-bind:defaultPart="CurrentCooling.model" v-if="CurrentCooling" />
+    <RecomListItem v-bind:Parte="CurrentSSD" v-bind:tipo="'ssds'" v-bind:defaultPart="CurrentSSD.model" v-if="CurrentSSD" />
+    <RecomListItem v-bind:Parte="CurrentHDD" v-bind:tipo="'hdds'" v-bind:defaultPart="CurrentHDD.model" v-if="CurrentHDD" />
+    <RecomListItem v-bind:Parte="CurrentPowerSupply" v-bind:tipo="'power-supplies'" v-bind:defaultPart="CurrentPowerSupply.model" v-if="CurrentPowerSupply" />
+    <RecomListItem v-bind:Parte="CurrentMouse" v-bind:tipo="'mice'" v-bind:defaultPart="CurrentMouse.model" v-if="CurrentMouse" />
+    <RecomListItem v-bind:Parte="CurrentKeyboard" v-bind:tipo="'keyboards'" v-bind:defaultPart="CurrentKeyboard.model" v-if="CurrentKeyboard" />
+    <RecomListItem v-bind:Parte="CurrentMonitor" v-bind:tipo="'monitors'" v-bind:defaultPart="CurrentMonitor.model" v-if="CurrentMonitor" />
+    <RecomListItem v-bind:Parte="CurrentCase" v-bind:tipo="'cases'" v-bind:defaultPart="CurrentCase.model" v-if="CurrentCase" />
     <p class="ex1"></p>
   </div>
 </template>
@@ -61,14 +60,17 @@ export default {
       CurrentMonitor: [],
       CurrentCase: [],
       id: 1,
-      tipo: "",
+      tipo: String,
+
     };
+  },
+  props: {
+
   },
   methods: {
     retrieveBuild(id) {
       EasyPCService.getBuildById(id)
         .then((response) => {
-          //this.build = response.data;
           this.CurrentBuild = response.data;
           this.CurrentCPU = this.CurrentBuild.cpu;
           this.CurrentGPU = this.CurrentBuild.gpu;
@@ -89,7 +91,7 @@ export default {
         });
     },
   },
-  mounted() {
+  mounted() {    
     this.retrieveBuild(1);
   },
 };

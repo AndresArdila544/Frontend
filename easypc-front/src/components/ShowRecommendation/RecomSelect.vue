@@ -1,23 +1,15 @@
 <template>
   <div>
- <!--     {{mapModels()}}
-      {{this.partesModels == 0}}
-    <div class="row align-items-center">
-      <div class="col">
-        <img v-bind:src="selected.linkPicture" height="70" />
-        <p>{{ partesModels }}</p>
-      </div>
-      <div class="col-8">
-        <v-row align="center">
-          <v-col cols="12">-->
+ 
             <v-select
-              :items="/*partesModels*/partesList"
+              :items="partesList"
               dense
               outlined
               hide-details
               menu-props="auto"
               single-line
               v-model="selected"
+              return-object
             ></v-select><!--
             <p>{{ this.partesModels == 0 }}</p>
           </v-col>
@@ -33,7 +25,6 @@
 export default {
   name: "RecomSelect",
   components: {
-    //ShowImage,
   },
   props: {
     partesList: Array,
@@ -59,7 +50,7 @@ export default {
           this.valueS = partesList[i].model;
         }
       }
-    },
+    },/*
     mapModels() {
       this.$nextTick(() => {
         if (this.partesModels.length == 0) {
@@ -71,10 +62,6 @@ export default {
     },*/
   },
   mounted() {
-    //this.findSelected(this.selected, this.partesList);
-    //this.$nextTick(() => {
-    //  this.mapModels();
-    //});
   },
   beforeUpdate() {
     //this.mapModels();

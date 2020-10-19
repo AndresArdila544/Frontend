@@ -28,7 +28,7 @@ export default new Vuetify(opts)
 
 const store = new Vuex.Store({
   state: {
-    count: 0,
+      count: 0,
       recCPU: [],
       recGPU: [],
       recMotherboard: [],
@@ -41,6 +41,7 @@ const store = new Vuex.Store({
       recKeyboard: [],
       recMonitor: [],
       recCase: [],
+      idxPic: 0
   },
   
   getters: {
@@ -80,7 +81,9 @@ const store = new Vuex.Store({
     getrecCase: state => {
       return state.recCase
     },
-
+    getidxPic: state => {
+      return state.idxPic
+    }
 
   },
   mutations: {
@@ -123,7 +126,9 @@ const store = new Vuex.Store({
     addrecCase(state,n){
       state.recCase.push(n)
     },
-
+    setidxpic(state,n){
+      state.idxPic = n
+    }
 
   }
 })

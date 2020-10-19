@@ -197,6 +197,10 @@ class EasyPCService {
       return http.get("/build/" + id);
     }
 
+    getAll(part){
+      return http.get("/"+part+"/");
+    }
+
 }
   
   export default new EasyPCService();
