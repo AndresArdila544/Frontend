@@ -1,7 +1,12 @@
 <template>
-  <div>
+  <div class="">
+      
       <Footer/>
-      <div class="pt-4">
+      <p id = "" class="Summary pt-4">
+          Resumen # {{CurrentBuild.idBuild}}
+      </p>
+      <p class="user">Build para {{CurrentBuild.user.username}}</p>
+      <div class="pt-2 parts">
         <ComponentView v-bind:Parte="CurrentCPU" v-if="CurrentCPU" tipo="CPU"/>
         <ComponentView v-bind:Parte="CurrentGPU" v-if="CurrentGPU" tipo="GPU"/>
         <ComponentView v-bind:Parte="CurrentMotherboard" v-if="CurrentMotherboard" tipo="Motherboard"/>
@@ -14,12 +19,16 @@
         <ComponentView v-bind:Parte="CurrentKeyboard" v-if="CurrentKeyboard" tipo="Keyboard"/>
         <ComponentView v-bind:Parte="CurrentMonitor" v-if="CurrentMonitor" tipo="Monitor"/>
         <ComponentView v-bind:Parte="CurrentCase" v-if="CurrentCase" tipo="Case"/> 
+       
+
+      
+      <div class="d-flex flex-row-reverse TotalPrice px-2">
+        <p>Total Minimo: ${{Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} COP
+        </p>
+       
+      </div>
       </div>
       
-      <div id='TotalPrice'>
-        <p>Total Minimo:</p>
-        <p>{{Total}}</p>
-      </div>
   </div>
 </template>
 
@@ -29,11 +38,13 @@ import Footer from '../components/Footer.vue'
 import ComponentView from '../components/Summary/ComponentView'
 import EasyPCService from '../services/EasyPCService'
 
+
 export default {
     name: 'Summary',
     components: {
         ComponentView,
-        Footer
+        Footer,
+       
     },
     data() {
         return {
@@ -52,6 +63,9 @@ export default {
             CurrentCase: [],
             Total:Number,
         }
+    },
+    props: {
+        id: Number,
     },
     methods: {
         retrieveBuildFromDB(id){
@@ -81,10 +95,57 @@ export default {
         this.retrieveBuildFromDB(1);
     }
 }
+
+
+
+
 </script>
 
 
 
-<style>
+<style scoped lang="scss">
+@import url(https://fonts.googleapis.com/css2?family=Fredoka+One&display=swa);
+@import url(https://fonts.googleapis.com/css2?family=Maven+Pro:wght@700&display=swap);
+
+.TotalPrice {
+    font-size: 4vw;
+    font-family: 'Fredoka One', cursive;
+    color: #FF9941;
+    background-color: rgb(24, 23, 23);
+    
+}
+
+.Summary {
+    font-family: "Maven Pro", sans-serif;
+    font-size: 7vw;
+    color: rgb(24, 23, 23);
+}
+
+.parts {
+    animation: animacion;
+    animation-duration: 2s; 
+    
+}
+
+.user {
+    font-size: 4.23vw;
+    font-family: "Maven Pro", sans-serif;
+    color: rgb(24, 23, 23);
+}
+
+
+
+@keyframes animacion {
+    0%{      
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+
+
 
 </style>
