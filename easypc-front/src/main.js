@@ -4,7 +4,6 @@ import router from './router'
 import 'bootstrap'
 import './assets/app.css'
 import Vuex from 'vuex'
-
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css' //Vuesax styles
 
@@ -42,3 +41,4 @@ new Vue({
   store: store,
   router,
 }).$mount('#app')
+
