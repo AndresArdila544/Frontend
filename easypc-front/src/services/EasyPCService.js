@@ -209,6 +209,10 @@ class EasyPCService {
       return http.delete("/build/" + id);
     }
 
+    getBuildPriceById(id){
+      return http.get("/build-price/" + id);
+
+    }
     
 }
   

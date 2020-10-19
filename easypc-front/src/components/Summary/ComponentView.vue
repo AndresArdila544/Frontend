@@ -1,10 +1,10 @@
 <template>
-  <div class="p-4 container-fluid">
+  <div class="box p-2 container-fluid">
     <vs-row vs-type="flex" class="col-container">
       <vs-col class="col" w="4">
         <div class="container-fluid">
           <h3 class="titulo">{{tipo}}</h3>
-          <div class="py-3">
+          <div class="py-1">
             <img class="image" :src="Parte.linkPicture" alt />
           </div>
           <p class="modelo">{{Parte.model}}</p>
@@ -12,7 +12,7 @@
       </vs-col>
       <vs-col class="col" direction="column" w="4">
         <vs-col w="12">
-          <div class="d-flex justify-content-left" v-if="Parte.linkSL || Parte.priceSL">
+          <div class="pb-3 d-flex justify-content-left" v-if="Parte.linkSL || Parte.priceSL">
             <a
               class="texto"
               :href="Parte.linkSL"
@@ -23,7 +23,7 @@
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="py-4 d-flex justify-content-left" v-if="Parte.linkTauret || Parte.priceTauret">
+          <div class="pb-3 d-flex justify-content-left" v-if="Parte.linkTauret || Parte.priceTauret">
             <a
               class="texto"
               :href="Parte.linkTauret"
@@ -34,7 +34,7 @@
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="d-flex justify-content-left" v-if="Parte.linkCyP || Parte.priceCyP">
+          <div class="pb-3 d-flex justify-content-left" v-if="Parte.linkCyP || Parte.priceCyP">
             <a
               class="texto"
               :href="Parte.linkCyP"
@@ -47,21 +47,21 @@
       </vs-col>
       <vs-col class="col" direction="column" w="4">
         <vs-col align="flex-end" w="12">
-          <div class="d-flex justify-content-left" v-if="Parte.linkSL || Parte.priceSL">
+          <div class=" pb-3 d-flex justify-content-left" v-if="Parte.linkSL || Parte.priceSL">
             <div class="texto" v-if="Parte.priceSL">${{Parte.priceSL}}</div>
             <div class="texto" v-else>No tiene precio actualmente</div>
 
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="py-4 d-flex justify-content-left" v-if="Parte.linkTauret || Parte.priceTauret">
+          <div class="pb-3 d-flex justify-content-left" v-if="Parte.linkTauret || Parte.priceTauret">
             <div class="texto" v-if="Parte.priceTauret">${{Parte.priceTauret}}</div>
             <div class="texto" v-else>No tiene precio actualmente</div>
 
           </div>
         </vs-col>
         <vs-col w="12">
-          <div class="d-flex justify-content-left" v-if="Parte.linkCyP || Parte.priceCyP">
+          <div class="pb-3 d-flex justify-content-left" v-if="Parte.linkCyP || Parte.priceCyP">
             <div class="texto" v-if="Parte.priceCyP" >${{Parte.priceCyP}}</div>
             <div class="texto" v-else>No tiene precio actualmente</div>
           </div>
@@ -99,7 +99,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import url(https://fonts.googleapis.com/css2?family=Maven+Pro:wght@700&display=swap);
+
 .texto {
   font-size: 2vw;
   text-align: left;
@@ -127,5 +129,16 @@ a:hover {
 .image {
   max-width: 100%;
   width: 400px;
+}
+
+.box {
+  
+  border-style:none none solid none;
+  border-color:#3b1664;
+  color: rgb(219, 77, 77);
+  text-decoration-style:wavy;
+  font-family: 'Maven Pro', sans-serif;
+
+  
 }
 </style>
