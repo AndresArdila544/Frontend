@@ -7,6 +7,7 @@ import Admin from '@/pages/Admin'
 import Home from '@/pages/Home'
 import CPUlist from '@/components/ListComp/CPUlist'
 import ShowRec from '@/pages/ShowRecommendation'
+import BegBuild from '@/pages/BegBuild'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
             path: '/ShowRec',
             name: 'ShowRec',
             component: ShowRec
+        },
+        {
+            path: '/BegBuild',
+            name: 'BegBuild',
+            component: BegBuild
         },
 
     ]

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col">
-          <ShowImage v-bind:imgURL= "Parte.linkPicture" > </ShowImage>
+          <ShowImage v-bind:imgURL= parte_pics[pic_idx] v-if="renderComponent"> </ShowImage>
           
         </div>
         <div class="col-8">
@@ -21,16 +21,14 @@
               menu-props="auto"
               single-line
               v-model="defaultPart"
-              return-object
+              @change="setImage()"
             ></v-select>
               
             </v-col>
           </v-row>
         </div>
       </div>
-      <!--<RecomSelect v-bind:partesList="partes" :defaultPart="Parte.model" />-->
     </div>
-   <!--<p>{{cpu_models}}</p>-->
   </div>
 </template>
 
@@ -54,7 +52,9 @@ export default {
     selected: "",
     cpus: [],
     parte_models: [],
-    parte_pics: []
+    parte_pics: [],
+    renderComponent: true,
+    pic_idx: 0
   }),
   props: {
     tipo: String,
@@ -97,6 +97,17 @@ export default {
         this.flag = true;
         this.selected = this.defaultPart;
       }
+    },
+    setImage: function(){
+      this.pic_idx=this.parte_models.indexOf(this.defaultPart)
+      this.forceRerender();
+    },
+    forceRerender() {
+      this.renderComponent = false;
+      console.log("ID: "+ this.id);
+      this.$nextTick(() => {
+        this.renderComponent = true;
+      });
     },
   },
   mounted() {

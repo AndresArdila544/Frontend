@@ -201,6 +201,14 @@ class EasyPCService {
       return http.get("/"+part+"/");
     }
 
+    getRecommendedPrice(answers){
+      return http.post("/quiz-beginner-price",{
+        params: {
+          answers
+        }
+      })
+    }
+
 }
   
   export default new EasyPCService();

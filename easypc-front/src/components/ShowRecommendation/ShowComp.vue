@@ -1,20 +1,5 @@
 <template>
   <div class="container">
-    <!--dev 
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col">
-          <ShowImage v-bind:imgURL="CurrentCPU.linkPicture"> </ShowImage>
-        </div>
-        <div class="col-8">
-          <h4>
-            {{ CurrentCPU.model }}: {{ CurrentCPU.speed }} GHz
-            {{ CurrentCPU.cores }} Cores
-          </h4>
-        </div>
-      </div>
-    </div>
-     -->
     <RecomListItem v-bind:Parte="CurrentCPU" v-bind:tipo="'cpus'" v-bind:defaultPart="CurrentCPU.model" v-if="CurrentCPU"  />
     <RecomListItem v-bind:Parte="CurrentGPU" v-bind:tipo="'gpus'" v-bind:defaultPart="CurrentGPU.model" v-if="CurrentGPU" />
     <RecomListItem v-bind:Parte="CurrentMotherboard" v-bind:tipo="'motherboards'" v-bind:defaultPart="CurrentMotherboard.model" v-if="CurrentMotherboard" />
@@ -27,6 +12,7 @@
     <RecomListItem v-bind:Parte="CurrentKeyboard" v-bind:tipo="'keyboards'" v-bind:defaultPart="CurrentKeyboard.model" v-if="CurrentKeyboard" />
     <RecomListItem v-bind:Parte="CurrentMonitor" v-bind:tipo="'monitors'" v-bind:defaultPart="CurrentMonitor.model" v-if="CurrentMonitor" />
     <RecomListItem v-bind:Parte="CurrentCase" v-bind:tipo="'cases'" v-bind:defaultPart="CurrentCase.model" v-if="CurrentCase" />
+    <p>{{price}}</p>
     <p class="ex1"></p>
   </div>
 </template>
@@ -61,6 +47,8 @@ export default {
       CurrentCase: [],
       id: 1,
       tipo: String,
+      price: "",
+      answers: ["10000000","1","1","1","1"]
 
     };
   },
@@ -89,10 +77,22 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+
+    
     },
+    retrieveBuildPrice(answers) {
+      EasyPCService.getRecommendedPrice(answers)
+        .then((response)=>{
+          this.price = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   },
   mounted() {    
     this.retrieveBuild(1);
+    this.retrieveBuildPrice(this.answers);
   },
 };
 </script>
