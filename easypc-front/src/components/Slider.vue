@@ -1,16 +1,25 @@
 <template lang="html">
-  <div class="">
-    <v-slider/>
+  <div class="container-fluid">
+   <v-slider class="d-flex justify-content-start"
+  max="12805000"
+  min=3298000
+  thumb-label="always"
+  step=200000
+  v-model=budget
+  ticks="always"
+  tick-size="1"
+  :thumb-size="24"
+></v-slider>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      value1:60,
-      value2:25
-    }
-  }
-}
+      budget:"3298000"
+      
+    };
+  },
+};
 </script>
