@@ -4,7 +4,7 @@
     <p id="tuPC" class="py-5">Este es tu PC</p>
     <ShowComp />
     <div class="float-right">
-       <vs-button id="next" size="xl" to="/"
+       <vs-button id="next" size="xl" to="/Summary"
           flat >Siguiente</vs-button>
     </div>
   </div>

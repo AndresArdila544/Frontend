@@ -12,7 +12,7 @@
           block
           animation-type="vertical"
           to="QuizB"
-          @click="openLoading">
+          >
           Comenzar!
           <template #animate >
               <vs-row>
@@ -38,12 +38,7 @@ export default {
       Logo,
     },
     methods: {
-        openLoading() {
-          const loading = this.$vs.loading()
-          setTimeout(() => {
-            loading.close()
-          }, 2000)
-        }
+        
     }
 
 }

@@ -10,7 +10,7 @@
         
         <template #right>
           <vs-button id="login" color="#fff" to="Admin"
-          @click="openLoading" flat >Login</vs-button>
+           flat >Login</vs-button>
           <vs-button id="login" color="#fff" border >Get Started</vs-button>
         </template>
       </vs-navbar>
@@ -28,12 +28,7 @@ export default {
       active: 'guide'
     }),
     methods: {
-        openLoading() {
-          const loading = this.$vs.loading()
-          setTimeout(() => {
-            loading.close()
-          }, 1100)
-        }
+        
     }
   }
 </script>
