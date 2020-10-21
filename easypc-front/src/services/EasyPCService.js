@@ -1,211 +1,214 @@
 import http from "../http-common";
 
 class EasyPCService {
-    getAllCPUs() {
-      return http.get("/cpus");
-    }
-  
-    getCPUById(id) {
-      return http.get("/cpu/" + id);
-    }
-  
-    createCPU(data) {
-      return http.post("/cpu", data);
-    }
-  
-    deleteCPU(id) {
-      return http.delete("/cpu/" + id);
-    }
+  getAllCPUs() {
+    return http.get("/cpus");
+  }
 
-    getAllMotherboards() {
-      return http.get("/motherboards/");
-    }
-    
-    getMotherboardById(id) {
-      return http.get("/motherboards/" + id);
-    }
+  getCPUById(id) {
+    return http.get("/cpu/" + id);
+  }
 
-    createMotherboard(data) {
-      return http.post("/motherboard", data);
-    }
-  
-    deleteMotherboard(id) {
-      return http.delete("/motherboard/" + id);
-    }
+  createCPU(data) {
+    return http.post("/cpu", data);
+  }
 
-    getAllRAMs() {
-      return http.get("/rams/");
-    }
-    
-    getRAMById(id) {
-      return http.get("/ram/" + id);
-    }
+  deleteCPU(id) {
+    return http.delete("/cpu/" + id);
+  }
 
-    createRAM(data) {
-      return http.post("/ram", data);
-    }
-  
-    deleteRAM(id) {
-      return http.delete("/ram/" + id);
-    }
+  getAllMotherboards() {
+    return http.get("/motherboards/");
+  }
 
-    getAllGPUs() {
-      return http.get("/gpus/");
-    }
-    
-    getGPUById(id) {
-      return http.get("/gpu/" + id);
-    }
+  getMotherboardById(id) {
+    return http.get("/motherboards/" + id);
+  }
 
-    createGPU(data) {
-      return http.post("/gpu", data);
-    }
-  
-    deleteGPU(id) {
-      return http.delete("/gpu/" + id);
-    }
+  createMotherboard(data) {
+    return http.post("/motherboard", data);
+  }
 
-    getAllCoolings() {
-      return http.get("/coolings/");
-    }
-    
-    getCoolingById(id) {
-      return http.get("/cooling/" + id);
-    }
+  deleteMotherboard(id) {
+    return http.delete("/motherboard/" + id);
+  }
 
-    createCooling(data) {
-      return http.post("/cooling", data);
-    }
-  
-    deleteCooling(id) {
-      return http.delete("/cooling/" + id);
-    }
+  getAllRAMs() {
+    return http.get("/rams/");
+  }
 
-    getAllCases() {
-      return http.get("/cases/");
-    }
-    
-    getCaseById(id) {
-      return http.get("/case/" + id);
-    }
+  getRAMById(id) {
+    return http.get("/ram/" + id);
+  }
 
-    createCase(data) {
-      return http.post("/case", data);
-    }
-  
-    deleteCase(id) {
-      return http.delete("/case/" + id);
-    }
+  createRAM(data) {
+    return http.post("/ram", data);
+  }
 
-    getAllPowerSupplies() {
-      return http.get("/power-supplies/");
-    }
-    
-    getPowerSupplyById(id) {
-      return http.get("/power-supply/" + id);
-    }
+  deleteRAM(id) {
+    return http.delete("/ram/" + id);
+  }
 
-    createPowerSupply(data) {
-      return http.post("/power-supply", data);
-    }
-  
-    deletePowerSupply(id) {
-      return http.delete("/power-supply/" + id);
-    }
+  getAllGPUs() {
+    return http.get("/gpus/");
+  }
 
-    getAllHDDs() {
-      return http.get("/hdds/");
-    }
-    
-    getHDDById(id) {
-      return http.get("/hdd/" + id);
-    }
+  getGPUById(id) {
+    return http.get("/gpu/" + id);
+  }
 
-    createHDD(data) {
-      return http.post("/hdd", data);
-    }
-  
-    deleteHDD(id) {
-      return http.delete("/hdd/" + id);
-    }
+  createGPU(data) {
+    return http.post("/gpu", data);
+  }
 
-    getAllSSDs() {
-      return http.get("/ssds/");
-    }
-    
-    getSSDById(id) {
-      return http.get("/hdd/" + id);
-    }
+  deleteGPU(id) {
+    return http.delete("/gpu/" + id);
+  }
 
-    createSSD(data) {
-      return http.post("/ssd", data);
-    }
-  
-    deleteSSD(id) {
-      return http.delete("/ssd/" + id);
-    }
+  getAllCoolings() {
+    return http.get("/coolings/");
+  }
 
-    getAllMice() {
-      return http.get("/mice/");
-    }
-    
-    getMouseById(id) {
-      return http.get("/mouse/" + id);
-    }
+  getCoolingById(id) {
+    return http.get("/cooling/" + id);
+  }
 
-    createMouse(data) {
-      return http.post("/mouse", data);
-    }
-  
-    deleteMouse(id) {
-      return http.delete("/mouse/" + id);
-    }
+  createCooling(data) {
+    return http.post("/cooling", data);
+  }
 
-    getAllMonitors() {
-      return http.get("/monitors/");
-    }
-    
-    getMonitorById(id) {
-      return http.get("/monitor/" + id);
-    }
+  deleteCooling(id) {
+    return http.delete("/cooling/" + id);
+  }
 
-    createMonitor(data) {
-      return http.post("/monitor", data);
-    }
-  
-    deleteMonitor(id) {
-      return http.delete("/monitor/" + id);
-    }
+  getAllCases() {
+    return http.get("/cases/");
+  }
 
-    getAllKeyboards() {
-      return http.get("/keyboards/");
-    }
-    
-    getKeyboardById(id) {
-      return http.get("/keyboard/" + id);
-    }
+  getCaseById(id) {
+    return http.get("/case/" + id);
+  }
 
-    createKeyboard(data) {
-      return http.post("/keyboard", data);
-    }
-  
-    deleteKeyboard(id) {
-      return http.delete("/keyboard/" + id);
-    }
+  createCase(data) {
+    return http.post("/case", data);
+  }
 
-    getBuildById(id) {
-      return http.get("/build/" + id);
-    }
+  deleteCase(id) {
+    return http.delete("/case/" + id);
+  }
 
-    getAll(part){
-      return http.get("/"+part+"/");
-    }
+  getAllPowerSupplies() {
+    return http.get("/power-supplies/");
+  }
 
-    getRecommendedPrice(answers){
-      return http.post("/quiz-beginner-price",answers)
-      }
-    
+  getPowerSupplyById(id) {
+    return http.get("/power-supply/" + id);
+  }
+
+  createPowerSupply(data) {
+    return http.post("/power-supply", data);
+  }
+
+  deletePowerSupply(id) {
+    return http.delete("/power-supply/" + id);
+  }
+
+  getAllHDDs() {
+    return http.get("/hdds/");
+  }
+
+  getHDDById(id) {
+    return http.get("/hdd/" + id);
+  }
+
+  createHDD(data) {
+    return http.post("/hdd", data);
+  }
+
+  deleteHDD(id) {
+    return http.delete("/hdd/" + id);
+  }
+
+  getAllSSDs() {
+    return http.get("/ssds/");
+  }
+
+  getSSDById(id) {
+    return http.get("/hdd/" + id);
+  }
+
+  createSSD(data) {
+    return http.post("/ssd", data);
+  }
+
+  deleteSSD(id) {
+    return http.delete("/ssd/" + id);
+  }
+
+  getAllMice() {
+    return http.get("/mice/");
+  }
+
+  getMouseById(id) {
+    return http.get("/mouse/" + id);
+  }
+
+  createMouse(data) {
+    return http.post("/mouse", data);
+  }
+
+  deleteMouse(id) {
+    return http.delete("/mouse/" + id);
+  }
+
+  getAllMonitors() {
+    return http.get("/monitors/");
+  }
+
+  getMonitorById(id) {
+    return http.get("/monitor/" + id);
+  }
+
+  createMonitor(data) {
+    return http.post("/monitor", data);
+  }
+
+  deleteMonitor(id) {
+    return http.delete("/monitor/" + id);
+  }
+
+  getAllKeyboards() {
+    return http.get("/keyboards/");
+  }
+
+  getKeyboardById(id) {
+    return http.get("/keyboard/" + id);
+  }
+
+  createKeyboard(data) {
+    return http.post("/keyboard", data);
+  }
+
+  deleteKeyboard(id) {
+    return http.delete("/keyboard/" + id);
+  }
+
+  getBuildById(id) {
+    return http.get("/build/" + id);
+  }
+
+  getAll(part) {
+    return http.get("/" + part + "/");
+  }
+
+  getRecommendedPrice(answers) {
+    return http.post("/quiz-beginner-price", answers)
+  }
+
+  getRecommendedBuild(answers) {
+    return http.post("/quiz-beginner", answers)
+  }
 
 }
-  
-  export default new EasyPCService();
+
+export default new EasyPCService();

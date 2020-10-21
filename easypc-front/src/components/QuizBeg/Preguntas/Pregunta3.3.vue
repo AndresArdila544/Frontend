@@ -5,6 +5,7 @@
       <vs-radio v-model="picked" class="d-flex justify-content-start" val="1"> Poco</vs-radio>
       <vs-radio v-model="picked" class="d-flex justify-content-start" val="2"> Medio</vs-radio>
       <vs-radio v-model="picked" class="pb-3 d-flex justify-content-start" val="3"> Demasiado </vs-radio>
+      <p> {{setAnswer()}}</p>
     </div>
 
   </div>
@@ -12,8 +13,13 @@
   <script>
 export default {
   data: () => ({
-    picked: 1,
+    picked: 0,
   }),
+  methods:{
+    setAnswer(){
+      this.$store.commit("setA3",this.picked)
+    }
+  }
 };
 </script>
 

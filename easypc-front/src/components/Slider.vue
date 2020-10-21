@@ -11,6 +11,7 @@
   @change="setBudget()"
   :thumb-size="24"
 ></v-slider>
+
   </div>
 </template>
 
@@ -27,6 +28,9 @@ export default {
       this.$store.commit('setBudget',this.budget.toString())
       
     }
+  },
+  mounted(){
+    this.setBudget()
   }
 };
 </script>

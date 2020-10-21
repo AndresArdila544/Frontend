@@ -5,14 +5,20 @@
       <vs-radio v-model="picked" class="d-flex justify-content-start" val="1"> Programas de edición de imágenes - Photoshop </vs-radio>
       <vs-radio v-model="picked" class="d-flex justify-content-start" val="2"> Programas de sketch/dibujo - Illustrator </vs-radio>
       <vs-radio v-model="picked" class="d-flex justify-content-start" val="3"> Programas de edición de vídeo - Premiere Pro </vs-radio>
+      <p> {{setAnswer()}}</p>
     </div>
   </div>
 </template>
   <script>
 export default {
   data: () => ({
-    picked: 1,
+    picked: 0,
   }),
+  methods:{
+    setAnswer(){
+      this.$store.commit("setA1",this.picked)
+    }
+  }
 };
 </script>
 

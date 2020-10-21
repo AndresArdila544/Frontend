@@ -4,7 +4,7 @@
         <Pregunta22 />
         <Pregunta23 />
         <div class="">
-          <vs-button id="botones" to='/' block>Aceptar</vs-button>
+          <vs-button @click="pushAnswer()" id="botones" to='/ShowRec' block>Aceptar</vs-button>
         </div>
   </div>
 </template>
@@ -20,6 +20,17 @@ export default {
         Pregunta21,
         Pregunta22,
         Pregunta23,
+    },
+    methods:{
+      pushAnswer(){
+        this.$store.commit("pushAnswers",this.$store.getters["getBudget"])
+        this.$store.commit("pushAnswers",this.$store.getters["getCount"])
+        this.$store.commit("pushAnswers",this.$store.getters["getA1"])
+        this.$store.commit("pushAnswers",this.$store.getters["getA2"])
+        this.$store.commit("pushAnswers",this.$store.getters["getA3"])
+        console.log(this.$store.getters["getAnswers"])
+        
+      }
     }
 }
 </script>

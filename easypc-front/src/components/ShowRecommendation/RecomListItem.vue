@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col">
-          <ShowImage v-bind:imgURL= parte_pics[pic_idx] v-if="renderComponent"> </ShowImage>
+          <ShowImage v-bind:imgURL= defaultImage v-if="renderComponent"> </ShowImage>
           
         </div>
         <div class="col-8">
@@ -12,6 +12,7 @@
               <!--<RecomSelect
                 v-bind:partesList="partes"
                 :defaultPart="Parte.model"
+                ->parte_pics[pic_idx]
               />-->
               <v-select
               :items="parte_models"
@@ -54,7 +55,8 @@ export default {
     parte_models: [],
     parte_pics: [],
     renderComponent: true,
-    pic_idx: 0
+    pic_idx: 0,
+    currentImageURL: ""
   }),
   props: {
     tipo: String,
@@ -66,6 +68,7 @@ export default {
       linkPicture: String,
     },
     defaultPart: String,
+    defaultImage: String
   },
   methods: {
     buildArray() {
@@ -92,19 +95,22 @@ export default {
         });
     },
 
-    selectedValue() {
+    /*selectedValue() {
       if (this.flag == false) {
         this.flag = true;
         this.selected = this.defaultPart;
       }
-    },
+    },*/
     setImage: function(){
       this.pic_idx=this.parte_models.indexOf(this.defaultPart)
+      //console.log( this.pic_idx)
+      this.defaultImage = this.parte_pics[this.pic_idx]
       this.forceRerender();
     },
+
     forceRerender() {
       this.renderComponent = false;
-      console.log("ID: "+ this.id);
+      //console.log("ID: "+ this.id);
       this.$nextTick(() => {
         this.renderComponent = true;
       });
@@ -112,8 +118,13 @@ export default {
   },
   mounted() {
     this.retrieveParts();
+    
+  },
+  beforeMount(){
+    
   },
   beforeUpdate() {
+    
     this.buildArray();
   },
 };

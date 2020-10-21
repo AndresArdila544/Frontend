@@ -19,8 +19,8 @@ export default {
     ShowComp,
   },
   data: () => ({}),
-  beforeCreate:() =>{
-    this.$store.commit("emptyAnswers")
+  beforeCreate(){
+    
   }
 };
 </script>
