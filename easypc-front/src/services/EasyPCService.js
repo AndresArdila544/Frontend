@@ -202,12 +202,9 @@ class EasyPCService {
     }
 
     getRecommendedPrice(answers){
-      return http.post("/quiz-beginner-price",{
-        params: {
-          answers
-        }
-      })
-    }
+      return http.post("/quiz-beginner-price",answers)
+      }
+    
 
 }
   

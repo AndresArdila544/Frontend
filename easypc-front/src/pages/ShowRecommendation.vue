@@ -5,7 +5,7 @@
     <ShowComp />
     <div class="float-right">
        <vs-button id="next" size="xl" to="/"
-          @click="openLoading" flat >Siguiente</vs-button>
+          flat >Siguiente</vs-button>
     </div>
   </div>
 </template>
@@ -14,11 +14,14 @@
 import ShowComp from "../components/ShowRecommendation/ShowComp.vue";
 
 export default {
-  name: "ShowRec",
+  name: "ShowRecom",
   components: {
     ShowComp,
   },
   data: () => ({}),
+  beforeCreate:() =>{
+    this.$store.commit("emptyAnswers")
+  }
 };
 </script>
 

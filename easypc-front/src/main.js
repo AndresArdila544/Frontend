@@ -41,10 +41,24 @@ const store = new Vuex.Store({
       recKeyboard: [],
       recMonitor: [],
       recCase: [],
-      idxPic: 0
+      idxPic: 0,
+      answers: [],
+      budget: '',
+      a1: '',
+      a2: '',
+      a3: '',
   },
   
   getters: {
+    getA1: state =>{
+      return state.a1
+    },
+    getA2: state =>{
+      return state.a2
+    },
+    getA3: state =>{
+      return state.a3
+    },
     getCount: state => {
       return state.count
     },
@@ -83,10 +97,34 @@ const store = new Vuex.Store({
     },
     getidxPic: state => {
       return state.idxPic
+    },
+    getAnswers: state =>{
+      return state.answers
+    },
+    getBudget: state =>{
+      return state.budget
     }
 
   },
   mutations: {
+    setA1(state,n){
+      state.a1 = n
+    },
+    setA2(state,n){
+      state.a2 = n
+    },
+    setA3(state,n){
+      state.a3 = n
+    },
+    setBudget(state, n){
+      state.budget = n
+    },
+    pushAnswers (state,n){
+      state.answers.push(n)
+    },
+    emptyAnswers(state){
+      state.answers = []
+    },
     increment (state) {
       state.count++
     },

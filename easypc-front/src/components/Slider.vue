@@ -8,6 +8,7 @@
   v-model=budget
   ticks="always"
   tick-size="1"
+  @change="setBudget()"
   :thumb-size="24"
 ></v-slider>
   </div>
@@ -21,5 +22,11 @@ export default {
       
     };
   },
+  methods: {
+    setBudget(){
+      this.$store.commit('setBudget',this.budget.toString())
+      
+    }
+  }
 };
 </script>

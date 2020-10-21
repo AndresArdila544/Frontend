@@ -5,14 +5,21 @@
       <vs-radio v-model="picked" val="1" class="d-flex justify-content-start"> Normal, quiero jugar sin darle tanta importancia a la calidad </vs-radio>
       <vs-radio v-model="picked" val="2" class="d-flex justify-content-start"> Bien, me importa la calidad pero no es lo más importante </vs-radio>
       <vs-radio  v-model="picked" val="3" class="d-flex justify-content-start"> Excelente, quiero que se vean los más mínimos detalles </vs-radio>
+      <p> {{setAnswer()}}</p>
     </div>
   </div>
 </template>
   <script>
 export default {
   data: () => ({
-    picked: 1,
+    picked: 0,
+    val: ""
   }),
+   methods:{
+    setAnswer(){
+      this.$store.commit("setA3",this.picked)
+    }
+  }
 };
 </script>
 <style  scoped>
