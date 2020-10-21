@@ -1,6 +1,7 @@
 import http from "../http-common";
 
 class EasyPCService {
+
   getAllCPUs() {
     return http.get("/cpus");
   }
@@ -208,6 +209,21 @@ class EasyPCService {
   getRecommendedBuild(answers) {
     return http.post("/quiz-beginner", answers)
   }
+
+
+    createBuild(data) {
+      return http.post("/build", data);
+    }
+  
+    deleteBuild(id) {
+      return http.delete("/build/" + id);
+    }
+
+    getBuildPriceById(id){
+      return http.get("/build-price/" + id);
+
+    }
+    
 
 }
 

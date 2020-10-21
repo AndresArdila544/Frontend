@@ -9,7 +9,6 @@
           color="rgb(59,22,100)"
           floating
           circle
-          
           block
           animation-type="vertical"
           to="QuizB"

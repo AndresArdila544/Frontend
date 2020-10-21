@@ -5,6 +5,7 @@ import AdminC from '@/pages/AdminCreateComp'
 import AdminD from '@/pages/AdminDeleteComp'
 import Admin from '@/pages/Admin'
 import Home from '@/pages/Home'
+import Summary from '@/pages/Summary'
 import CPUlist from '@/components/ListComp/CPUlist'
 import ShowRec from '@/pages/ShowRecommendation'
 import BegBuild from '@/pages/BegBuild'
@@ -44,6 +45,7 @@ export default new Router({
             component: CPUlist
         },
         {
+
             path: '/ShowRec',
             name: 'ShowRec',
             component: ShowRec
@@ -52,6 +54,12 @@ export default new Router({
             path: '/BegBuild',
             name: 'BegBuild',
             component: BegBuild
+        },
+        {
+
+            path: '/Summary',
+            name: 'Summary',
+            component: Summary
         },
 
     ]

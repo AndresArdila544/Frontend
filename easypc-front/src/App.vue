@@ -30,5 +30,7 @@ export default {
   text-align: center;
   color: #339EB7;
   background-color: #FF9941;
+  display:block;
+  
 }
 </style>
