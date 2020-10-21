@@ -39,9 +39,6 @@ export default {
     active: false,
   }),
   methods: {
-    increment() {
-      this.$store.commit("increment");
-    },
   },
   computed: {
     valor() {

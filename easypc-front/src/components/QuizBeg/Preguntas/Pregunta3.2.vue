@@ -5,6 +5,7 @@
       <vs-radio v-model="picked" class="d-flex justify-content-start" val="1"> NO </vs-radio>
       <vs-radio v-model="picked" class="d-flex justify-content-start" val="2"> A veces </vs-radio>
       <vs-radio  v-model="picked" class="pb-1 d-flex justify-content-start" val="3"> SI </vs-radio>
+      <p> {{setAnswer()}}</p>
     </div>
   </div>
 </template>
@@ -13,8 +14,13 @@
 <script>
 export default {
   data: () => ({
-    picked: 1,
+    picked: 0,
   }),
+  methods:{
+    setAnswer(){
+      this.$store.commit("setA2",this.picked)
+    }
+  }
 };
 </script>
 

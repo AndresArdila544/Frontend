@@ -4,6 +4,7 @@
     <div class="pt-4 container-fluid">
       <p id="parrafo" class="pt-3">Cuentanos tus necesidades!</p>
       <p ><PreguntaInicial/></p>
+      <p><Slider/></p>
     </div>
   </div>
 </template>
@@ -11,12 +12,14 @@
 <script>
 import PreguntaInicial from '../components/QuizBeg/PreguntaInicial.vue'
 import Footer from "../components/Footer.vue"
+import Slider from "../components/Slider.vue"
 
 export default {
   name: "QuizBeg",
   components: {
     PreguntaInicial,
-    Footer
+    Footer,
+    Slider
   },
   methods: {
     increment() {
