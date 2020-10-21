@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><img class="img-fluid mx-auto" v-bind:src="imgURL" height="400" /></p>
+    <p><img class="img-fluid mx-auto" v-bind:src="imgURL" height="400" alt="" /></p>
     
   </div>
 </template>
