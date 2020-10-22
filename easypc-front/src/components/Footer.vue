@@ -3,7 +3,7 @@
         <vs-navbar color="#3b1664" hideScroll text-white notLine fixed center-collapsed v-model="active">
         <template #left>
           <router-link to="/" >
-            <img alt="limon_nav" class="img-fluid" src="../assets/limon.png" @click="openLoading" width=40%/>
+            <img alt="limon_nav" class="img-fluid" src="../assets/limon.png" width=40%/>
           </router-link>
           
         </template>
