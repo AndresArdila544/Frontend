@@ -1,8 +1,6 @@
 <template>
-  <div class="py-5 container-fluid ">
+  <div class="container-fluid">
       <ul class="circles">
-        <li></li>
-        <li></li>
         <li></li>
         <li></li>
         <li></li>
@@ -21,11 +19,12 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped >
     .circles{
         position: absolute;
         top: 0;
         left: 0;
+        bottom: 0;
         width: 100%;
         height: 100%;
         overflow: hidden;
@@ -37,7 +36,7 @@ export default {
         list-style: none;
         width: 20px;
         height: 20px;
-        background: rgba(255, 255, 255, 0.2);
+        background: red;
         animation: animate 25s linear infinite;
         bottom: -150px;
         
@@ -132,7 +131,7 @@ export default {
         100%{
             transform: translateY(-1000px) rotate(720deg);
             opacity: 0;
-            border-radius: 50%;
+            border-radius: 70%;
         }
 
     }

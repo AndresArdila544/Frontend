@@ -1,7 +1,6 @@
 <template>
-  <div id='home' class="py-5 container-fluid ">
-      <Footer/>
-      <BackgroundAnimation/>
+<div>
+ <div id='home' class="py-5 container-fluid ">
       <Logo/>
       <div class="p-1">
         <vs-button 
@@ -24,17 +23,26 @@
         </vs-button>
       </div>
   </div>
+  <h1 class="display-1">Display 1</h1>
+  <h1 >h1. Bootstrap heading</h1>
+<h2>h2. Bootstrap heading</h2>
+<h3>h3. Bootstrap heading</h3>
+<h4>h4. Bootstrap heading</h4>
+<h5>h5. Bootstrap heading</h5>
+<h6>h6. Bootstrap heading</h6>
+</div>
+ 
 </template>
 
 <script>
-import Footer from '../components/Footer.vue'
-import BackgroundAnimation from '../components/BackgroundAnimation.vue'
+
+
 import Logo from '../components/Logo.vue'
 export default {
     name: 'Home',
     components: {
-      Footer,
-      BackgroundAnimation,
+      
+      
       Logo,
     },
     methods: {
@@ -44,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style >
 
 
   #boton{

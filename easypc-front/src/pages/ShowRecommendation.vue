@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style >
 #tuPC {
   font-size: 7vw;
   font-family: "Righteous", serif;

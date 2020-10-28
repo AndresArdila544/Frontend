@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style scope lang="scss">
+<style scoped >
 @import url(https://fonts.googleapis.com/css?family=Righteous);
     #logo{
       height: 100%;
