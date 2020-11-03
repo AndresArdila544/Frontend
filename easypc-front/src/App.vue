@@ -3,9 +3,11 @@
     
     <v-app id="app" fluid>
       
-      
+      <Navbar />
       <v-main>
+        
         <v-container fluid>
+          
           <router-view />
         </v-container>
       </v-main>
@@ -17,11 +19,12 @@
 <script>
 
 
+import Navbar from "../src/components/Navbar"
 export default {
   name: "App",
 
   components: {
-    
+    Navbar
   },
 
   data: () => ({
@@ -35,7 +38,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: #ff9941;
+  background-color: #948B17;
   display: block;
   height: 100%;
 }

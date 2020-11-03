@@ -1,58 +1,47 @@
 <template>
-  <div>
-    <div class="p-5">
-      <vs-row>
-        <vs-col justify="center" vs-align="center" w="4">
-          <div class="d-flex justify-content-center">
-            <vs-button
-              id="botones"
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-4">
+        <vs-button
+              class="botones-admin"
               color="rgb(59,22,100)" 
-              size="small" 
+              block
               to="AdminC" 
               >
-                <vs-row>
-                  <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="12">Crear Componente</vs-col>
-                </vs-row>
-            </vs-button>
-          </div>
-        </vs-col>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
-          <div class="d-flex justify-content-center">
-            <vs-button
-              id="botones"
+              Crear Componente     
+        </vs-button>
+      </div>
+      <div class="col col-md-4">
+        <vs-button
+              class="botones-admin"
               color="rgb(59,22,100)"
-              size="small"
+              block
               to="AdminD"
               >
                 Eliminar Componente
-            </vs-button>
-          </div>
-        </vs-col>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="4">
-          <div class="d-flex justify-content-center">
-            <vs-button
-              id="botones"
+        </vs-button>
+      </div>
+      <div class="col col-md-4">
+        <vs-button
+              class="botones-admin"
               color="rgb(59,22,100)"
-              size="small"
+              block
               to="ListOfComponents"
               >
                 Ver Lista de Componentes
-            </vs-button>
-          </div>
-        </vs-col>
-      </vs-row>
+        </vs-button>
+      </div>
     </div>
-    <Footer/>
   </div>
 </template>
 
 <script>
-import Footer from "../components/Footer.vue";
+
 
 export default {
   name: "Admin",
   components: {
-    Footer,
+    
   },
   methods: {
     
@@ -60,11 +49,9 @@ export default {
 };
 </script>
 
-<style>
-#botones {
-  text-align: center;
-  display: inline-block;
-  font-size: 2vw;
-  border: none;
+<style scoped lang="scss">
+.botones-admin {
+  font-size: calc(1.2rem + 1.5vw);
+  font-family: 'Poppins', sans-serif;
 }
 </style>

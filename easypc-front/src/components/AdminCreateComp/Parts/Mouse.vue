@@ -16,7 +16,7 @@
         <h4>Has añadido un Mouse!</h4>
         <vs-button @click="newMouse">Crear otro Mouse</vs-button>
       </div>
-      <P>Mouse: {{$data}}</P>
+      
     </div>
   </div>
 </template>

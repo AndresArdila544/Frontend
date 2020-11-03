@@ -19,7 +19,7 @@
       <h4>Has añadido un SSD!</h4>
       <vs-button @click="newSSD">Crear otro SSD</vs-button>
     </div>
-    <P>SSD: {{$data}}</P>
+    
 
   </div>
 </template>

@@ -17,7 +17,7 @@
       <h4>Has añadido una Tarjeta Madre!</h4>
       <vs-button @click="newMotherboard">Crear otra Tarjeta Madre</vs-button>
     </div>
-    <P>Tarjeta Madre: {{$data}}</P>
+    
   </div>
 </template>
 

@@ -16,7 +16,7 @@
         <h4>Has añadido un Case!</h4>
         <vs-button @click="newCaja">Crear otro Case</vs-button>
       </div>
-      <P>Case: {{$data}}</P>
+      
     </div>
   </div>
 </template>

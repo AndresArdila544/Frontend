@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <vs-button id="button" class="d-flex justify-content-center" border :active="active == 0" @click="active = !active" >Siguiente</vs-button>
+  <div class="container">
+    <vs-button id="button" class="" border :active="active == 0" @click="active = !active" >Siguiente</vs-button>
     <div v-if="valor=='1'" key="1">
         <vs-dialog blur not-close class="d-flex justify-content-start"  v-model="active">
             <PopUpOpc1/>
