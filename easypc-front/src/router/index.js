@@ -9,6 +9,7 @@ import Summary from '@/pages/Summary'
 import CPUlist from '@/components/ListComp/CPUlist'
 import ShowRec from '@/pages/ShowRecommendation'
 import BegBuild from '@/pages/BegBuild'
+import InterSelection from '@/pages/InterSelection'
 
 Vue.use(Router)
 
@@ -60,6 +61,12 @@ export default new Router({
             path: '/Summary',
             name: 'Summary',
             component: Summary
+        },
+        {
+
+            path: '/InterSel',
+            name: 'InterSelection',
+            component: InterSelection
         },
 
     ]

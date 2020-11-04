@@ -126,34 +126,10 @@ export default {
       id: 1,
       tipo: String,
       price: "",
-      //answers: ["10000000", "1", "1", "1", "1"],
     };
   },
   props: {},
   methods: {
-    /*retrieveBuild(id) {
-      EasyPCService.getBuildById(id)
-        .then((response) => {
-          this.CurrentBuild = response.data;
-          this.CurrentCPU = this.CurrentBuild.cpu;
-          this.CurrentGPU = this.CurrentBuild.gpu;
-          this.CurrentMotherboard = this.CurrentBuild.motherboard;
-          this.CurrentRAM = this.CurrentBuild.ram;
-          this.CurrentCooling = this.CurrentBuild.cooling;
-          this.CurrentSSD = this.CurrentBuild.ssd;
-          this.CurrentHDD = this.CurrentBuild.hdd;
-          this.CurrentPowerSupply = this.CurrentBuild.powerSupply;
-          this.CurrentMouse = this.CurrentBuild.mouse;
-          this.CurrentKeyboard = this.CurrentBuild.keyboard;
-          this.CurrentMonitor = this.CurrentBuild.monitor;
-          this.CurrentCase = this.CurrentBuild.caseObj;
-          //console.log(response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-        
-    },*/
     retrieveBuildPrice(answers) {
       EasyPCService.getRecommendedPrice(answers)
         .then((response) => {
