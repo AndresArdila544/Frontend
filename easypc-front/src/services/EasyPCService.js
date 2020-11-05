@@ -3,225 +3,249 @@ import http from "../http-common";
 class EasyPCService {
 
   getAllCPUs() {
-    return http.get("/cpus");
+    return http.get("api/cpus");
   }
 
   getCPUById(id) {
-    return http.get("/cpu/" + id);
+    return http.get("api/cpu/" + id);
   }
 
   createCPU(data) {
-    return http.post("/cpu", data);
+    return http.post("api/cpu", data);
   }
 
   deleteCPU(id) {
-    return http.delete("/cpu/" + id);
+    return http.delete("api/cpu/" + id);
   }
 
   getAllMotherboards() {
-    return http.get("/motherboards/");
+    return http.get("api/motherboards/");
   }
 
   getMotherboardById(id) {
-    return http.get("/motherboards/" + id);
+    return http.get("api/motherboards/" + id);
   }
 
   createMotherboard(data) {
-    return http.post("/motherboard", data);
+    return http.post("api/motherboard", data);
   }
 
   deleteMotherboard(id) {
-    return http.delete("/motherboard/" + id);
+    return http.delete("api/motherboard/" + id);
   }
 
   getAllRAMs() {
-    return http.get("/rams/");
+    return http.get("api/rams/");
   }
 
   getRAMById(id) {
-    return http.get("/ram/" + id);
+    return http.get("api/ram/" + id);
   }
 
   createRAM(data) {
-    return http.post("/ram", data);
+    return http.post("api/ram", data);
   }
 
   deleteRAM(id) {
-    return http.delete("/ram/" + id);
+    return http.delete("api/ram/" + id);
   }
 
   getAllGPUs() {
-    return http.get("/gpus/");
+    return http.get("api/gpus/");
   }
 
   getGPUById(id) {
-    return http.get("/gpu/" + id);
+    return http.get("api/gpu/" + id);
   }
 
   createGPU(data) {
-    return http.post("/gpu", data);
+    return http.post("api/gpu", data);
   }
 
   deleteGPU(id) {
-    return http.delete("/gpu/" + id);
+    return http.delete("api/gpu/" + id);
   }
 
   getAllCoolings() {
-    return http.get("/coolings/");
+    return http.get("api/coolings/");
   }
 
   getCoolingById(id) {
-    return http.get("/cooling/" + id);
+    return http.get("api/cooling/" + id);
   }
 
   createCooling(data) {
-    return http.post("/cooling", data);
+    return http.post("api/cooling", data);
   }
 
   deleteCooling(id) {
-    return http.delete("/cooling/" + id);
+    return http.delete("api/cooling/" + id);
   }
 
   getAllCases() {
-    return http.get("/cases/");
+    return http.get("api/cases/");
   }
 
   getCaseById(id) {
-    return http.get("/case/" + id);
+    return http.get("api/case/" + id);
   }
 
   createCase(data) {
-    return http.post("/case", data);
+    return http.post("api/case", data);
   }
 
   deleteCase(id) {
-    return http.delete("/case/" + id);
+    return http.delete("api/case/" + id);
   }
 
   getAllPowerSupplies() {
-    return http.get("/power-supplies/");
+    return http.get("api/power-supplies/");
   }
 
   getPowerSupplyById(id) {
-    return http.get("/power-supply/" + id);
+    return http.get("api/power-supply/" + id);
   }
 
   createPowerSupply(data) {
-    return http.post("/power-supply", data);
+    return http.post("api/power-supply", data);
   }
 
   deletePowerSupply(id) {
-    return http.delete("/power-supply/" + id);
+    return http.delete("api/power-supply/" + id);
   }
 
   getAllHDDs() {
-    return http.get("/hdds/");
+    return http.get("api/hdds/");
   }
 
   getHDDById(id) {
-    return http.get("/hdd/" + id);
+    return http.get("api/hdd/" + id);
   }
 
   createHDD(data) {
-    return http.post("/hdd", data);
+    return http.post("api/hdd", data);
   }
 
   deleteHDD(id) {
-    return http.delete("/hdd/" + id);
+    return http.delete("api/hdd/" + id);
   }
 
   getAllSSDs() {
-    return http.get("/ssds/");
+    return http.get("api/ssds/");
   }
 
   getSSDById(id) {
-    return http.get("/hdd/" + id);
+    return http.get("api/hdd/" + id);
   }
 
   createSSD(data) {
-    return http.post("/ssd", data);
+    return http.post("api/ssd", data);
   }
 
   deleteSSD(id) {
-    return http.delete("/ssd/" + id);
+    return http.delete("api/ssd/" + id);
   }
 
   getAllMice() {
-    return http.get("/mice/");
+    return http.get("api/mice/");
   }
 
   getMouseById(id) {
-    return http.get("/mouse/" + id);
+    return http.get("api/mouse/" + id);
   }
 
   createMouse(data) {
-    return http.post("/mouse", data);
+    return http.post("api/mouse", data);
   }
 
   deleteMouse(id) {
-    return http.delete("/mouse/" + id);
+    return http.delete("api/mouse/" + id);
   }
 
   getAllMonitors() {
-    return http.get("/monitors/");
+    return http.get("api/monitors/");
   }
 
   getMonitorById(id) {
-    return http.get("/monitor/" + id);
+    return http.get("api/monitor/" + id);
   }
 
   createMonitor(data) {
-    return http.post("/monitor", data);
+    return http.post("api/monitor", data);
   }
 
   deleteMonitor(id) {
-    return http.delete("/monitor/" + id);
+    return http.delete("api/monitor/" + id);
   }
 
   getAllKeyboards() {
-    return http.get("/keyboards/");
+    return http.get("api/keyboards/");
   }
 
   getKeyboardById(id) {
-    return http.get("/keyboard/" + id);
+    return http.get("api/keyboard/" + id);
   }
 
   createKeyboard(data) {
-    return http.post("/keyboard", data);
+    return http.post("api/keyboard", data);
   }
 
   deleteKeyboard(id) {
-    return http.delete("/keyboard/" + id);
+    return http.delete("api/keyboard/" + id);
   }
 
   getBuildById(id) {
-    return http.get("/build/" + id);
+    return http.get("api/build/" + id);
   }
 
   getAll(part) {
-    return http.get("/" + part + "/");
+    return http.get("api/" + part + "/");
   }
 
   getRecommendedPrice(answers) {
-    return http.post("/quiz-beginner-price", answers)
+    return http.post("api/quiz-beginner-price", answers)
   }
 
   getRecommendedBuild(answers) {
-    return http.post("/quiz-beginner", answers)
+    return http.post("api/quiz-beginner", answers)
   }
 
 
     createBuild(data) {
-      return http.post("/build", data);
+      return http.post("api/build", data);
     }
   
     deleteBuild(id) {
-      return http.delete("/build/" + id);
+      return http.delete("api/build/" + id);
     }
 
     getBuildPriceById(id){
-      return http.get("/build-price/" + id);
+      return http.get("api/build-price/" + id);
 
+    }
+
+    authentication(username, password){
+      return http.post( "/oauth/token", // URL
+        { }, // Body
+        {
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            params: {
+                username: username,
+                password: password,
+                grant_type: 'password'
+            },
+            auth: {
+                username: "EZPC",
+                password: "lemon-squeezy",
+            }
+        }
+    );
+    }
+
+    register(data){
+      return http.post("api/user",data);
     }
     
 
