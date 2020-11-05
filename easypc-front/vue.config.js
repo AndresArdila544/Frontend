@@ -3,9 +3,11 @@ module.exports = {
     "plugins": [],
     "devServer": {
       "port": 4200
-    }
+    },
+    
   },
   "transpileDependencies": [
     "vuetify"
-  ]
+  ],
+  
 }

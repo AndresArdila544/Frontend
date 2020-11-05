@@ -34,7 +34,7 @@
     <MONlist v-if= "value == 'L'" />
     
     </div>
-    <Footer/>
+    
   </div>
 </template>
 
@@ -52,7 +52,7 @@ import MOUSElist from "../components/ListComp/MOUSElist";
 import KEYBlist from "../components/ListComp/KEYBlist";
 import MONlist from "../components/ListComp/MONlist";
 import MOTHERlist from "../components/ListComp/MOTHERlist";
-import Footer from "../components/Footer"
+
 export default {
   data: () => ({
     value: "",
@@ -70,7 +70,7 @@ export default {
     KEYBlist,
     MONlist,
     MOTHERlist,
-    Footer,
+    
   },
 };
 </script>

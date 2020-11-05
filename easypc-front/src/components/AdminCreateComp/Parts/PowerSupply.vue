@@ -17,7 +17,7 @@
           <h4>Has añadido un Power Supply!</h4>
           <vs-button @click="newPowersupply">Crear otra Power Supply</vs-button>
         </div>
-        <P>PowerSupply: {{$data}}</P>
+        
       </div>
 </div>
     

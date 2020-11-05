@@ -1,5 +1,5 @@
 <template>
-  <div class="box p-2 container-fluid">
+  <div class="box p-2 container">
     <h3 class="titulo pt-2">{{tipo}}</h3>
     <p class="modelo">{{Parte.model}}</p>
 
@@ -100,7 +100,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="scss" >
 @import url(https://fonts.googleapis.com/css2?family=Maven+Pro:wght@700&display=swap);
 
 .texto {
