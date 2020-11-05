@@ -1,8 +1,7 @@
 <template>
   
   <div class="container">
-      <p  id="tusComp" class="py-5">Selecciona tus componentes</p>
-      <p> Sabemos que tienes conocimiento sobre computadores por eso te vamos a guiar en como armar tu PC.</p> 
+      <h1  >Selecciona tus componentes</h1>
       <InterComp/>
   </div>
   
@@ -15,7 +14,6 @@ export default {
     components: {
         InterComp,
     }
-
 }
 </script>
 

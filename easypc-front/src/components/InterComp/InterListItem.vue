@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="container-fluid">
-      <p>{{ this.tipo }}</p>
+      <InterTitle v-bind:count="count"/>
       <div class="row align-items-center">
         <div class="col-md-4">
-          <InterDescription />
+          <InterDescription v-bind:count="count"/>
         </div>
         <div class="col-md-4">
             <ShowImage v-bind:imgURL="currentImageURL" v-if="renderComponent">
@@ -31,20 +31,17 @@
 import ShowImage from "../ShowImage";
 import EasyPCService from "../../services/EasyPCService";
 import InterDescription from "./InterDescription";
+import InterTitle from "./InterTitle"
 
 export default {
   name: "InterListItem",
   components: {
     ShowImage,
     InterDescription,
+    InterTitle
   },
   data: () => ({
     partes: [],
-    id: 2,
-    flag: false,
-    cpu: "",
-    selected: "",
-    cpus: [],
     parte_models: [],
     parte_pics: [],
     renderComponent: true,
