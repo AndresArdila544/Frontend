@@ -9,6 +9,8 @@ import Summary from '@/pages/Summary'
 import CPUlist from '@/components/ListComp/CPUlist'
 import ShowRec from '@/pages/ShowRecommendation'
 import BegBuild from '@/pages/BegBuild'
+import Login from '@/pages/Login'
+import Register from '@/pages/Register'
 
 Vue.use(Router)
 
@@ -60,6 +62,18 @@ export default new Router({
             path: '/Summary',
             name: 'Summary',
             component: Summary
+        },
+        {
+
+            path: '/login',
+            name: 'Login',
+            component: Login
+        },
+        {
+
+            path: '/SignUp',
+            name: 'SignUp',
+            component: Register
         },
 
     ]
