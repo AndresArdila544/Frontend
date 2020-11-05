@@ -25,8 +25,10 @@
       </div>
       
       
-      <PopUpBeg class="justify-content-end mx-auto col-lg-8"/>
     </div>
+    
+      <PopUpBeg class=""/>
+    
 
     <p>{{sendValue(picked)}}</p>
   </div>

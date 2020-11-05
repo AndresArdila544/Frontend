@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav" v-if="loggedIn==false">
           <li class="nav-item active col-sm-12 col-md-6 col-lg-6" >
-            <vs-button class="login-button" to="Admin" color="#478414" block>
+            <vs-button class="login-button" to="Login" color="#478414" block>
               Identificate
               <template #animate>
                   Login
@@ -29,7 +29,7 @@
             </vs-button>
           </li>
           <li class="nav-item active col-sm-12 col-md-6 col-lg-6">
-            <vs-button class="login-button" color="#A89C08" block>Registrarse</vs-button>
+            <vs-button class="login-button" color="#A89C08" to="SignUp" block>Registrarse</vs-button>
           </li>
         </ul>
         
