@@ -2,7 +2,7 @@
   <div class="logo container">
       <div class="row">
           <div class="col-12 col-lg-9">
-            <img class="img-fluid col-12" src="../assets/logo2.png"/>
+            <img alt="limon" class="img-fluid col-12" src="../assets/logo2.png"/>
           </div>
           <div class="col-12 col-lg-3">
             <h1 class="titulo center">
