@@ -7,7 +7,6 @@ import Admin from '@/pages/Admin'
 import Home from '@/pages/Home'
 import Summary from '@/pages/Summary'
 import ShowRec from '@/pages/ShowRecommendation'
-import BegBuild from '@/pages/BegBuild'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 
