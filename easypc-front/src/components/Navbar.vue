@@ -2,7 +2,7 @@
   <div class="center">
     <nav
       class="navbar navbar-dark sticky-top navbar-expand-lg justify-content-right"
-      style="background-color: #3b1664;"
+      style="background-color: #0f3057;"
     >
       <button
         class="navbar-toggler"
@@ -21,7 +21,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav" v-if="loggedIn==false">
           <li class="nav-item active col-sm-12 col-md-6 col-lg-6" >
-            <vs-button class="login-button" to="Login" color="#478414" block>
+            <vs-button class="login-button" to="Login" relief:active="active == 1" color="#81b214" block>
               Identificate
               <template #animate>
                   Login
@@ -29,7 +29,7 @@
             </vs-button>
           </li>
           <li class="nav-item active col-sm-12 col-md-6 col-lg-6">
-            <vs-button class="login-button" color="#A89C08" to="SignUp" block>Registrarse</vs-button>
+            <vs-button class="login-button" color="#3b1" to="SignUp" block>Registrarse</vs-button>
           </li>
         </ul>
         
@@ -45,6 +45,7 @@ export default {
   components: {},
   data: () => ({
     loggedIn: false,
+    active: 0
   }),
   methods: {
 
@@ -54,7 +55,7 @@ export default {
 
 <style scoped>
 .login-button {
-  color: #74233B;
+  color: #e0ece4;
   font-size:calc(1.1rem + 1.2vw);
   font-family: 'Poppins', sans-serif
   

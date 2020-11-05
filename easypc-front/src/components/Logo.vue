@@ -44,8 +44,8 @@ export default {
         font-size:calc(2rem + 5vw);
         animation-fill-mode: backwards;
         font-family: 'Righteous', serif;
-        text-shadow: .03em .03em 0 #3C136C;
-        color: #841436;
+        text-shadow: .03em .03em 0 #e0ece4;
+        color: #222831;
     }
 
 @keyframes animacion_imagen {
