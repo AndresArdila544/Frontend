@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import 'bootstrap'
 import './assets/app.css'
+import './assets/styles.scss'
 import Vuex from 'vuex'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css' //Vuesax styles

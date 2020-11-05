@@ -16,7 +16,7 @@
         <h4>Has añadido un Monitor!</h4>
         <vs-button @click="newMonitor">Crear otro Monitor</vs-button>
       </div>
-      <P>Monitor: {{$data}}</P>
+      
     </div>
   </div>
 </template>

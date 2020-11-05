@@ -1,7 +1,17 @@
   <template>
-
-  <div id="app" class="shadow p-4 container-fluid">
-    <v-app><router-view/></v-app>
+  <div >
+    
+    <v-app id="app" fluid>
+      
+      <Navbar />
+      <v-main>
+        
+        <v-container fluid>
+          
+          <router-view />
+        </v-container>
+      </v-main>
+    </v-app>
   </div>
 </template>
 
@@ -9,11 +19,12 @@
 <script>
 
 
+import Navbar from "../src/components/Navbar"
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-
+    Navbar
   },
 
   data: () => ({
@@ -24,13 +35,11 @@ export default {
 
 <style>
 #app {
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #339EB7;
-  background-color: #FF9941;
-  display:block;
-  
+  background-color: #948B17;
+  display: block;
+  height: 100%;
 }
 </style>

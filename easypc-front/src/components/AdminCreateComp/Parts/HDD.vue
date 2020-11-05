@@ -19,7 +19,7 @@
       <h4>Has añadido una HDD!</h4>
       <vs-button @click="newHDD">Crear otra HDD</vs-button>
     </div>
-    <P>HDD: {{$data}}</P>
+    
 
   </div>
 </template>

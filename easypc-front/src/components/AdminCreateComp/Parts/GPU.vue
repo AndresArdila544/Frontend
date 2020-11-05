@@ -19,7 +19,7 @@
       <h4>Has añadido una GPU!</h4>
       <vs-button @click="newGPU">Crear otra GPU</vs-button>
     </div>
-    <P>GPU: {{$data}}</P>
+    
 
   </div>
 </template>

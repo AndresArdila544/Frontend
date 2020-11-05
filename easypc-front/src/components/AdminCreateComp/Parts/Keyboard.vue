@@ -16,7 +16,7 @@
         <h4>Has añadido un Teclado!</h4>
         <vs-button @click="newKeyboard">Crear otro Teclado</vs-button>
       </div>
-      <P>Keyboard: {{$data}}</P>
+      
     </div>
   </div>
 </template>

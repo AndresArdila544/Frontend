@@ -19,7 +19,7 @@
       <h4>Has añadido una RAM!</h4>
       <vs-button @click="newRAM">Crear otra RAM</vs-button>
     </div>
-    <P>RAM: {{$data}}</P>
+    
 
   </div>
 </template>

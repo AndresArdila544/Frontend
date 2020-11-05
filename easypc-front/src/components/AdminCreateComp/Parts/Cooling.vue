@@ -18,7 +18,7 @@
       <h4>Has añadido un Cooling!</h4>
       <vs-button @click="newCooling">Crear otro Cooling</vs-button>
     </div>
-    <P>Cooling: {{$data}}</P>
+    
   </div>
   </div>
 </template>
