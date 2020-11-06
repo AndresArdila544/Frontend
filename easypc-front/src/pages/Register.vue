@@ -4,7 +4,7 @@
       <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
         <div class="mt-5">
           <form
-            class="border border-primary rounded form-inline"
+            class="form-inline"
             @submit="register"
           >
             <h2 class="col-12 text-center text-primary mt-3 mb-5">
