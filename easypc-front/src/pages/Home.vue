@@ -11,7 +11,7 @@
             circle
             block
             animation-type="rotate"
-            to="QuizB"
+            to="LevelSelect"
             class="boton-home"
           > 
             <p>

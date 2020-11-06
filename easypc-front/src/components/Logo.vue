@@ -45,7 +45,7 @@ export default {
         animation-fill-mode: backwards;
         font-family: 'Righteous', serif;
         text-shadow: .03em .03em 0 #e0ece4;
-        color: #222831;
+        color: #000000;
     }
 
 @keyframes animacion_imagen {
