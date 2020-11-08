@@ -1,5 +1,5 @@
 <template>
-  <div class="jumbotron">
+  <div class="jumbotron" v-if="part">
       <CPU v-if="part== 'A'"/>
       <MotherBoard v-if="part== 'B'"/>
       <RAM v-if="part== 'C'"/>
