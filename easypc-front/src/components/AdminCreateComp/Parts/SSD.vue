@@ -1,19 +1,78 @@
 <template>
   <div>
-    <div v-if="!submitted">
-        <vs-input label="Modelo" type="text" v-model="ssd.model" />
-        <vs-input label="Poder" type="number" v-model="ssd.power" class="py-4" />
-        <vs-input label="Memoria" type="number" v-model="ssd.memory" class="py-4" />
-        <vs-input label="Velocidad" type="number" v-model="ssd.speed" class="py-4" />
-        <vs-input label="Precio SpeedLogic" type="number" v-model="ssd.priceSL" class="py-4" />
-        <vs-input label="Precio Tauret Computadores" type="number" v-model="ssd.priceTauret"  class="py-4"/>
-        <vs-input label="Precio Clones y Perifericos" type="number" v-model="ssd.priceCyP" class="py-4"/>
-        <vs-input label="Link SpeedLogic" type="text" v-model="ssd.linkSL" class="py-4" />
-        <vs-input label="Link Tauret Computadores" type="text" v-model="ssd.linkTauret"  class="py-4"/>
-        <vs-input label="Link Clones y Perifericos" type="text" v-model="ssd.linkCyP" class="py-4"/>
-        <vs-input label="Link Imagen" type="text" v-model="ssd.linkPicture" class="py-4"/>
-        <vs-input label="Link Benchmark" type="text" v-model="ssd.linkBenchmark" class="py-4"/>
-        <vs-button @click="saveSSD">Añadir SSD </vs-button>
+    <div v-if="!submitted" class="row">
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field label="Modelo" type="text" v-model="ssd.model" color="rgb(59,22,100)" />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field label="Poder" type="number" v-model="ssd.power" color="rgb(59,22,100)" />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field label="Memoria" type="number" v-model="ssd.memory" color="rgb(59,22,100)" />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field label="Velocidad" type="number" v-model="ssd.speed" color="rgb(59,22,100)" />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Precio SpeedLogic"
+          type="number"
+          v-model="ssd.priceSL"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Precio Tauret Computadores"
+          type="number"
+          v-model="ssd.priceTauret"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Precio Clones y Perifericos"
+          type="number"
+          v-model="ssd.priceCyP"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field label="Link SpeedLogic" type="text" v-model="ssd.linkSL" color="rgb(59,22,100)" />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12  offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Link Tauret Computadores"
+          type="text"
+          v-model="ssd.linkTauret"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field  offset-md-2 offset-sm-0
+          label="Link Clones y Perifericos"
+          type="text"
+          v-model="ssd.linkCyP"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12  offset-md-2 offset-sm-0">
+        <v-text-field label="Link Imagen" type="text" v-model="ssd.linkPicture" color="rgb(59,22,100)" />
+      </div>
+      
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Link Benchmark"
+          type="text"
+          v-model="ssd.linkBenchmark"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-10 col-md-4 col-12 offset-sm-2 offset-md-8">
+        <vs-button @click="saveSSD" block color="rgb(59,22,100)" class="boton-crear">
+          <h2>Añadir SSD</h2>
+        </vs-button>
+      </div>
     </div>
     <div v-else>
       <h4>Has añadido un SSD!</h4>
@@ -36,12 +95,12 @@ export default {
       ssd: {
         idSSD: null,
         model: "",
-        power: 0,
-        memory: 0,
-        speed: 0,
-        priceSL: 0,
-        priceTauret: 0,
-        priceCyP: 0,
+        power: '',
+        memory: '',
+        speed: '',
+        priceSL: '',
+        priceTauret: '',
+        priceCyP: '',
         linkSL: "",
         linkTauret: "",
         linkCyP: "",
@@ -72,7 +131,7 @@ export default {
       EasyPCService.createSSD(data)
         .then(response => {
           this.ssd.idssd = response.data.id;
-          console.log(response.data);
+          
           this.submitted = true;
         })
         .catch(e => {

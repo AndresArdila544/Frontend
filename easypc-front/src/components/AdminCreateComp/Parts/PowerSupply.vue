@@ -1,32 +1,94 @@
 <template>
-<div>
-      <div>
-        <div v-if="!submitted">
-          <vs-input label="Modelo" type="text" v-model="powersupply.model" />
-          <vs-input label="Max Potencia" type="number" v-model="powersupply.maxPower" class="py-4" />
-          <vs-input label="Precio SpeedLogic" type="number" v-model="powersupply.priceSL" class="py-4" />
-          <vs-input label="Precio Tauret Computadores" type="number" v-model="powersupply.priceTauret"  class="py-4"/>
-          <vs-input label="Precio Clones y Perifericos" type="number" v-model="powersupply.priceCyP" class="py-4"/>
-          <vs-input label="Link SpeedLogic" type="text" v-model="powersupply.linkSL" class="py-4" />
-          <vs-input label="Link Tauret Computadores" type="text" v-model="powersupply.linkTauret"  class="py-4"/>
-          <vs-input label="Link Clones y Perifericos" type="text" v-model="powersupply.linkCyP" class="py-4"/>
-          <vs-input label="Link Imagen" type="text" v-model="powersupply.linkPicture" class="py-4"/>
-          <vs-button @click="savePowersupply">Añadir Power Supply </vs-button>
-        </div>
-        <div v-else>
-          <h4>Has añadido un Power Supply!</h4>
-          <vs-button @click="newPowersupply">Crear otra Power Supply</vs-button>
-        </div>
-        
+  <div>
+    <div v-if="!submitted" class="row">
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Modelo"
+          type="text"
+          v-model="powersupply.model"
+          color="rgb(59,22,100)"
+        />
       </div>
-</div>
-    
-  
+
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Max Potencia"
+          type="number"
+          v-model="powersupply.maxPower"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Precio SpeedLogic"
+          type="number"
+          v-model="powersupply.priceSL"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Precio Tauret Computadores"
+          type="number"
+          v-model="powersupply.priceTauret"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Precio Clones y Perifericos"
+          type="number"
+          v-model="powersupply.priceCyP"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Link SpeedLogic"
+          type="text"
+          v-model="powersupply.linkSL"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Link Tauret Computadores"
+          type="text"
+          v-model="powersupply.linkTauret"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Link Clones y Perifericos"
+          type="text"
+          v-model="powersupply.linkCyP"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class=" col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+      <v-text-field
+        label="Link Imagen"
+        type="text"
+        v-model="powersupply.linkPicture"
+        color="rgb(59,22,100)"
+      /></div>
+      <div class="col col-sm-10 col-md-4 col-12 offset-sm-2 offset-md-8">
+        <vs-button @click="savePowersupply" block color="rgb(59,22,100)" class="boton-crear">
+          <h2>Añadir Power Supply</h2>
+        </vs-button>
+      </div>
+    </div>
+
+    <div v-else>
+      <h4>Has añadido un Power Supply!</h4>
+      <vs-button @click="newPowersupply">Crear otra Power Supply</vs-button>
+    </div>
+  </div>
 </template>
 
 <script>
 import EasyPCService from "../../../services/EasyPCService";
-
 
 export default {
   name: "PowerSupplyForm",
@@ -36,19 +98,19 @@ export default {
       powersupply: {
         id_powersupply: null,
         model: "",
-        maxPower: 0,
-        priceSL: 0,
-        priceTauret: 0,
-        priceCyP: 0,
+        maxPower: '',
+        priceSL: '',
+        priceTauret: '',
+        priceCyP: '',
         linkSL: "",
         linkTauret: "",
         linkCyP: "",
         linkPicture: "",
       },
-      submitted: false 
+      submitted: false,
     };
   },
-  methods:{
+  methods: {
     savePowersupply() {
       var data = {
         idPowerSupply: this.powersupply.id_case,
@@ -64,23 +126,22 @@ export default {
       };
 
       EasyPCService.createPowerSupply(data)
-        .then(response => {
+        .then((response) => {
           this.powersupply.idPowersupply = response.data.id;
           console.log(response.data);
           this.submitted = true;
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
     },
     newPowersupply() {
       this.submitted = false;
       this.powersupply = {};
-    }
+    },
   },
-}
+};
 </script>
 
 <style>
-
 </style>

@@ -44,7 +44,7 @@ export default {
         parte = this.value
         this.$emit('update-value', parte)
       }
-    }
+    },
 }
 </script>
 

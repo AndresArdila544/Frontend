@@ -1,19 +1,99 @@
 <template>
-  <div>
-    <div v-if="!submitted">
-        <vs-input label="Modelo" type="text" v-model="motherboard.model" />
-        <vs-input label="Poder" type="number" v-model="motherboard.power" class="py-4" />
-        <vs-input label="Precio SpeedLogic" type="number" v-model="motherboard.priceSL" class="py-4" />
-        <vs-input label="Precio Tauret Computadores" type="number" v-model="motherboard.priceTauret"  class="py-4"/>
-        <vs-input label="Precio Clones y Perifericos" type="number" v-model="motherboard.priceCyP" class="py-4"/>
-        <vs-input label="Link SpeedLogic" type="text" v-model="motherboard.linkSL" class="py-4" />
-        <vs-input label="Link Tauret Computadores" type="text" v-model="motherboard.linkTauret"  class="py-4"/>
-        <vs-input label="Link Clones y Perifericos" type="text" v-model="motherboard.linkCyP" class="py-4"/>
-        <vs-input label="Link Imagen" type="text" v-model="motherboard.linkPicture" class="py-4"/>
-        <vs-input label="Link Benchmark" type="text" v-model="motherboard.linkBenchmark" class="py-4"/>
-        <vs-button @click="saveMotherboard">Añadir Tarjeta Madre </vs-button>
+  <div class="">
+    <div v-if="!submitted" class="row">
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+        label="Modelo" 
+        type="text" 
+        v-model="motherboard.model"
+        color="rgb(59,22,100)" />
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 ">
+         <v-text-field 
+         label="Poder"
+         suffix="W" 
+         type="number" 
+         v-model="motherboard.power" 
+         class="" 
+         color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+        label="Precio SpeedLogic" 
+        type="number" 
+        v-model="motherboard.priceSL" 
+        class="" 
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 ">
+        <v-text-field 
+        label="Precio Tauret Computadores" 
+        type="number" 
+        v-model="motherboard.priceTauret"  
+        class=""
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+        label="Precio Clones y Perifericos" 
+        type="number" 
+        v-model="motherboard.priceCyP" 
+        class=""
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 ">
+        <v-text-field 
+        label="Link SpeedLogic" 
+        type="text" 
+        v-model="motherboard.linkSL" 
+        class="" 
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+        label="Link Tauret Computadores" 
+        type="text" 
+        v-model="motherboard.linkTauret"  
+        class=""
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 ">
+        <v-text-field 
+        label="Link Clones y Perifericos" 
+        type="text" 
+        v-model="motherboard.linkCyP" 
+        class=""
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+        label="Link Imagen" 
+        type="text" 
+        v-model="motherboard.linkPicture"
+        class=""
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-8 col-md-4 col-12 ">
+        <v-text-field 
+        label="Link Benchmark" 
+        type="text" 
+        v-model="motherboard.linkBenchmark" 
+        class=""
+        color="rgb(59,22,100)"/>
+      </div> 
+      <div class="col col-sm-10 col-md-4 col-12 offset-sm-2 offset-md-8">
+        <vs-button 
+        @click="saveMotherboard"
+        color="rgb(59,22,100)"
+        class="boton-crear"
+        block>
+        <h2>
+          Añadir Tarjeta Madre
+        </h2>
+         </vs-button>
+      </div> 
     </div>
-    <div v-else>
+    <div v-else class="col-12">
       <h4>Has añadido una Tarjeta Madre!</h4>
       <vs-button @click="newMotherboard">Crear otra Tarjeta Madre</vs-button>
     </div>
@@ -33,10 +113,10 @@ export default {
       motherboard: {
         idMotherboard: null,
         model: "",
-        power: 0,
-        priceSL: 0,
-        priceTauret: 0,
-        priceCyP: 0,
+        power: '',
+        priceSL: '',
+        priceTauret: '',
+        priceCyP: '',
         linkSL: "",
         linkTauret: "",
         linkCyP: "",
@@ -65,7 +145,6 @@ export default {
       EasyPCService.createMotherboard(data)
         .then(response => {
           this.motherboard.idMotherboard = response.data.id;
-          console.log(response.data);
           this.submitted = true;
         })
         .catch(e => {
@@ -81,5 +160,8 @@ export default {
 </script>
 
 <style>
-
+.boton-crear {
+  font-size: calc(2rem + 1.2vw);
+  font-family: 'Poppins', sans-serif;
+}
 </style>

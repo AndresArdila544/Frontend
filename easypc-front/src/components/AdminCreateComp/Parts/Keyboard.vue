@@ -1,29 +1,81 @@
 <template>
   <div>
-    <div>
-      <div v-if="!submitted">
-          <vs-input label="Modelo" type="text" v-model="keyboard.model" />
-          <vs-input label="Precio SpeedLogic" type="number" v-model="keyboard.priceSL" class="py-4" />
-          <vs-input label="Precio Tauret Computadores" type="number" v-model="keyboard.priceTauret"  class="py-4"/>
-          <vs-input label="Precio Clones y Perifericos" type="number" v-model="keyboard.priceCyP" class="py-4"/>
-          <vs-input label="Link SpeedLogic" type="text" v-model="keyboard.linkSL" class="py-4" />
-          <vs-input label="Link Tauret Computadores" type="text" v-model="keyboard.linkTauret"  class="py-4"/>
-          <vs-input label="Link Clones y Perifericos" type="text" v-model="keyboard.linkCyP" class="py-4"/>
-          <vs-input label="Link Imagen" type="text" v-model="keyboard.linkPicture" class="py-4"/>
-          <vs-button @click="saveKeyboard">Añadir Teclado </vs-button>
+    <div v-if="!submitted" class="row">
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field label="Modelo" type="text" v-model="keyboard.model" color="rgb(59,22,100)" />
       </div>
-      <div v-else>
-        <h4>Has añadido un Teclado!</h4>
-        <vs-button @click="newKeyboard">Crear otro Teclado</vs-button>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Precio SpeedLogic"
+          type="number"
+          v-model="keyboard.priceSL"
+          color="rgb(59,22,100)"
+        />
       </div>
-      
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Precio Tauret Computadores"
+          type="number"
+          v-model="keyboard.priceTauret"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Precio Clones y Perifericos"
+          type="number"
+          v-model="keyboard.priceCyP"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Link SpeedLogic"
+          type="text"
+          v-model="keyboard.linkSL"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Link Tauret Computadores"
+          type="text"
+          v-model="keyboard.linkTauret"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+          label="Link Clones y Perifericos"
+          type="text"
+          v-model="keyboard.linkCyP"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+          label="Link Imagen"
+          type="text"
+          v-model="keyboard.linkPicture"
+          color="rgb(59,22,100)"
+        />
+      </div>
+      <div class="col col-sm-10 col-md-4 col-12 offset-sm-2 offset-md-8">
+        <vs-button  @click="saveKeyboard" block color="rgb(59,22,100)" class="boton-crear">
+          <h2>Añadir Teclado</h2>
+        </vs-button>
+      </div>
+    </div>
+    
+    <div v-else>
+      <h4>Has añadido un Teclado!</h4>
+      <vs-button @click="newKeyboard">Crear otro Teclado</vs-button>
     </div>
   </div>
 </template>
 
 <script>
 import EasyPCService from "../../../services/EasyPCService";
-
 
 export default {
   name: "KeyboardForm",
@@ -33,18 +85,18 @@ export default {
       keyboard: {
         idKeyboard: null,
         model: "",
-        priceSL: 0,
-        priceTauret: 0,
-        priceCyP: 0,
+        priceSL: '',
+        priceTauret: '',
+        priceCyP: '',
         linkSL: "",
         linkTauret: "",
         linkCyP: "",
         linkPicture: "",
       },
-      submitted: false 
+      submitted: false,
     };
   },
-  methods:{
+  methods: {
     saveKeyboard() {
       var data = {
         idKeyboard: this.keyboard.idKeyboard,
@@ -60,23 +112,22 @@ export default {
       };
 
       EasyPCService.createKeyboard(data)
-        .then(response => {
+        .then((response) => {
           this.keyboard.idKeyboard = response.data.id;
           console.log(response.data);
           this.submitted = true;
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
     },
     newKeyboard() {
       this.submitted = false;
       this.keyboard = {};
-    }
+    },
   },
-}
+};
 </script>
 
 <style>
-
 </style>
