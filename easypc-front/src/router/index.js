@@ -7,8 +7,10 @@ import Admin from '@/pages/Admin'
 import Home from '@/pages/Home'
 import Summary from '@/pages/Summary'
 import ShowRec from '@/pages/ShowRecommendation'
+import InterSelection from '@/pages/InterSelection'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
+import LevelSelect from '@/pages/LevelSelect'
 
 
 Vue.use(Router)
@@ -53,6 +55,11 @@ export default new Router({
         },
         {
 
+            path: '/InterSelection',
+            name: 'InterSelection',
+            component: InterSelection
+        },
+        {
             path: '/login',
             name: 'Login',
             component: Login
@@ -62,6 +69,12 @@ export default new Router({
             path: '/SignUp',
             name: 'SignUp',
             component: Register
+        },
+        {
+
+            path: '/LevelSelect',
+            name: 'LevelSelect',
+            component: LevelSelect
         },
 
     ]

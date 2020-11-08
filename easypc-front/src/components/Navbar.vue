@@ -2,7 +2,7 @@
   <div class="center">
     <nav
       class="navbar navbar-dark sticky-top navbar-expand-lg justify-content-right"
-      style="background-color: #3b1664;"
+      style="background-color: #0f3057;"
     >
       <button
         class="navbar-toggler"
@@ -26,7 +26,7 @@
             <vs-button
               class="login-button"
               
-              color="#478414"
+              color="#81b214"
               block
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -41,7 +41,7 @@
             <router-link to="SignUp">
             <vs-button
               class="login-button"
-              color="#A89C08"
+              color="#3B1"
               block
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
@@ -61,6 +61,7 @@ export default {
   components: {},
   data: () => ({
     loggedIn: false,
+    active: 0
   }),
   methods: {},
 };
@@ -68,8 +69,9 @@ export default {
 
 <style scoped>
 .login-button {
-  color: #74233b;
-  font-size: calc(1.1rem + 1.2vw);
-  font-family: "Poppins", sans-serif;
+  color: #e0ece4;
+  font-size:calc(1.1rem + 1.2vw);
+  font-family: 'Poppins', sans-serif
+  
 }
 </style>

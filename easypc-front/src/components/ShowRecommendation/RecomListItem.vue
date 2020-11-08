@@ -9,11 +9,6 @@
         <div class="col-8">
           <v-row align="center">
             <v-col cols="12">
-              <!--<RecomSelect
-                v-bind:partesList="partes"
-                :defaultPart="Parte.model"
-                ->parte_pics[pic_idx]
-              />-->
               <v-select
               :items="parte_models"
               dense
@@ -110,7 +105,6 @@ export default {
 
     forceRerender() {
       this.renderComponent = false;
-      //console.log("ID: "+ this.id);
       this.$nextTick(() => {
         this.renderComponent = true;
       });

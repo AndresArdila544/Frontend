@@ -47,6 +47,7 @@ const store = new Vuex.Store({
       a1: '',
       a2: '',
       a3: '',
+      InterSelection: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
   },
   
   getters: {
@@ -58,6 +59,9 @@ const store = new Vuex.Store({
     },
     getA3: state =>{
       return state.a3
+    },
+    getInterSelection: state =>{
+      return state.InterSelection
     },
     getCount: state => {
       return state.count
@@ -115,6 +119,9 @@ const store = new Vuex.Store({
     },
     setA3(state,n){
       state.a3 = n
+    },
+    setInterSelection(state,n){
+      state.InterSelection[n[0]] = n[1]
     },
     setBudget(state, n){
       state.budget = n
