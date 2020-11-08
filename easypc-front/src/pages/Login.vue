@@ -1,14 +1,14 @@
 <template>
   <div class="row">
-    <v-card color="#837B1B" class="col col-lg-6 offset-lg-3 col-12">
+    <v-card color="#837B1B" class="col col-md-8 col-lg-6 offset-lg-3 offset-md-0 mx-auto">
       <div class="col-12 mx-auto">
         <div>
           <form class="form-inline" @submit="login">
-            <v-title class="col-12 text-center mb-5 titulo-login">Iniciar Sesi&oacute;n</v-title>
+            <div class="col-12 text-center mb-5 titulo-login d-none d-sm-block">Iniciar Sesi&oacute;n</div>
 
             <div class="col-12 form-group">
-              <label for="username" class="col col-md-6 col-12 campos-login">Nombre de Usuario</label>
-              <div class="col col-sm-10 col-md-9 offset-md-2">
+              <label for="username" class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start  campos-login">Nombre de Usuario</label>
+              <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
                 <v-text-field
                   v-model="username"
                   type="text"
@@ -21,27 +21,18 @@
               </div>
             </div>
             <div class="col-12 form-group">
-              <label for="password" class="col col-md-4 col-12 campos-login">Contrase&ntilde;a</label>
-              <div class="col col-sm-10 col-md-9 offset-md-2">
+              <label for="password" class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login">Contrase&ntilde;a</label>
+              <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
                 <v-text-field
                   v-model="password"
                   :append-icon="show_pass ? 'mdi-eye' : 'mdi-eye-off'"
                   :rules="[rules.required]"
                   :type="show_pass ? 'text' : 'password'"
+                  placeholder="12345"
                   color="rgb(59,22,100)"
                   @click:append="show_pass = !show_pass"
                 ></v-text-field>
               </div>
-            </div>
-
-            <div class="col-12 col-sm-12 col-md-5 text-center mb-3 mx-auto">
-              <span class>
-                <small>
-                  <router-link
-                    :to="{ name: 'SignUp' }"
-                  >&iquest;No tienes una cuenta? &iexcl;Registrate!</router-link>
-                </small>
-              </span>
             </div>
             <div class="col-12 col-sm-12 col-md-10 mb-3">
               <vs-button
@@ -52,6 +43,20 @@
                 <h2>Iniciar Sesi&oacute;n</h2>
               </vs-button>
             </div>
+            <div class="col-12 col-sm-12 col-md-5 text-center mb-3 mx-auto">
+              <span class>
+                <small>
+                  <router-link
+                    :to="{ name: 'SignUp' }"
+                  >
+                  <h4>
+                    &iquest;No tienes una cuenta? &iexcl;Registrate!
+                  </h4>
+                  </router-link>
+                </small>
+              </span>
+            </div>
+            
           </form>
         </div>
       </div>
