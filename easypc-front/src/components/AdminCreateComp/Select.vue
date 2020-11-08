@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <vs-select placeholder="Elige un Componente" filter color="warn" v-model="value" @change="update_value(value)" >
+  <div class="">
+    <vs-select placeholder="Elige un Componente" filter color="warn" v-model="value" @change="update_value(value)" class="opc" >
       <vs-option-group>
         <div slot="title">
             Componentes
@@ -48,6 +48,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

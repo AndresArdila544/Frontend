@@ -1,25 +1,125 @@
 <template>
-  <div>
-    <div v-if="!submitted">
-          <vs-input label-placeholder="Modelo" type="text" v-model="cpu.model" class="py-1"/>
-          <vs-input label-placeholder="Poder" type="number" v-model="cpu.power" class="py-1" />
-          <vs-input label-placeholder="# de Nucleos" type="number" v-model="cpu.cores" class="py-1" />
-          <vs-input label-placeholder="Velocidad" type="number" v-model="cpu.speed" class="py-1" />
-          <vs-input label-placeholder="Precio SpeedLogic" type="number" v-model="cpu.priceSL" class="py-1" />
-          <vs-input label-placeholder="Precio Tauret Computadores" type="number" v-model="cpu.priceTauret"  class="py-1"/> 
-          <vs-input label-placeholder="Precio Clones y Perifericos" type="number" v-model="cpu.priceCyP" class="py-1"/>
-          <vs-input label-placeholder="Link SpeedLogic" type="text" v-model="cpu.linkSL" class="py-1" />
-          <vs-input label-placeholder="Link Tauret Computadores" type="text" v-model="cpu.linkTauret"  class="py-1"/>
-          <vs-input label-placeholder="Link Clones y Perifericos" type="text" v-model="cpu.linkCyP" class="py-1"/>
-          <vs-input label-placeholder="Link Imagen" type="text" v-model="cpu.linkPicture" class="py-1"/>
-          <vs-input label-placeholder="Link Benchmark" type="text" v-model="cpu.linkBenchmark" class="py-1"/>
-      <vs-button @click="saveCPU">Añadir CPU </vs-button>
-  </div>
-      <div v-else>
-      <h4>Has añadido una CPU!</h4>
-      <vs-button @click="newCPU">Crear otra CPU</vs-button>
+  <v-form class="">
+    <div v-if="!submitted" class="row">
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+         label="Modelo"
+         required
+         v-model="cpu.model"
+         :rules="required"
+         class=""
+         color="rgb(59,22,100)"
+         hint="Nombre del Producto/Parte"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 ">
+        <v-text-field 
+         label="Poder" 
+         type="number" 
+         suffix="W" 
+         v-model="cpu.power" 
+         class=""
+         color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+         label="# de Nucleos"
+         border type="number" 
+         v-model="cpu.cores" 
+         class=""
+         color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field
+         label="Velocidad" 
+         border  type="number" 
+         v-model="cpu.speed" 
+         class=""
+         suffix="GHz" 
+         color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+         label="Precio SpeedLogic" 
+         border type="number" 
+         v-model="cpu.priceSL" 
+         class="" 
+         color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field 
+         label="Precio Tauret Computadores" 
+         border type="number" 
+         v-model="cpu.priceTauret"  
+         class=""
+         color="rgb(59,22,100)"/> 
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field
+         label="Precio Clones y Perifericos" 
+         border type="number" 
+         v-model="cpu.priceCyP" 
+         class=""
+         color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field 
+        label="Link SpeedLogic" 
+        type="url" 
+        border 
+        v-model="cpu.linkSL" 
+        class=""
+        color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+        label="Link Tauret Computadores" 
+        border type="url" 
+        v-model="cpu.linkTauret"  
+        class=""
+        color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field 
+        label="Link Clones y Perifericos" 
+        type="url" 
+        v-model="cpu.linkCyP" 
+        class=""
+        color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12 offset-md-2 offset-sm-0">
+        <v-text-field 
+        label="Link Imagen" 
+        type="url" border 
+        v-model="cpu.linkPicture" 
+        class=""
+        color="rgb(59,22,100)"/>
+      </div>
+      <div class="col col-sm-8 col-md-4 col-12">
+        <v-text-field 
+        label="Link Benchmark" 
+        type="url" 
+        v-model="cpu.linkBenchmark" 
+        class=""
+        color="rgb(59,22,100)"/>
+      </div>
+      <div class="col  col-xs-10 col-sm-10 col-md-4 col-12 offset-sm-2 offset-md-8">
+        <vs-button 
+         @click="saveCPU"
+         block
+         color="rgb(59,22,100)"
+         class=" boton-crear"
+        >
+         Añadir CPU 
+        </vs-button>
       </div>
   </div>
+      <div v-else class="col-12">
+        <h4>Has añadido una CPU!</h4>
+        <div class="">
+          <vs-button @click="newCPU">Crear otra CPU</vs-button>
+        </div>
+      </div>
+  </v-form>
 </template>
 
 <script>
@@ -33,19 +133,22 @@ export default {
       cpu: {
         idCPU: null,
         model: "",
-        power: 0,
-        cores: 0,
-        speed: 0,
-        priceSL: 0,
-        priceTauret: 0,
-        priceCyP: 0,
+        power: '',
+        cores:'',
+        speed: '',
+        priceSL: '',
+        priceTauret: '',
+        priceCyP: '',
         linkSL: "",
         linkTauret: "",
         linkCyP: "",
         linkBenchmark: "",
         linkPicture: "",
       },
-      submitted: false
+      submitted: false,
+      required: [
+        value => !!value || 'Este campo es obligatorio.',
+      ],
     };
   },
   methods:{
@@ -85,5 +188,9 @@ export default {
 </script>
 
 <style>
-
+.boton-crear {
+  text-align: center;
+  font-size: calc(1.6rem + 1.2vw);
+  font-family: 'Poppins', sans-serif; 
+}
 </style>

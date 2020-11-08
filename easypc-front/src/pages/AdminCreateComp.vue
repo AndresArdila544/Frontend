@@ -1,22 +1,22 @@
 <template>
-  <div class="container">
-    <div class="row">
+  <div class="">
+    <div class="">
       <div class="col titulo-crear">
         <h1>Crear un Componente</h1>
       </div>
     </div>
-    <div class="row">
+    <div class="">
       <div class="col subtitulo-crear">
         <h3>Seleccione un tipo de componente</h3>
       </div>
     </div>
-    <div class="row">
-      <div class="col d-flex justify-content-center">
-        <Select @update-value="cambiarValor" class="align-self-center"/>
+    <div class="">
+      <div class="col-12 d-flex justify-content-sm-start justify-content-md-center ">
+        <Select @update-value="cambiarValor" class="align-self-center "/>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
+    <div class="">
+      <div class="col-12">
         <Form :part="value"/> 
       </div>  
     </div>
@@ -56,6 +56,7 @@ export default {
   font-size: calc(2rem + 3.2vw);
   font-family: 'Poppins', sans-serif;
 }
+
 </style>
 
         
