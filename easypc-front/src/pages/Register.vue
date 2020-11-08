@@ -1,73 +1,79 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-2">
-        <div class="mt-5">
-          <form
-            class="form-inline"
-            @submit="register"
-          >
-            <h2 class="col-12 text-center text-primary mt-3 mb-5">
-              Registrate :)
-            </h2>
+  <div class="row">
+    <v-card color="#837B1B" class="col col-md-8 col-lg-6 offset-lg-3 offset-md-0 mx-auto">
+      <div class="col-12 mx-auto">
+        <div>
+          <form class="form-inline" @submit="register">
+            <div class="col-12 text-center mb-5 titulo-register d-none d-sm-block">Registrate</div>
+            <div class="form-group col-12">
+              <label
+                for="username"
+                class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-register"
+              >Nombre de Usuario</label>
+              <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+                <v-text-field
+                  id="username"
+                  type="text"
+                  :rules="[rules.required]"
+                  required
+                  placeholder="Vamos se creativo."
+                  v-model="username"
+                  autocomplete="username"
+                  append-icon
+                  color="rgb(59,22,100)"
+                ></v-text-field>
+              </div>
+            </div>
+            <div class="form-group col-12">
+              <label
+                for="password1"
+                class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-register"
+              >Contrase&ntilde;a</label>
+              <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+                <v-text-field
+                  id="password1"
+                  type="password"
+                  :rules="[rules.required]"
+                  placeholder="Que no se te olvide."
+                  v-model="password1"
+                  autocomplete="new-password"
+                  required
+                  color="rgb(59,22,100)"
+                ></v-text-field>
+              </div>
+            </div>
 
             <div class="form-group col-12">
-              <label for="username" class="custom-label col-md-3"
-                >Nombre de Usuario</label
-              >
-              <input
-                id="username"
-                class="form-control col-12 col-sm-10 col-md-7 offset-sm-1"
-                type="text"
-                placeholder="Nombres"
-                v-model="username"
-                required
-              />
+              <label for="password2" class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-register">Verificar Contraseña</label>
+              <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+                <v-text-field
+                  id="password2"
+                  type="password"
+                  placeholder="Repitela si puedes."
+                  v-model="password2"
+                  @change="verification"
+                  :rules="[rules.required]"
+                  autocomplete="new-password"
+                  required
+                  color="rgb(59,22,100)"
+                ></v-text-field>
+              </div>
             </div>
-
-            <div class="form-group col-12">
-              <label for="password" class="custom-label col-md-3"
-                >Contrase&ntilde;a</label
-              >
-              <input
-                id="password"
-                class="form-control col-12 col-sm-10 col-md-7 offset-sm-1"
-                type="password"
-                placeholder="Contraseña"
-                v-model="password1"
-                required
-              />
-            </div>
-
-            <div class="form-group col-12">
-              <label for="password" class="custom-label col-md-3"
-                >Verificar Contraseña</label
-              >
-              <input
-                id="password"
-                class="form-control col-12 col-sm-10 col-md-7 offset-sm-1"
-                type="password"
-                placeholder="Contraseña"
-                v-model="password2"
-                @change="verification"
-                required
-              />
-            </div>
-            <div v-if="ver== false">
-                <p>Claves diferentes</p>               
-            </div>
-            <div class="col-12 col-sm-5 col-md-4 mb-3">
-              <button
-                class="col-sm-10 col-md-10 offset-sm-1 offset-md-2 btn btn-primary"
+            <div class="col-12 col-sm-12 col-md-10 mb-3">
+              <vs-button
+                class="col col-sm-10 col-md-10 offset-sm-1 offset-md-2 boton-register"
                 type="submit"
+                color="rgb(59,22,100)"
               >
+              <h2>
                 Registrate
-              </button>
+              </h2>
+              </vs-button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </v-card>
   </div>
 </template>
 
@@ -80,13 +86,16 @@ export default {
       password1: "",
       password2: "",
       ver: false,
+      rules: {
+        required: (value) => !!value || "Required.",
+      },
     };
   },
   methods: {
     register(event) {
       if (this.verification(this.password1, this.password2) == false) {
-          console.log(":)")
-          alert("Clave no igual")
+        console.log(":)");
+        alert("Clave no igual");
       } else {
         var data = {
           username: this.username,
@@ -115,17 +124,31 @@ export default {
     },
 
     verification(pass1, pass2) {
-      var isEqual=false;
+      var isEqual = false;
       if (pass1 === pass2) {
-        isEqual=true
-        this.ver=isEqual
-        return isEqual
+        isEqual = true;
+        this.ver = isEqual;
+        return isEqual;
       }
       return isEqual;
-    }
+    },
   },
 };
 </script>
 
-<style>
+<style lang="scss">
+.titulo-register {
+  text-align: center;
+  font-size: calc(1.9rem + 1.8vw);
+  font-family: "Poppins", sans-serif;
+}
+.boton-register {
+  text-align: center;
+  font-size: calc(1.2rem + 0.2vw);
+  font-family: "Poppins", sans-serif;
+}
+.campos-register {
+  font-size: calc(1rem + 0.5vw);
+  font-family: "Poppins", sans-serif;
+}
 </style>
