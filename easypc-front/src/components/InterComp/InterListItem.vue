@@ -1,27 +1,27 @@
 <template>
   <div>
     <div>
-      <InterTitle v-bind:count="count"/>
+      <InterTitle v-bind:count="count" />
       <div class="row align-items-center">
         <div class="col col-md-4 col-12">
-          <InterDescription v-bind:count="count"/>
+          <InterDescription v-bind:count="count" />
         </div>
-        
+
         <div class="col col-md-4 col-12">
-            <v-select
-              :items="parte_models"
-              dense
-              outlined
-              hide-details
-              menu-props="auto"
-              single-line
-              v-model="defaultPart"
-              @change="setImage()"
-            ></v-select>
+          <v-select
+            :items="parte_models"
+            dense
+            outlined
+            hide-details
+            menu-props="auto"
+            single-line
+            v-model="defaultPart"
+            @change="setImage()"
+          ></v-select>
         </div>
         <div class="col col-md-4 col-12 container-fluid">
-            <ShowImage v-bind:imgURL="currentImageURL" v-if="renderComponent">
-            </ShowImage>
+          <ShowImage v-bind:imgURL="currentImageURL" v-if="renderComponent">
+          </ShowImage>
         </div>
       </div>
     </div>
@@ -32,14 +32,14 @@
 import ShowImage from "../ShowImage";
 import EasyPCService from "../../services/EasyPCService";
 import InterDescription from "./InterDescription";
-import InterTitle from "./InterTitle"
+import InterTitle from "./InterTitle";
 
 export default {
   name: "InterListItem",
   components: {
     ShowImage,
     InterDescription,
-    InterTitle
+    InterTitle,
   },
   data: () => ({
     partes: [],
@@ -60,7 +60,6 @@ export default {
       EasyPCService.getAll(this.tipo)
         .then((response) => {
           this.partes = response.data;
-           
           for (var i = 0; i < this.partes.length; i++) {
             this.parte_models.push(this.partes[i].model);
             this.parte_pics.push(this.partes[i].linkPicture);
@@ -89,16 +88,32 @@ export default {
     sendToStore() {
       var a = [this.count, this.partesId[this.pic_idx]];
       this.$store.commit("setInterSelection", a);
-      console.log(this.$store.getters["getInterSelection"]);
+    },
+
+    getCompatibleMB() {
+      var idCPU = this.$store.getters["getInterSelection"][0];
+      EasyPCService.getCompatibleMBs(idCPU)
+      .then((response) => {
+          this.partes = response.data;
+          for (var i = 0; i < this.partes.length; i++) {
+            this.parte_models.push(this.partes[i].model);
+            this.parte_pics.push(this.partes[i].linkPicture);
+            this.partesId.push(this.partes[i][Object.keys(this.partes[i])[0]]);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
   mounted() {
-    this.retrieveParts();
+    if (this.tipo == "motherboards") {
+      this.getCompatibleMB();
+    } else {
+      this.retrieveParts();
+    }
   },
   beforeMount() {},
   beforeUpdate() {},
 };
 </script>
-
-<style>
-</style>

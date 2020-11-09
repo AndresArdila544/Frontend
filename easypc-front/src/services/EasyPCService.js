@@ -228,6 +228,10 @@ class EasyPCService {
     return http.post("api/motherboard/compatible-cpus/"+ id,data);
   }
 
+  getCompatibleMBs(id){
+    return http.get("api/cpu/compatible/"+id);
+  }
+
   authentication(username, password) {
     return http.post("/oauth/token", // URL
       {}, // Body

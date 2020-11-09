@@ -53,5 +53,5 @@ export default {
  h2{
   text-align: left;
   font-family: "Poppins", sans-serif;
-  };
+  }
 </style>
