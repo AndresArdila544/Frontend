@@ -94,7 +94,6 @@ export default {
   methods: {
     register(event) {
       if (this.verification(this.password1, this.password2) == false) {
-        console.log(":)");
         alert("Clave no igual");
       } else {
         var data = {

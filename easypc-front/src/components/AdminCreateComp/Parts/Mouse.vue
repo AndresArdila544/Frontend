@@ -117,7 +117,7 @@ export default {
       EasyPCService.createMouse(data)
         .then((response) => {
           this.mouse.idMouse = response.data.id;
-          console.log(response.data);
+           
           this.submitted = true;
         })
         .catch((e) => {

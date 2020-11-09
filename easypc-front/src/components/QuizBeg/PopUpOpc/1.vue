@@ -4,7 +4,7 @@
         <Pregunta12/>
         <Pregunta13/>
         <div class="col col-12">
-          <vs-button @click="pushAnswer()" to='/ShowRec' block class="boton-pop" color="rgb(59,22,100)">Aceptar</vs-button>
+          <vs-button @click="pushAnswer()" to='/Summary' block class="boton-pop" color="rgb(59,22,100)">Aceptar</vs-button>
         </div>
   </div>
 </template>

@@ -11,7 +11,7 @@
             circle
             block
             animation-type="rotate"
-            to="QuizB"
+            to="LevelSelect"
             class="boton-home"
           > 
             <p>
@@ -55,7 +55,7 @@ export default {
   text-align: center;
   font-size: calc(2rem + 3.2vw);
   font-family: 'Poppins', sans-serif;
-  color:#489607;
+  color:#e0ece4;
   
 }
 </style>

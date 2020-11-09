@@ -114,7 +114,7 @@ export default {
       EasyPCService.createKeyboard(data)
         .then((response) => {
           this.keyboard.idKeyboard = response.data.id;
-          console.log(response.data);
+           
           this.submitted = true;
         })
         .catch((e) => {

@@ -69,7 +69,7 @@ export default {
           this.CurrentKeyboard = this.CurrentBuild.keyboard;
           this.CurrentMonitor = this.CurrentBuild.monitor;
           this.CurrentCase = this.CurrentBuild.caseObj;
-          //console.log(response.data);
+          // 
         })
         .catch((e) => {
           console.log(e);

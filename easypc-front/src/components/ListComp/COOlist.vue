@@ -69,7 +69,7 @@ export default {
         .getAllCoolings()
         .then((response) => {
           this.coolings = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

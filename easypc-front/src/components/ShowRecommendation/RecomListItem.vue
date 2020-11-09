@@ -1,14 +1,12 @@
 <template>
-  <div class="container">
-    <div class="container">
+  <div>
+    <div>
       <div class="row align-items-center">
-        <div class="col">
+        <div class="col col col-md-4 col-12 container-fluid">
           <ShowImage v-bind:imgURL= defaultImage v-if="renderComponent"> </ShowImage>
           
         </div>
         <div class="col-8">
-          <v-row align="center">
-            <v-col cols="12">
               <v-select
               :items="parte_models"
               dense
@@ -19,9 +17,6 @@
               v-model="defaultPart"
               @change="setImage()"
             ></v-select>
-              
-            </v-col>
-          </v-row>
         </div>
       </div>
     </div>
@@ -66,19 +61,11 @@ export default {
     defaultImage: String
   },
   methods: {
-    buildArray() {
-      if (this.flag == false) {
-        this.flag = true;
-        this.partes.push(this.Parte.model);
-        //this.partes.push(this.cpu)
-      }
-    },
 
     retrieveParts() {
       EasyPCService.getAll(this.tipo)
         .then((response) => {
           this.partes = response.data;
-
           for (var i=0;i<this.partes.length;i++) {
             this.parte_models.push(this.partes[i].model)
             this.parte_pics.push(this.partes[i].linkPicture)
@@ -96,23 +83,14 @@ export default {
 
     forceRerender() {
       this.renderComponent = false;
-      
-      this.$nextTick(() => {
         this.renderComponent = true;
-      });
     },
   },
   mounted() {
     this.retrieveParts();
     
   },
-  beforeMount(){
-    
-  },
-  beforeUpdate() {
-    
-    this.buildArray();
-  },
+
 };
 </script>
 

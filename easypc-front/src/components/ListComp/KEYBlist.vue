@@ -70,7 +70,7 @@ export default {
         .getAllKeyboards()
         .then((response) => {
           this.keyboards = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

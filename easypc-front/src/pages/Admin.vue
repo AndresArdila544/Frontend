@@ -31,6 +31,16 @@
                 Ver Lista de Componentes
         </vs-button>
       </div>
+      <div class="col col-md-4">
+        <vs-button
+              class="botones-admin"
+              color="rgb(59,22,100)"
+              block
+              to="AdminCp"
+              >
+                Editar compatibilidad entre componentes
+        </vs-button>
+      </div>
     </div>
   </div>
 </template>

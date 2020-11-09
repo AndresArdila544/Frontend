@@ -113,7 +113,7 @@ export default {
       EasyPCService.createMonitor(data)
         .then((response) => {
           this.monitor.idMonitor = response.data.id;
-          console.log(response.data);
+           
           this.submitted = true;
         })
         .catch((e) => {
