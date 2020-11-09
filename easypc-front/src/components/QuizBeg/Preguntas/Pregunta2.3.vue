@@ -2,7 +2,7 @@
   <div>
     <h1 class="col pregunta">¿Con qué calidad realizas tu trabajo?</h1>
     <div class="col col-12">
-      <div class="col col-md-10 opciones">
+      <div class="col col-md-12 opciones">
         <vs-radio
           v-model="picked"
           class="d-flex justify-content-start"
@@ -12,7 +12,7 @@
         <div class="d-block d-sm-none">Normal</div>
          </vs-radio>
       </div>
-      <div class="col col-md-10 opciones">
+      <div class="col col-md-12 opciones">
         <vs-radio
           v-model="picked"
           class="d-flex justify-content-start"
@@ -22,7 +22,7 @@
         <div class="d-block d-sm-none">Alta</div>
          </vs-radio>
       </div>
-      <div class="col col-md-10 opciones">
+      <div class="col col-md-12 opciones">
         <vs-radio
           v-model="picked"
           class="pb-3 d-flex justify-content-start"

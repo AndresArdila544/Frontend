@@ -2,7 +2,7 @@
   <div class>
     
     <p id class="Summary pt-4">Resumen # {{CurrentBuild.idBuild}}</p>
-    <p class="user">Build para {{CurrentBuild.user.username}}</p>
+    <p class="user">Build para {{user}}</p>
     <div class="pt-2 parts row">
       <div class="p-1 col-12 col-md-6" v-if="CurrentCPU">
         <ComponentView v-bind:Parte="CurrentCPU"  tipo="CPU" />
@@ -85,6 +85,7 @@ export default {
       CurrentKeyboard: [],
       CurrentMonitor: [],
       CurrentCase: [],
+      user: "",
       Total: Number,
     };
   },
@@ -108,6 +109,7 @@ export default {
           this.CurrentKeyboard = this.CurrentBuild.keyboard;
           this.CurrentMonitor = this.CurrentBuild.monitor;
           this.CurrentCase = this.CurrentBuild.caseObj;
+          this.user = this.CurrentBuild.user.username;
         })
         .catch((e) => {
           console.log(e);

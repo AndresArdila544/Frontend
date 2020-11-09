@@ -27,9 +27,7 @@ export default {
         this.$store.commit("pushAnswers",this.$store.getters["getCount"])
         this.$store.commit("pushAnswers",this.$store.getters["getA1"])
         this.$store.commit("pushAnswers",this.$store.getters["getA2"])
-        this.$store.commit("pushAnswers",this.$store.getters["getA3"])
-        console.log(this.$store.getters["getAnswers"])
-        
+        this.$store.commit("pushAnswers",this.$store.getters["getA3"]) 
       }
     }
 }
