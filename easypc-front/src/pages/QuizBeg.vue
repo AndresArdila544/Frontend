@@ -1,23 +1,20 @@
 <template>
-  <div>
-    <div class="container-fluid">
+  <div class="container">
+    <div class="">
       <p class="titulo-quiz d-none d-md-block">Cuentanos tus necesidades!</p>
       <PreguntaInicial/>
-      <Slider/>
     </div>
   </div>
 </template>
 
 <script>
 import PreguntaInicial from '../components/QuizBeg/PreguntaInicial.vue'
-import Slider from "../components/Slider.vue"
+
 
 export default {
   name: "QuizBeg",
   components: {
     PreguntaInicial,
-    
-    Slider
   },
   methods: {
     increment() {
