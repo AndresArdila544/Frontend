@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="row">
         <Pregunta11/>   
         <Pregunta12/>
         <Pregunta13/>
-        <div class="">
-          <vs-button @click="pushAnswer()"  id="botones" to='/ShowRec' block>Aceptar</vs-button>
+        <div class="col col-12">
+          <vs-button @click="pushAnswer()" to='/ShowRec' block class="boton-pop" color="rgb(59,22,100)">Aceptar</vs-button>
         </div>
   </div>
 </template>
@@ -39,5 +39,9 @@ export default {
 </script>
 
 <style>
-
+.boton-pop {
+  text-align: center;
+  font-size: calc(1.2rem + 0.2vw);
+  font-family: "Poppins", sans-serif;
+}
 </style>

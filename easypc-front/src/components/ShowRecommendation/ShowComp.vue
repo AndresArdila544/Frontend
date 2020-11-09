@@ -97,15 +97,11 @@
 
 <script>
 import EasyPCService from "../../services/EasyPCService";
-//import ShowImage from "../ShowImage.vue";
-//import ShowLink from "../ShowLinkOverTxt.vue";
 import RecomListItem from "./RecomListItem.vue";
 
 export default {
   name: "ShowComp",
   components: {
-    //ShowImage,
-    //ShowLink,
     RecomListItem,
   },
   data() {
@@ -130,6 +126,7 @@ export default {
   },
   props: {},
   methods: {
+    
     retrieveBuildPrice(answers) {
       EasyPCService.getRecommendedPrice(answers)
         .then((response) => {
@@ -155,7 +152,7 @@ export default {
           this.CurrentKeyboard = this.CurrentBuild.keyboard;
           this.CurrentMonitor = this.CurrentBuild.monitor;
           this.CurrentCase = this.CurrentBuild.caseObj;
-           
+          
         })
         .catch((e) => {
           console.log(e);

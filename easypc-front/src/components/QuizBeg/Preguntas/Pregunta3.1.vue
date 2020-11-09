@@ -1,12 +1,21 @@
 <template>
   <div>
-    <div id="radio" class="center">
-      <p id="pregunta" class="pt-1 d-flex justify-content-start">¿Qué programas necesitas correr?</p>
-      <vs-radio v-model="picked" class="d-flex justify-content-start" val="1"> Excel y Office </vs-radio>
-      <vs-radio v-model="picked" class="d-flex justify-content-start" val="2"> MatLab y software de simulación  </vs-radio>
+      <h1 class="col pregunta">¿Qué programas necesitas correr?</h1>
+      <div class="col col-12">
+        <div class="col col-md-12 opciones">
+      <vs-radio v-model="picked" class="d-flex justify-content-start" val="1"> Office </vs-radio>
+
+        </div>
+        <div class="col col-md-12 opciones">
+      <vs-radio v-model="picked" class="d-flex justify-content-start" val="2"> Programaci&oacute;n  </vs-radio>
+
+        </div>
+        <div class="col col-md-12 opciones">
       <vs-radio  v-model="picked" class="d-flex justify-content-start" val="3"> AutoCAD </vs-radio>
+
+        </div>
+      </div>
       <p> {{setAnswer()}}</p>
-    </div>
   </div>
 </template>
 

@@ -1,58 +1,64 @@
 <template>
-  <div class="">
-    <p id="pregunta" class="pt-3 d-flex justify-content-start">¿Qué videojuegos quieres correr?</p>
-    <div class="d-flex flex-column bd-highlight justify-content-start" >
-      <div id="radio">
-         <vs-checkbox   indeterminate val="1" class="" v-model="options">Minecraft</vs-checkbox>
+  <div class="container">
+    <h1 class="col pregunta">¿Qué videojuegos te interesan?</h1>
+    <div class="col col-12">
+      <div class="col col-md-10 opciones">
+        <v-checkbox value="1" v-model="options" color="indigo darken-3">
+          <template v-slot:label>
+          <h3>Minecraft</h3>
+          </template>
+        </v-checkbox>
       </div>
-      <vs-checkbox id="radio"  indeterminate val="2" class="" v-model="options">League of legends</vs-checkbox>
-      <vs-checkbox id="radio"  indeterminate val="3" class="" v-model="options">Fornite</vs-checkbox>
-      <vs-checkbox id="radio"  indeterminate val="4" class="" v-model="options">Call of duty</vs-checkbox>
-    <p> {{setAnswer()}}</p>
+      <div class="col col-md-6 col-12 opciones">
+        <v-checkbox value="2" v-model="options" color="indigo darken-3">
+          <template v-slot:label>
+          <h3>League of legends</h3>
+          </template>
+        </v-checkbox>
+      </div>
+      <div class="col col-md-6 col-12 opciones" >
+        <v-checkbox value="3" v-model="options" color="indigo darken-3">
+          <template v-slot:label>
+          <h3>Fornite</h3>
+          </template>
+        </v-checkbox>
+      </div>
+      <div class="col opciones">
+        <v-checkbox value="4" v-model="options" color="indigo darken-3">
+          <template v-slot:label>
+            <div class="">
+              <h3>Call of duty</h3>
+            </div>
+          </template>
+        </v-checkbox>
+      </div>
+      <p>{{setAnswer()}}</p>
     </div>
   </div>
 </template>
 
 <script>
-
-
-
 export default {
   data: () => ({
     options: [],
-    max: 0
+    max: 0,
   }),
-  methods:{
-    getMaxVal(){
+  methods: {
+    getMaxVal() {
       var temp = "0";
-      for(var i=0; i<this.options.length;i++){
-        if(this.options[i]>temp){
-          temp=this.options[i];          
+      for (var i = 0; i < this.options.length; i++) {
+        if (this.options[i] > temp) {
+          temp = this.options[i];
         }
-      } 
-      return temp     
+      }
+      return temp;
     },
-    setAnswer(){
-      this.$store.commit("setA1",this.getMaxVal())
-    }
-  }
-
-
-
+    setAnswer() {
+      this.$store.commit("setA1", this.getMaxVal());
+    },
+  },
 };
 </script>
 
-<style  scoped>
-#pregunta {
-  font-size: 4vw;
-}
-#opcion {
-  font-size: 3vw;
-}
-#radio {
-  font-size: 2.7vw
-}
-.vs-checkbox {
-  font-size: 2.7vw
-}
+<style scoped>
 </style>

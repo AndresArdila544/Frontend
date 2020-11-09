@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="">
-      <p class="titulo-quiz d-none d-md-block">Cuentanos tus necesidades!</p>
+      <p class="titulo-quiz d-none d-sm-block">Cuentanos tus necesidades!</p>
       <PreguntaInicial/>
     </div>
   </div>

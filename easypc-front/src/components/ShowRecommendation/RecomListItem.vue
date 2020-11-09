@@ -6,7 +6,7 @@
           <ShowImage v-bind:imgURL= defaultImage v-if="renderComponent"> </ShowImage>
           
         </div>
-        <div class="col col-md-6 col-12">
+        <div class="col-8">
               <v-select
               :items="parte_models"
               dense
@@ -66,18 +66,15 @@ export default {
       EasyPCService.getAll(this.tipo)
         .then((response) => {
           this.partes = response.data;
-           
           for (var i=0;i<this.partes.length;i++) {
             this.parte_models.push(this.partes[i].model)
             this.parte_pics.push(this.partes[i].linkPicture)
           }
-          
         })
         .catch((e) => {
           console.log(e);
         });
     },
-
     setImage: function(){
       this.pic_idx=this.parte_models.indexOf(this.defaultPart)
       this.defaultImage = this.parte_pics[this.pic_idx]
@@ -86,9 +83,7 @@ export default {
 
     forceRerender() {
       this.renderComponent = false;
-      this.$nextTick(() => {
         this.renderComponent = true;
-      });
     },
   },
   mounted() {

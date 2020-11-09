@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="row">
         <Pregunta21 />
         <Pregunta22 />
         <Pregunta23 />
-        <div class="">
-          <vs-button @click="pushAnswer()" id="botones" to='/ShowRec' block>Aceptar</vs-button>
+        <div class="col col-12">
+          <vs-button @click="pushAnswer()" to='/ShowRec' block class="boton-pop" color="rgb(59,22,100)">Aceptar</vs-button>
         </div>
   </div>
 </template>
@@ -28,12 +28,15 @@ export default {
         this.$store.commit("pushAnswers",this.$store.getters["getA1"])
         this.$store.commit("pushAnswers",this.$store.getters["getA2"])
         this.$store.commit("pushAnswers",this.$store.getters["getA3"])
-        
       }
     }
 }
 </script>
 
-<style>
-
+<style lang="scss" >
+ .boton-pop {
+  text-align: center;
+  font-size: calc(1.2rem + 0.2vw);
+  font-family: "Poppins", sans-serif;
+}
 </style>
