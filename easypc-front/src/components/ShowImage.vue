@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <p><img class="img-fluid mx-auto" v-bind:src="imgURL" height="400" alt="" /></p>
-    
+  <div class="row">
+    <img  class="col img-fluid " v-bind:src="imgURL" height="100%" alt="" />
   </div>
 </template>
 

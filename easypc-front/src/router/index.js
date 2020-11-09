@@ -11,7 +11,7 @@ import InterSelection from '@/pages/InterSelection'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 import LevelSelect from '@/pages/LevelSelect'
-
+import AdminCp from '@/pages/AdminCompatibility'
 
 Vue.use(Router)
 
@@ -42,6 +42,11 @@ export default new Router({
             path: '/AdminD',
             name: 'AdminD',
             component: AdminD
+        },
+        {
+            path: '/AdminCp',
+            name: 'AdminCp',
+            component: AdminCp
         },
         {
             path: '/ShowRec',

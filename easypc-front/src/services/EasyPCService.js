@@ -211,43 +211,47 @@ class EasyPCService {
   }
 
 
-    createBuild(data) {
-      return http.post("api/build", data);
-    }
-  
-    deleteBuild(id) {
-      return http.delete("api/build/" + id);
-    }
+  createBuild(data) {
+    return http.post("api/build", data);
+  }
 
-    getBuildPriceById(id){
-      return http.get("api/build-price/" + id);
+  deleteBuild(id) {
+    return http.delete("api/build/" + id);
+  }
 
-    }
+  getBuildPriceById(id) {
+    return http.get("api/build-price/" + id);
 
-    authentication(username, password){
-      return http.post( "/oauth/token", // URL
-        { }, // Body
-        {
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            params: {
-                username: username,
-                password: password,
-                grant_type: 'password'
-            },
-            auth: {
-                username: "EZPC",
-                password: "lemon-squeezy",
-            }
+  }
+
+  createCompatibility(id,data){
+    return http.post("api/motherboard/compatible-cpus/"+ id,data);
+  }
+
+  authentication(username, password) {
+    return http.post("/oauth/token", // URL
+      {}, // Body
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        params: {
+          username: username,
+          password: password,
+          grant_type: 'password'
+        },
+        auth: {
+          username: "EZPC",
+          password: "lemon-squeezy",
         }
+      }
     );
-    }
+  }
 
-    register(data){
-      return http.post("api/user",data);
-    }
-    
+  register(data) {
+    return http.post("api/user", data);
+  }
+
 
 }
 

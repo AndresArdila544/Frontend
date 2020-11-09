@@ -2,48 +2,43 @@
   <div>
     <InterListItem
       v-bind:tipo="components[count]"
-      v-bind:count ="count"
+      v-bind:count="count"
       v-if="renderComponent"
     />
-    <v-layout align-end justify-end>
-     
-    
-    <vs-button
-      id="button"
-      class="d-flex"
-      @click="decrementCounter"
-      v-if="count>0"
-      >Volver</vs-button
-    >
-    <vs-button
-      id="button"
-      class="d-flex"
-      @click="incrementCounter"
-      v-if="skipable.includes(count)"
-      >Saltar</vs-button
-    >
-    <vs-button
-      id="button"
-      class="d-flex"
-      v-if="count==11"
-      to="/Summary"
-      >Terminar</vs-button
-    >
+    <div class="row">
+      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
+        <vs-button @click="decrementCounter" v-if="count > 0" block>
+          <h2>Volver</h2>
+        </vs-button>
+      </div>
+      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
+        <vs-button
+          @click="incrementCounter"
+          v-if="skipable.includes(count)"
+          block
+        >
+          <h2>Saltar</h2>
+        </vs-button>
+      </div>
+      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
+        <vs-button @click="selectPart" v-if="count != 11" block>
+          <h2>Siguiente</h2>
+        </vs-button>
+      </div>
 
-     <vs-button
-      id="button"
-      class="d-flex"
-      @click="selectPart"
-      v-if="count!=11"
-      >Siguiente</vs-button
-    >
-    </v-layout>
-    
+      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
+        <vs-button @click="sendBuild" v-if="count == 11" to="/Summary" block>
+          <h2>Terminar</h2>
+        </vs-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import InterListItem from "./InterListItem";
+import EasyPCService from "../../services/EasyPCService";
+
 export default {
   name: "InterComp",
   components: {
@@ -82,9 +77,24 @@ export default {
         "monitors",
         "cases",
       ],
-      skipable:[5,6,8,9,10],
+      skipable: [5, 6, 8, 9, 10],
       renderComponent: true,
       defaultPart: -1,
+      build: {
+        idCPU: "",
+        idMotherboard: "",
+        idRAM: "",
+        idGPU: "",
+        idCooling: "",
+        idSSD: "",
+        idHDD: "",
+        idPowerSupply: "",
+        idMouse: "",
+        idKeyboard: "",
+        idMonitor: "",
+        idCase: "",
+      },
+      buildId: "",
     };
   },
   methods: {
@@ -106,17 +116,74 @@ export default {
         this.renderComponent = true;
       });
     },
-    selectPart(){        
-        if(this.$store.getters["getInterSelection"][this.count] != -1){
-           this.incrementCounter()
-        } 
-    }
+    selectPart() {
+      if (this.$store.getters["getInterSelection"][this.count] != -1) {
+        this.incrementCounter();
+      }
+    },
+    sendBuild() {
+      this.build.idCPU = this.$store.getters["getInterSelection"][0];
+      this.build.idMotherboard = this.$store.getters["getInterSelection"][1];
+      this.build.idRAM = this.$store.getters["getInterSelection"][2];
+      this.build.idGPU = this.$store.getters["getInterSelection"][3];
+      this.build.idCooling = this.$store.getters["getInterSelection"][4];
+
+      if (this.$store.getters["getInterSelection"][5] == -1) {
+        this.build.idSSD = null;
+      } else {
+        this.build.idSSD = this.$store.getters["getInterSelection"][5];
+      }
+
+      if (this.$store.getters["getInterSelection"][6] == -1) {
+        this.build.idHDD = null;
+      } else {
+        this.build.idHDD = this.$store.getters["getInterSelection"][6];
+      }
+
+      this.build.idPowerSupply = this.$store.getters["getInterSelection"][7];
+
+      if (this.$store.getters["getInterSelection"][8] == -1) {
+        this.build.idMouse = null;
+      } else {
+        this.build.idMouse = this.$store.getters["getInterSelection"][8];
+      }
+
+      if (this.$store.getters["getInterSelection"][9] == -1) {
+        this.build.idKeyboard = null;
+      } else {
+        this.build.idKeyboard = this.$store.getters["getInterSelection"][9];
+      }
+
+      if (this.$store.getters["getInterSelection"][10] == -1) {
+        this.build.idMonitor = null;
+      } else {
+        this.build.idMonitor = this.$store.getters["getInterSelection"][10];
+      }
+      
+      this.build.idCase = this.$store.getters["getInterSelection"][11];
+
+      EasyPCService.createBuild(this.build)
+        .then((response) => {
+          this.buildId = response.data;
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+
+      this.$store.commit("setInterIDBuild", this.buildId);
+    },
   },
-  beforeMount(){
-      this.selectPart();
-  }
+  beforeMount() {
+    this.selectPart();
+  },
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+.boton-pop {
+  text-align: center;
+  font-size: calc(1.2rem + 1.2vw);
+  font-family: "Poppins", sans-serif;
+}
 </style>

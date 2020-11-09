@@ -66,13 +66,6 @@ export default {
     defaultImage: String
   },
   methods: {
-    buildArray() {
-      if (this.flag == false) {
-        this.flag = true;
-        this.partes.push(this.Parte.model);
-        //this.partes.push(this.cpu)
-      }
-    },
 
     retrieveParts() {
       EasyPCService.getAll(this.tipo)
@@ -83,22 +76,15 @@ export default {
             this.parte_models.push(this.partes[i].model)
             this.parte_pics.push(this.partes[i].linkPicture)
           }
-          // JSON are parsed automatically.
+          
         })
         .catch((e) => {
           console.log(e);
         });
     },
 
-    /*selectedValue() {
-      if (this.flag == false) {
-        this.flag = true;
-        this.selected = this.defaultPart;
-      }
-    },*/
     setImage: function(){
       this.pic_idx=this.parte_models.indexOf(this.defaultPart)
-      //console.log( this.pic_idx)
       this.defaultImage = this.parte_pics[this.pic_idx]
       this.forceRerender();
     },
@@ -114,13 +100,7 @@ export default {
     this.retrieveParts();
     
   },
-  beforeMount(){
-    
-  },
-  beforeUpdate() {
-    
-    this.buildArray();
-  },
+
 };
 </script>
 

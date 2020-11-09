@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div >
+    <div>
       <InterTitle v-bind:count="count"/>
       <div class="row align-items-center">
         <div class="col col-md-4 col-12">
@@ -19,7 +19,7 @@
               @change="setImage()"
             ></v-select>
         </div>
-        <div class="col col-md-4 col-12">
+        <div class="col col-md-4 col-12 container-fluid">
             <ShowImage v-bind:imgURL="currentImageURL" v-if="renderComponent">
             </ShowImage>
         </div>
