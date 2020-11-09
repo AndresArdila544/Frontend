@@ -37,7 +37,6 @@ const store = new Vuex.Store({
       a3: '',
       InterSelection: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       InterIDBuild: -1,
-      build:[{},{},{},{},{},{},{},{},{},{},{},{}]
   },
   
   getters: {
@@ -66,7 +65,7 @@ const store = new Vuex.Store({
     getBudget: state =>{
       return state.budget
     },
-    getInterIDBuildt: state =>{
+    getInterIDBuild: state =>{
       return state.InterIDBuild
     },
   },

@@ -1,7 +1,6 @@
 <template>
-  <div id="showrec" class="py-5 container-fluid">
-    <div class="container"></div>
-    <p id="tuPC" class="py-5">Este es tu PC</p>
+  <div id="showrec" class="container-fluid">
+    <p id="tuPC">Este es tu PC</p>
     <ShowComp />
     <div class="float-right">
        <vs-button id="next" size="xl" to="/Summary"

@@ -69,7 +69,7 @@ export default {
         .getAllMice()
         .then((response) => {
           this.mice = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

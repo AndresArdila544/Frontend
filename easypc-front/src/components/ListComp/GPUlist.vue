@@ -69,7 +69,7 @@ export default {
         .getAllGPUs()
         .then((response) => {
           this.gpus = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

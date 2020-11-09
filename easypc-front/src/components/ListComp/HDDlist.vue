@@ -70,7 +70,7 @@ export default {
         .getAllHDDs()
         .then((response) => {
           this.hdds = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

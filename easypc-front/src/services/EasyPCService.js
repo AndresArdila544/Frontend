@@ -212,7 +212,7 @@ class EasyPCService {
 
 
   createBuild(data) {
-    return http.post("api/build", data);
+    return http.post("api/build-id", data);
   }
 
   deleteBuild(id) {

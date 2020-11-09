@@ -43,6 +43,7 @@ export default {
   },
   data: () => ({
     partes: [],
+    partesId: [],
     parte_models: [],
     parte_pics: [],
     renderComponent: true,
@@ -59,10 +60,11 @@ export default {
       EasyPCService.getAll(this.tipo)
         .then((response) => {
           this.partes = response.data;
-          console.log(response.data);
+           
           for (var i = 0; i < this.partes.length; i++) {
             this.parte_models.push(this.partes[i].model);
             this.parte_pics.push(this.partes[i].linkPicture);
+            this.partesId.push(this.partes[i][Object.keys(this.partes[i])[0]]);
           }
         })
         .catch((e) => {
@@ -85,7 +87,7 @@ export default {
     },
 
     sendToStore() {
-      var a = [this.count, this.pic_idx];
+      var a = [this.count, this.partesId[this.pic_idx]];
       this.$store.commit("setInterSelection", a);
       console.log(this.$store.getters["getInterSelection"]);
     },

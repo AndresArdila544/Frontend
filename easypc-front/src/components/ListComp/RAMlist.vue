@@ -69,7 +69,7 @@ export default {
         .getAllRAMs()
         .then((response) => {
           this.rams = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

@@ -69,7 +69,7 @@ export default {
         .getAllMonitors()
         .then((response) => {
           this.monitors = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

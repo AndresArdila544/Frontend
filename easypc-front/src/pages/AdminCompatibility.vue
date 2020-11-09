@@ -105,7 +105,7 @@ export default {
       EasyPCService.getAll("motherboards")
         .then((response) => {
           this.partes = response.data;
-          console.log(response.data);
+           
           for (var i=0;i<this.partes.length;i++) {
             this.parte_models.push(this.partes[i].model)
           }
@@ -127,7 +127,7 @@ export default {
       EasyPCService.getAllCPUs()
         .then((response) => {
           this.cpus = response.data; // JSON are parsed automatically.
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);
@@ -143,7 +143,7 @@ export default {
     },
     selectedCPUS(selected) {
         this.createCompatibility(this.partes[this.parte_models.indexOf(this.selectedMB)].idMotherboard,selected);
-      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+      
       //window.location.reload();
     },
   },

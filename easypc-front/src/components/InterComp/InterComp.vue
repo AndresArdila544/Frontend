@@ -27,9 +27,11 @@
       </div>
 
       <div class="col col-sm-12 col-md-4 col-12 boton-pop">
-        <vs-button @click="sendBuild" v-if="count == 11" to="/Summary" block>
+        
+        <vs-button @click="sendBuild" v-if="count == 11"  block>
           <h2>Terminar</h2>
         </vs-button>
+               
       </div>
     </div>
   </div>
@@ -38,6 +40,7 @@
 <script>
 import InterListItem from "./InterListItem";
 import EasyPCService from "../../services/EasyPCService";
+
 
 export default {
   name: "InterComp",
@@ -161,17 +164,19 @@ export default {
       }
       
       this.build.idCase = this.$store.getters["getInterSelection"][11];
-
+  
       EasyPCService.createBuild(this.build)
         .then((response) => {
-          this.buildId = response.data;
-          console.log(response.data);
+           
+          this.$store.commit("setInterIDBuild", response.data);
+          this.$router.push("/Summary")
+          
         })
         .catch((e) => {
           console.log(e);
         });
 
-      this.$store.commit("setInterIDBuild", this.buildId);
+      
     },
   },
   beforeMount() {

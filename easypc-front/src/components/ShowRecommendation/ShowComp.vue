@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <RecomListItem
       v-bind:Parte="CurrentCPU"
       v-bind:tipo="'cpus'"
@@ -84,13 +84,13 @@
       v-bind:defaultImage="CurrentCase.linkPicture"
       v-if="CurrentCase"
     />
-    <div class="d-flex flex-row-reverse TotalPrice px-2">
-      <p>
+    <div class="col col-md-12 col-12 TotalPrice">
+      <h2>
         Total: ${{
           price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         }}
         COP
-      </p>
+      </h2>
     </div>
   </div>
 </template>
@@ -155,7 +155,7 @@ export default {
           this.CurrentKeyboard = this.CurrentBuild.keyboard;
           this.CurrentMonitor = this.CurrentBuild.monitor;
           this.CurrentCase = this.CurrentBuild.caseObj;
-          console.log(response.data);
+           
         })
         .catch((e) => {
           console.log(e);

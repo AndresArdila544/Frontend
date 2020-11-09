@@ -86,6 +86,7 @@ export default {
       CurrentMonitor: [],
       CurrentCase: [],
       Total: Number,
+      retrievedBuildID: Number
     };
   },
   props: {
@@ -122,7 +123,8 @@ export default {
     },
   },
   mounted() {
-    this.retrieveBuildFromDB(1);
+    this.retrieveBuildFromDB(this.$store.getters["getInterIDBuild"]);
+    this.retrievedBuildID = this.$store.getters["getInterIDBuild"];
   },
 };
 </script>
