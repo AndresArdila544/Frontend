@@ -1,7 +1,17 @@
 <template>
   <div class="row">
-    <div class="col-md-2 offset-lg-10 col-12">
-      <vs-button id="button" class="" border block :active="active == 0" @click="active = !active" >Siguiente</vs-button>
+    <div class="col col-sm-12 col-md-4 col-12 offset-sm-0 offset-md-7  boton-pop mb-3">
+      <vs-button id="button"
+       border 
+       block 
+       :active="active == 0" 
+       @click="active = !active"
+       class="col col-sm-10 col-md-10 offset-sm-1 offset-md-2 boton-login"
+        color="rgb(59,22,100)" >
+        <h2>
+          Siguiente
+        </h2>
+      </vs-button>
     </div>
     <div v-if="valor=='1'" key="1">
         <vs-dialog blur not-close class="d-flex justify-content-start"  v-model="active">
@@ -50,7 +60,12 @@ export default {
 };
 </script>
 
-<style >
+<style lang="scss" >
+.boton-pop {
+  text-align: center;
+  font-size: calc(1.2rem + 0.2vw);
+  font-family: "Poppins", sans-serif;
+}
 
 </style>
 
