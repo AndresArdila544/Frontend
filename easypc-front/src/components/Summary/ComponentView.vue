@@ -21,11 +21,11 @@
                 <h2 class="modelo">{{Parte.model}}</h2>
               </div>
             </div>
-            <div class="row mx-auto">
+            <div class="row">
               <div class="col-sm-5 col-md-4 col-12">
                 <img class="img-fluid" :src="Parte.linkPicture" alt="" />
               </div>
-              <div class="col-sm-4 col-md-4 col-6">
+              <div class="col-sm-4 col-md-4 col-5">
                 <div class="pb-3 col-12" v-if="Parte.linkSL || Parte.priceSL">
                   <div class="product__view--more">
                     <a
@@ -78,7 +78,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col col-sm-12 col-md-12">
+              <div class="col-7 col-sm-3 col-md-4">
                 <div class="pb-3 col-12" v-if="Parte.linkSL || Parte.priceSL">
                   <div
                     class="texto"
