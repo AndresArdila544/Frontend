@@ -1,6 +1,6 @@
 <template >
   <div class="row">
-    <div class="col col-xs-12 col-sm-10 col-md-7 col-lg-6 col-12 offset-sm-4 offset-md-1 offset-lg-2">
+    <div class="col col-sm-12 col-md-7 col-lg-6 col-12 offset-sm-0 offset-md-2 offset-lg-3">
       <v-slider
         class
         max="12805000"
@@ -9,16 +9,17 @@
         step="100000"
         v-model="budget"
         ticks
+        color="#3b1664"
         tick-size="1"
         @change="setBudget()"
-        :thumb-size="24"
+        :thumb-size="30"
       >
         <template v-slot:thumb-label="{ value }">
             {{ satisfactionEmojis[Math.min(Math.floor(value / 1280500), 9)] }}
           </template>
       </v-slider>
     </div>
-    <div class="col col-sm-5 col-md-4 col-lg-4 col-12 d-flex justify-content-md-start ">
+    <div class="col col-sm-5 col-md-3 col-lg-1 col-12">
       <h3>
         ${{budget.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} COP
       </h3>
