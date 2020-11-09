@@ -4,7 +4,7 @@
         <Pregunta32/>
         <Pregunta33/>
         <div class="">
-          <vs-button @click="pushAnswer()"  to='/ShowRec' block class="boton-pop" color="rgb(59,22,100)">Aceptar</vs-button>
+          <vs-button @click="pushAnswer()"  to='/Summary' block class="boton-pop" color="rgb(59,22,100)">Aceptar</vs-button>
         </div>
   </div>
 </template>
@@ -28,7 +28,8 @@ export default {
         this.$store.commit("pushAnswers",this.$store.getters["getA1"])
         this.$store.commit("pushAnswers",this.$store.getters["getA2"])
         this.$store.commit("pushAnswers",this.$store.getters["getA3"]) 
-      }
+      },
+      
     }
 }
 </script>

@@ -1,66 +1,58 @@
 <template>
   <div class>
-    
-    <p id class="Summary pt-4">Resumen # {{CurrentBuild.idBuild}}</p>
-    <p class="user">Build para {{user}}</p>
+    <p id class="Summary pt-4">Resumen # {{ CurrentBuild.idBuild }}</p>
+    <p class="user">Build para {{ user }}</p>
     <div class="pt-2 parts row">
       <div class="p-1 col-12 col-md-6" v-if="CurrentCPU">
-        <ComponentView v-bind:Parte="CurrentCPU"  tipo="CPU" />
+        <ComponentView v-bind:Parte="CurrentCPU" tipo="CPU" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentGPU">
-        <ComponentView v-bind:Parte="CurrentGPU"  tipo="GPU" />
+        <ComponentView v-bind:Parte="CurrentGPU" tipo="GPU" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentMotherboard">
-        <ComponentView
-          v-bind:Parte="CurrentMotherboard"
-          tipo="Motherboard"
-        />
+        <ComponentView v-bind:Parte="CurrentMotherboard" tipo="Motherboard" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentRAM">
-        <ComponentView v-bind:Parte="CurrentRAM"  tipo="RAM" />
+        <ComponentView v-bind:Parte="CurrentRAM" tipo="RAM" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentCooling">
-        <ComponentView v-bind:Parte="CurrentCooling"  tipo="Cooling" />
+        <ComponentView v-bind:Parte="CurrentCooling" tipo="Cooling" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentSSD">
-        <ComponentView v-bind:Parte="CurrentSSD"  tipo="SSD" />
+        <ComponentView v-bind:Parte="CurrentSSD" tipo="SSD" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentHDD">
-        <ComponentView v-bind:Parte="CurrentHDD"  tipo="HDD" />
+        <ComponentView v-bind:Parte="CurrentHDD" tipo="HDD" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentPowerSupply">
-        <ComponentView
-          v-bind:Parte="CurrentPowerSupply"
-          
-          tipo="PowerSupply"
-        />
+        <ComponentView v-bind:Parte="CurrentPowerSupply" tipo="PowerSupply" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentMouse">
-        <ComponentView v-bind:Parte="CurrentMouse"  tipo="Mouse" />
+        <ComponentView v-bind:Parte="CurrentMouse" tipo="Mouse" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentKeyboard">
-      <ComponentView v-bind:Parte="CurrentKeyboard"  tipo="Keyboard" />
-       
+        <ComponentView v-bind:Parte="CurrentKeyboard" tipo="Keyboard" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentMonitor">
-      <ComponentView v-bind:Parte="CurrentMonitor"  tipo="Monitor" />
-       
+        <ComponentView v-bind:Parte="CurrentMonitor" tipo="Monitor" />
       </div>
       <div class="p-1 col-12 col-md-6" v-if="CurrentCase">
-      <ComponentView v-bind:Parte="CurrentCase"  tipo="Case" />
-       
+        <ComponentView v-bind:Parte="CurrentCase" tipo="Case" />
       </div>
 
-
-      <div class="container  TotalPrice">
-        <p>Total Minimo: ${{Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} COP</p>
+      <div class="container TotalPrice">
+        <p>
+          Total Minimo: ${{
+            Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }}
+          COP
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import ComponentView from "../components/Summary/ComponentView";
 import EasyPCService from "../services/EasyPCService";
 
@@ -68,7 +60,6 @@ export default {
   name: "Summary",
   components: {
     ComponentView,
-    
   },
   data() {
     return {
@@ -87,7 +78,7 @@ export default {
       CurrentCase: [],
       user: "",
       Total: Number,
-      retrievedBuildID: Number
+      retrievedBuildID: Number,
     };
   },
   props: {
@@ -123,10 +114,48 @@ export default {
           console.log(e);
         });
     },
+    retrieveBuildFromAnswers(answers) {
+      EasyPCService.getRecommendedBuild(answers)
+        .then((response) => {
+          this.CurrentBuild = response.data;
+          this.CurrentCPU = this.CurrentBuild.cpu;
+          this.CurrentGPU = this.CurrentBuild.gpu;
+          this.CurrentMotherboard = this.CurrentBuild.motherboard;
+          this.CurrentRAM = this.CurrentBuild.ram;
+          this.CurrentCooling = this.CurrentBuild.cooling;
+          this.CurrentSSD = this.CurrentBuild.ssd;
+          this.CurrentHDD = this.CurrentBuild.hdd;
+          this.CurrentPowerSupply = this.CurrentBuild.powerSupply;
+          this.CurrentMouse = this.CurrentBuild.mouse;
+          this.CurrentKeyboard = this.CurrentBuild.keyboard;
+          this.CurrentMonitor = this.CurrentBuild.monitor;
+          this.CurrentCase = this.CurrentBuild.caseObj;
+          this.user = this.CurrentBuild.user.username;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+
+      EasyPCService.getRecommendedPrice(answers)
+        .then((response) => {
+          this.Total = response.data;
+        })
+        .catch((e) => {
+          console.log("Retrive price error: " + e);
+        });
+    },
   },
-  mounted() {
-    this.retrieveBuildFromDB(this.$store.getters["getInterIDBuild"]);
-    this.retrievedBuildID = this.$store.getters["getInterIDBuild"];
+  mounted() {},
+  beforeMount() {
+    if (this.$store.getters["getInterIDBuild"] != -1) {
+      this.retrieveBuildFromDB(this.$store.getters["getInterIDBuild"]);
+      this.retrievedBuildID = this.$store.getters["getInterIDBuild"];
+      this.$store.commit("setInterIDBuild", -1);
+    } else {
+      this.retrieveBuildFromAnswers(this.$store.getters["getAnswers"]);
+      
+      this.$store.commit("emptyAnswers");
+    }
   },
 };
 </script>
