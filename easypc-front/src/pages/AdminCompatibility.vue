@@ -73,15 +73,12 @@
 </template>
 
 <script>
-//import Select1 from "../components/AdminCompatibility/Select1";
+
 import EasyPCService from "../services/EasyPCService";
 
 export default {
   name: "AdminCompatibility",
   components: {
-    
-    //Select1,
-
   },
   data: () => ({
     value: "",
@@ -126,7 +123,7 @@ export default {
     retrieveCPUS() {
       EasyPCService.getAllCPUs()
         .then((response) => {
-          this.cpus = response.data; // JSON are parsed automatically.
+          this.cpus = response.data; 
            
         })
         .catch((e) => {
@@ -144,7 +141,7 @@ export default {
     selectedCPUS(selected) {
         this.createCompatibility(this.partes[this.parte_models.indexOf(this.selectedMB)].idMotherboard,selected);
       
-      //window.location.reload();
+      window.location.reload();
     },
   },
   mounted() {
