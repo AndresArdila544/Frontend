@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
-    <div class="container-fluid">
+  <div>
+    <div >
       <InterTitle v-bind:count="count"/>
       <div class="row align-items-center">
-        <div class="col-md-4">
+        <div class="col col-md-4 col-12">
           <InterDescription v-bind:count="count"/>
         </div>
         
-        <div class="col-md-4">
+        <div class="col col-md-4 col-12">
             <v-select
               :items="parte_models"
               dense
@@ -19,7 +19,7 @@
               @change="setImage()"
             ></v-select>
         </div>
-        <div class="col-md-4">
+        <div class="col col-md-4 col-12">
             <ShowImage v-bind:imgURL="currentImageURL" v-if="renderComponent">
             </ShowImage>
         </div>
