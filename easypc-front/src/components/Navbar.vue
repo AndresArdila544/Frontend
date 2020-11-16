@@ -12,7 +12,7 @@
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
-        v-if="loggedIn==false"
+        v-if="this.$store.state.authenticated==false"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,33 +20,32 @@
         <img alt="limon_nav" class="img-fluid" src="../assets/limon.png" width="40%" />
       </router-link>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav" v-if="loggedIn==false">
+        <ul class="navbar-nav" v-if="this.$store.state.authenticated==false">
           <li class="nav-item active col-sm-12 col-md-6 col-lg-6">
             <router-link to="Login">
-            <vs-button
-              class="login-button"
-              
-              color="#81b214"
-              block
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-            >
-              Identificate
-              <template #animate>Login</template>
-            </vs-button>
+              <vs-button
+                class="login-button"
+                color="#81b214"
+                block
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+              >
+                Identificate
+                <template #animate>Login</template>
+              </vs-button>
             </router-link>
           </li>
           <li class="nav-item active col-sm-12 col-md-6 col-lg-6">
             <router-link to="SignUp">
-            <vs-button
-              class="login-button"
-              color="#3B1"
-              block
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-            >Registrarse</vs-button>
+              <vs-button
+                class="login-button"
+                color="#3B1"
+                block
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+              >Registrarse</vs-button>
             </router-link>
           </li>
         </ul>
@@ -61,7 +60,7 @@ export default {
   components: {},
   data: () => ({
     loggedIn: false,
-    active: 0
+    active: 0,
   }),
   methods: {},
 };
@@ -70,8 +69,7 @@ export default {
 <style scoped>
 .login-button {
   color: #e0ece4;
-  font-size:calc(1.1rem + 1.2vw);
-  font-family: 'Poppins', sans-serif
-  
+  font-size: calc(1.1rem + 1.2vw);
+  font-family: "Poppins", sans-serif;
 }
 </style>
