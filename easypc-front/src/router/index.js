@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../store'
 import QuizBeg from '@/pages/QuizBeg'
 import AdminC from '@/pages/AdminCreateComp'
 import AdminD from '@/pages/AdminDeleteComp'
@@ -31,22 +32,50 @@ export default new Router({
         {
             path: '/Admin',
             name: 'Admin',
-            component: Admin
+            component: Admin,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == false) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
         },
         {
             path: '/AdminC',
             name: 'AdminC',
-            component: AdminC
+            component: AdminC,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == false) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
         },
         {
             path: '/AdminD',
             name: 'AdminD',
-            component: AdminD
+            component: AdminD,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == false) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
         },
         {
             path: '/AdminCp',
             name: 'AdminCp',
-            component: AdminCp
+            component: AdminCp,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == false) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
         },
         {
             path: '/ShowRec',
@@ -65,7 +94,7 @@ export default new Router({
             component: InterSelection
         },
         {
-            path: '/login',
+            path: '/Login',
             name: 'Login',
             component: Login
         },
@@ -76,7 +105,6 @@ export default new Router({
             component: Register
         },
         {
-
             path: '/LevelSelect',
             name: 'LevelSelect',
             component: LevelSelect

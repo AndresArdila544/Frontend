@@ -87,8 +87,8 @@ export default {
             alert("Error en la autenticación");
           } else {
             localStorage.setItem("token", response.data.access_token);
-            //alert( "¡Autenticación Exitosa! El token se ha almacenado en el Local Storage" )
-            this.$router.push("/Admin");
+            this.$store.commit("setAuthentication", true);
+            this.$router.replace({ name: "Admin" });
           }
         })
         .catch((error) => {
