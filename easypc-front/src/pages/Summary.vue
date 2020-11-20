@@ -1,8 +1,8 @@
 <template>
   <div class>
     <p id class="Summary pt-4">Resumen # {{ CurrentBuild.idBuild }}</p>
-    <p class="user">Build para {{ user }}</p>
-    <div class="pt-2 parts row">
+    <p class="user">Build para {{ user }}</p>    
+    <div class="pt-2 parts row" id="printableArea">
       <div class="p-1 col-12 col-md-6" v-if="CurrentCPU">
         <ComponentView v-bind:Parte="CurrentCPU" tipo="CPU" />
       </div>
@@ -49,6 +49,9 @@
         </p>
       </div>
     </div>
+    <vs-button @click="printDiv()">
+      <h2>Guardar como PDF</h2>
+    </vs-button>
   </div>
 </template>
 
@@ -144,6 +147,14 @@ export default {
           console.log("Retrive price error: " + e);
         });
     },
+    printDiv() {
+      var printContents = document.getElementById("printableArea").innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      document.title = "Easy PC Build";
+      window.print();
+      document.body.innerHTML = originalContents;
+    },
   },
   mounted() {},
   beforeMount() {
@@ -153,7 +164,7 @@ export default {
       this.$store.commit("setInterIDBuild", -1);
     } else {
       this.retrieveBuildFromAnswers(this.$store.getters["getAnswers"]);
-      
+
       this.$store.commit("emptyAnswers");
     }
   },
@@ -171,9 +182,6 @@ export default {
   font-family: "Fredoka One", cursive;
   color: #ff9941;
   background-color: rgb(24, 23, 23);
-  border-radius: 25% 25% 50% 50%;
-  border-style: none none solid none;
-  border-color: #3b1664;
 }
 
 .Summary {
