@@ -141,7 +141,7 @@ export default {
     selectedCPUS(selected) {
         this.createCompatibility(this.partes[this.parte_models.indexOf(this.selectedMB)].idMotherboard,selected);
       
-      window.location.reload();
+      
     },
   },
   mounted() {

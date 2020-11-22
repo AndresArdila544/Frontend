@@ -13,6 +13,7 @@ import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 import LevelSelect from '@/pages/LevelSelect'
 import AdminCp from '@/pages/AdminCompatibility'
+import Expert from '@/pages/Expert'
 
 Vue.use(Router)
 
@@ -108,6 +109,11 @@ export default new Router({
             path: '/LevelSelect',
             name: 'LevelSelect',
             component: LevelSelect
+        },
+        {
+            path: '/Expert',
+            name: 'Expert',
+            component: Expert
         },
 
     ]
