@@ -224,7 +224,7 @@ class EasyPCService {
   }
 
   createCompatibility(id,data){
-    return http.post("api/motherboard/compatible-cpus/"+ id,data);
+    return http.post("api/motherboard/compatible-cpus/"+ id,data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getCompatibleMBs(id){
