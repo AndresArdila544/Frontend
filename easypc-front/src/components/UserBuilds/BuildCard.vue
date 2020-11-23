@@ -1,0 +1,173 @@
+<template>
+  <div class="">
+  
+    <div class="col-md-6 col-lg-4 col-sm-10 col-12 offset-sm-1 offset-0 column justify-content-start">
+      <div class="card gr-1">
+        <div class="txt">
+          <h1>BUILD #{{buildId}}</h1>
+          <p>Precio: ${{buildPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} COP</p>
+        </div>
+        <a @click="seeSummary">ver resumen</a>
+        <div class="ico-card">
+            <i class="fa fa-rebel">
+            <div class="col-sm-4 col-md-6 col-lg-7 col-5 col-xl-5 justify-content-end">
+                <img class="img-fluid" :src="buildCaseImage" alt=""/>
+            </div>
+            </i>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  
+</div>
+</template>
+
+<script>
+import EasyPCService from "../../services/EasyPCService";
+export default {
+    name:"BuildCard",
+    data(){
+      return{
+        build:[],
+        buildPrice: Number,
+      }
+    },
+    props: {
+      buildId: Number,
+      buildCaseImage: String,
+    },
+    methods:{
+      getBuildPrice(id){
+        EasyPCService.getBuildPriceById(id)
+        .then((response) => {
+          this.buildPrice = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      },
+      seeSummary(){
+        this.$store.commit("setInterIDBuild", this.buildId);
+        this.$router.push("Summary")
+      }
+
+    },
+    beforeMount() {
+      this.getBuildPrice(this.buildId)
+    }
+}
+</script>
+
+<style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,700');
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+$gr-1:linear-gradient(170deg, #01E4F8 0%, #1D3EDE 100%);
+$gr-2:linear-gradient(170deg, #B4EC51 0%, #429321 100%);
+$gr-3:linear-gradient(170deg, #C86DD7 0%, #3023AE 100%);
+
+.gr-1{background: $gr-1;}
+.gr-2{background: $gr-2;}
+.gr-3{background: $gr-3;}
+
+*{transition: .5s;}
+
+
+.align-middle{
+  position: relative;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.column{
+  margin-top:3rem;
+  padding-left:3rem;
+  &:hover{
+    padding-left:0;
+    .card .txt{
+      margin-left:1rem;
+      h1, p{
+        color:rgba(255,255,255,1);
+        opacity:1;
+      }
+    }
+    a{
+      color:rgba(255,255,255,1);
+      &:after{
+      width: 10%;
+      }
+    }
+  }
+}
+.card{
+  min-height:170px;
+  margin: 0;
+  padding: 1.7rem 1.2rem;
+  border: none;
+  border-radius: 0;
+  color:rgba(0,0,0,1);
+  letter-spacing: .05rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 21px rgba(0,0,0,.27);
+  .txt{
+    margin-left:-3rem;
+    z-index: 1;
+    h1{
+      font-size:1.9rem;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+    p{
+      font-size:1.2rem;
+      font-family: 'Open Sans', sans-serif;
+      letter-spacing: 0rem;
+      margin-top:33px;
+      opacity:0;
+      color:rgba(255,255,255,1);
+    }
+  }
+  a{
+    z-index:3;
+    font-size: .7rem;
+    color:rgba(0,0,0,1);
+    margin-left:1rem;
+    position:relative;
+    bottom: -.5rem;
+    text-transform: uppercase;
+    &:after {
+      content:"";
+      display: inline-block;
+      height: 0.5em;
+      width: 0;
+      margin-right: -100%;
+      margin-left: 10px;
+      border-top: 1px solid rgba(255,255,255,1);
+      transition: .5s;
+    }
+  }
+  .ico-card{
+    position:absolute;
+    top: 0;
+    left:0;
+    bottom:0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  i{
+    position: relative;
+    right: -50%;
+    top:60%;
+    height:100%;
+    line-height: 0;
+    opacity: .2;
+    
+    z-index: 0;
+   }
+}
+</style>

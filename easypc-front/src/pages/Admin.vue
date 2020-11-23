@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col col-md-4">
+      <div class="col-12 col-sm-6 col-md-4">
         <vs-button
               class="botones-admin"
               color="rgb(59,22,100)" 
@@ -11,7 +11,7 @@
               Crear Componente     
         </vs-button>
       </div>
-      <div class="col col-md-4">
+      <div class="col-12 col-sm-6 col-md-4">
         <vs-button
               class="botones-admin"
               color="rgb(59,22,100)"
@@ -21,7 +21,7 @@
                 Eliminar Componente
         </vs-button>
       </div>
-      <div class="col col-md-4">
+      <div class="col-12 col-md-4">
         <vs-button
               class="botones-admin"
               color="rgb(59,22,100)"
@@ -31,7 +31,7 @@
                 Ver Lista de Componentes
         </vs-button>
       </div>
-      <div class="col col-md-4">
+      <div class="col-12 col-md-12">
         <vs-button
               class="botones-admin"
               color="rgb(59,22,100)"
