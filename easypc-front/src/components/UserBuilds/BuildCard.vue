@@ -9,11 +9,11 @@
         </div>
         <a @click="seeSummary">ver resumen</a>
         <div class="ico-card">
-            <i class="fa fa-rebel">
+            <em class="fa fa-rebel">
             <div class="col-sm-4 col-md-6 col-lg-7 col-5 col-xl-5 justify-content-end">
                 <img class="img-fluid" :src="buildCaseImage" alt=""/>
             </div>
-            </i>
+            </em>
         </div>
       </div>
     </div>
@@ -159,7 +159,7 @@ $gr-3:linear-gradient(170deg, #C86DD7 0%, #3023AE 100%);
     height: 100%;
     overflow: hidden;
   }
-  i{
+  em{
     position: relative;
     right: -50%;
     top:60%;
