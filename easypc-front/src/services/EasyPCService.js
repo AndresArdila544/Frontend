@@ -215,7 +215,7 @@ class EasyPCService {
   }
 
   deleteBuild(id) {
-    return http.delete("api/build/" + id);
+    return http.delete("api/build/" + id,);
   }
 
   getBuildPriceById(id) {
@@ -257,6 +257,10 @@ class EasyPCService {
 
   getUserByToken() {
     return http.get("api/user/by-token",{ params: { access_token: getAuthenticationToken() } });
+  }
+
+  getBuildsByUser() {
+    return http.get("api/builds-user",{ params: { access_token: getAuthenticationToken() } })
   }
 
 

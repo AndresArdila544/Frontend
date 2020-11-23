@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <v-card color="#837B1B" class="col col-md-8 col-lg-6 offset-lg-3 offset-md-0 mx-auto">
+    <v-card color="#FE9F00" class="col col-md-8 col-lg-6 offset-lg-3 offset-md-0 mx-auto">
       <div class="col-12 mx-auto">
         <div>
           <form class="form-inline" @submit="register">
