@@ -1,5 +1,5 @@
 import http from "../http-common";
-
+import {getAuthenticationToken} from '@/dataStorage';
 class EasyPCService {
 
   getAllCPUs() {
@@ -11,11 +11,11 @@ class EasyPCService {
   }
 
   createCPU(data) {
-    return http.post("api/cpu", data);
+    return http.post("api/create/cpu", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteCPU(id) {
-    return http.delete("api/cpu/" + id);
+    return http.delete("api/delete/cpu/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllMotherboards() {
@@ -27,11 +27,11 @@ class EasyPCService {
   }
 
   createMotherboard(data) {
-    return http.post("api/motherboard", data);
+    return http.post("api/create/motherboard", data ,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteMotherboard(id) {
-    return http.delete("api/motherboard/" + id);
+    return http.delete("api/motherboard/" + id ,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllRAMs() {
@@ -43,11 +43,11 @@ class EasyPCService {
   }
 
   createRAM(data) {
-    return http.post("api/ram", data);
+    return http.post("api/create/ram", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteRAM(id) {
-    return http.delete("api/ram/" + id);
+    return http.delete("api/delete/ram/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllGPUs() {
@@ -59,11 +59,11 @@ class EasyPCService {
   }
 
   createGPU(data) {
-    return http.post("api/gpu", data);
+    return http.post("api/create/gpu", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteGPU(id) {
-    return http.delete("api/gpu/" + id);
+    return http.delete("api/delete/gpu/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllCoolings() {
@@ -75,11 +75,11 @@ class EasyPCService {
   }
 
   createCooling(data) {
-    return http.post("api/cooling", data);
+    return http.post("api/create/cooling", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteCooling(id) {
-    return http.delete("api/cooling/" + id);
+    return http.delete("api/delete/cooling/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllCases() {
@@ -91,11 +91,11 @@ class EasyPCService {
   }
 
   createCase(data) {
-    return http.post("api/case", data);
+    return http.post("api/create/case", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteCase(id) {
-    return http.delete("api/case/" + id);
+    return http.delete("api/delete/case/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllPowerSupplies() {
@@ -107,11 +107,11 @@ class EasyPCService {
   }
 
   createPowerSupply(data) {
-    return http.post("api/power-supply", data);
+    return http.post("api/create/power-supply", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deletePowerSupply(id) {
-    return http.delete("api/power-supply/" + id);
+    return http.delete("api/delete/power-supply/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllHDDs() {
@@ -123,11 +123,11 @@ class EasyPCService {
   }
 
   createHDD(data) {
-    return http.post("api/hdd", data);
+    return http.post("api/create/hdd", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteHDD(id) {
-    return http.delete("api/hdd/" + id);
+    return http.delete("api/delete/hdd/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllSSDs() {
@@ -139,11 +139,11 @@ class EasyPCService {
   }
 
   createSSD(data) {
-    return http.post("api/ssd", data);
+    return http.post("api/create/ssd", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteSSD(id) {
-    return http.delete("api/ssd/" + id);
+    return http.delete("api/delete/ssd/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllMice() {
@@ -155,11 +155,11 @@ class EasyPCService {
   }
 
   createMouse(data) {
-    return http.post("api/mouse", data);
+    return http.post("api/create/mouse", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteMouse(id) {
-    return http.delete("api/mouse/" + id);
+    return http.delete("api/delete/mouse/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllMonitors() {
@@ -171,11 +171,11 @@ class EasyPCService {
   }
 
   createMonitor(data) {
-    return http.post("api/monitor", data);
+    return http.post("api/create/monitor", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteMonitor(id) {
-    return http.delete("api/monitor/" + id);
+    return http.delete("api/delete/monitor/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getAllKeyboards() {
@@ -187,11 +187,11 @@ class EasyPCService {
   }
 
   createKeyboard(data) {
-    return http.post("api/keyboard", data);
+    return http.post("api/create/keyboard", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteKeyboard(id) {
-    return http.delete("api/keyboard/" + id);
+    return http.delete("api/delete/keyboard/" + id,{ params: { access_token: getAuthenticationToken() } });
   }
 
   getBuildById(id) {
@@ -210,9 +210,8 @@ class EasyPCService {
     return http.post("api/quiz-beginner", answers)
   }
 
-
   createBuild(data) {
-    return http.post("api/build-id", data);
+    return http.post("api/build", data,{ params: { access_token: getAuthenticationToken() } });
   }
 
   deleteBuild(id) {
@@ -254,6 +253,10 @@ class EasyPCService {
 
   register(data) {
     return http.post("api/user", data);
+  }
+
+  getUserByToken() {
+    return http.get("api/user/by-token",{ params: { access_token: getAuthenticationToken() } });
   }
 
 
