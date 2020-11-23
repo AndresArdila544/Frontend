@@ -1,52 +1,98 @@
 <template>
   <div class>
     <p class="Summary pt-4">Resumen # {{ CurrentBuild.idBuild }}</p>
-    <p class="user">Build para {{ user }}</p>
+    <p class="user">Build para {{ user}}</p>
     <div class="pt-2 parts row accordion">
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentCPU">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentCPU"
+      >
         <ComponentView v-bind:Parte="CurrentCPU" tipo="CPU" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentGPU">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentGPU"
+      >
         <ComponentView v-bind:Parte="CurrentGPU" tipo="GPU" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentMotherboard">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentMotherboard"
+      >
         <ComponentView v-bind:Parte="CurrentMotherboard" tipo="Motherboard" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentRAM">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentRAM"
+      >
         <ComponentView v-bind:Parte="CurrentRAM" tipo="RAM" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentCooling">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentCooling"
+      >
         <ComponentView v-bind:Parte="CurrentCooling" tipo="Cooling" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentSSD">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentSSD"
+      >
         <ComponentView v-bind:Parte="CurrentSSD" tipo="SSD" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentHDD">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentHDD"
+      >
         <ComponentView v-bind:Parte="CurrentHDD" tipo="HDD" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentPowerSupply">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentPowerSupply"
+      >
         <ComponentView v-bind:Parte="CurrentPowerSupply" tipo="PowerSupply" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentMouse">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentMouse"
+      >
         <ComponentView v-bind:Parte="CurrentMouse" tipo="Mouse" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentKeyboard">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentKeyboard"
+      >
         <ComponentView v-bind:Parte="CurrentKeyboard" tipo="Keyboard" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentMonitor">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentMonitor"
+      >
         <ComponentView v-bind:Parte="CurrentMonitor" tipo="Monitor" />
       </div>
-      <div class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0" v-if="CurrentCase">
+      <div
+        class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
+        v-if="CurrentCase"
+      >
         <ComponentView v-bind:Parte="CurrentCase" tipo="Case" />
       </div>
 
-      <div class="container ">
+      <div class="container">
         <h2 class="TotalPrice">
           Total Minimo: ${{
-            Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }}
           COP
         </h2>
+      </div>
+      <div class="col-12 col-sm-6 col-md-5 offset-md-6  mb-3">
+        <vs-button
+          class=""
+          block
+          @click="saveModel"
+          color="rgb(59,22,100)"
+        >
+          <h2>Guardar Build</h2>
+        </vs-button>
       </div>
     </div>
   </div>
@@ -76,9 +122,9 @@ export default {
       CurrentKeyboard: [],
       CurrentMonitor: [],
       CurrentCase: [],
-      user: "",
+      user: this.$store.getters.getUser,
       Total: Number,
-      retrievedBuildID: Number,
+      retrievedBuildID: Number, 
     };
   },
   props: {
@@ -101,7 +147,6 @@ export default {
           this.CurrentKeyboard = this.CurrentBuild.keyboard;
           this.CurrentMonitor = this.CurrentBuild.monitor;
           this.CurrentCase = this.CurrentBuild.caseObj;
-          this.user = this.CurrentBuild.user.username;
         })
         .catch((e) => {
           console.log(e);
@@ -130,7 +175,6 @@ export default {
           this.CurrentKeyboard = this.CurrentBuild.keyboard;
           this.CurrentMonitor = this.CurrentBuild.monitor;
           this.CurrentCase = this.CurrentBuild.caseObj;
-          this.user = this.CurrentBuild.user.username;
         })
         .catch((e) => {
           console.log(e);
@@ -144,6 +188,37 @@ export default {
           console.log("Retrive price error: " + e);
         });
     },
+    saveModel(){
+      if(!this.$store.getters.getAuthenticated){
+        this.$router.push({name: 'Login'})
+      }else{
+        var data = {
+          idBuild: null,
+          cpu: this.CurrentBuild.cpu,
+          gpu: this.CurrentBuild.gpu,
+          motherboard: this.CurrentBuild.motherboard,
+          ram: this.CurrentBuild.ram,
+          cooling: this.CurrentBuild.cooling,
+          ssd: this.CurrentBuild.ssd,
+          hdd: this.CurrentBuild.hdd,
+          powerSupply: this.CurrentBuild.powerSupply,
+          mouse: this.CurrentBuild.mouse,
+          keyboard: this.CurrentBuild.keyboard,
+          monitor: this.CurrentBuild.monitor,
+          caseObj: this.CurrentBuild.caseObj,
+          user:{
+             username: this.user
+          }
+        }
+        EasyPCService.createBuild(data)
+          .then(() => {
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+        this.$router.push({name: 'MyBuilds'})
+      }
+    }
   },
   mounted() {},
   beforeMount() {
@@ -153,9 +228,9 @@ export default {
       this.$store.commit("setInterIDBuild", -1);
     } else {
       this.retrieveBuildFromAnswers(this.$store.getters["getAnswers"]);
-      
       this.$store.commit("emptyAnswers");
     }
+    
   },
 };
 </script>

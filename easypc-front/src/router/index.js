@@ -15,6 +15,9 @@ import LevelSelect from '@/pages/LevelSelect'
 import AdminCp from '@/pages/AdminCompatibility'
 import Expert from '@/pages/Expert'
 
+import UserOptions from '@/pages/UserOptions'
+import UserBuilds from '@/pages/UserBuilds'
+
 Vue.use(Router)
 
 export default new Router({
@@ -35,6 +38,18 @@ export default new Router({
             name: 'Admin',
             component: Admin,
             beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == false || store.state.role != "admin") {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
+        },
+        {
+            path: '/Profile',
+            name: 'Profile',
+            component: UserOptions,
+            beforeEnter: (to, from, next) => {
                 if(store.state.authenticated == false) {
                     next("/");
                 } else {
@@ -43,11 +58,24 @@ export default new Router({
             }
         },
         {
+            path: '/MyBuilds',
+            name: 'MyBuilds',
+            component: UserBuilds,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == false) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
+        },
+        
+        {
             path: '/AdminC',
             name: 'AdminC',
             component: AdminC,
             beforeEnter: (to, from, next) => {
-                if(store.state.authenticated == false) {
+                if(store.state.authenticated == false || store.state.role != "admin") {
                     next("/");
                 } else {
                     next();
@@ -59,7 +87,7 @@ export default new Router({
             name: 'AdminD',
             component: AdminD,
             beforeEnter: (to, from, next) => {
-                if(store.state.authenticated == false) {
+                if(store.state.authenticated == false || store.state.role != "admin") {
                     next("/");
                 } else {
                     next();
@@ -71,7 +99,7 @@ export default new Router({
             name: 'AdminCp',
             component: AdminCp,
             beforeEnter: (to, from, next) => {
-                if(store.state.authenticated == false) {
+                if(store.state.authenticated == false || store.state.role != "admin" ) {
                     next("/");
                 } else {
                     next();
@@ -97,13 +125,28 @@ export default new Router({
         {
             path: '/Login',
             name: 'Login',
-            component: Login
+            component: Login,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == true ) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
+            
         },
         {
 
             path: '/SignUp',
             name: 'SignUp',
-            component: Register
+            component: Register,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == true ) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
         },
         {
             path: '/LevelSelect',
