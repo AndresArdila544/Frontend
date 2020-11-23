@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {isAuthenticated,getUser} from '@/dataStorage';
+
 
 Vue.use(Vuex)
 
@@ -14,7 +16,9 @@ export default new Vuex.Store({
         a3: '',
         InterSelection: [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
         InterIDBuild: -1,
-        authenticated: false,
+        authenticated: isAuthenticated(),
+        user:getUser(),
+        role:localStorage.getItem("role"),
     },
     
     getters: {
@@ -45,6 +49,15 @@ export default new Vuex.Store({
       },
       getInterIDBuild: state =>{
         return state.InterIDBuild
+      },
+      getAuthenticated: state =>{
+        return state.authenticated
+      },
+      getUser: state =>{
+        return state.user
+      },
+      getRole: state =>{
+        return state.role
       },
     },
     mutations: {
@@ -83,6 +96,12 @@ export default new Vuex.Store({
       },
       setAuthentication(state, status) {
         state.authenticated = status;
+      },
+      setUser(state, status) {
+        state.user = status;
+      },
+      setRole(state, status) {
+        state.role = status;
       }
   
     }

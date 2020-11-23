@@ -65,7 +65,7 @@
 </template>
 <script>
 import EasyPCService from "../services/EasyPCService";
-
+import {setAuthenticationToken} from '@/dataStorage';
 export default {
   name: "Login.vue",
   components: {},
@@ -86,9 +86,19 @@ export default {
           if (response.status !== 200) {
             alert("Error en la autenticación");
           } else {
-            localStorage.setItem("token", response.data.access_token);
+            setAuthenticationToken( response.data.access_token );
             this.$store.commit("setAuthentication", true);
-            this.$router.replace({ name: "Admin" });
+            EasyPCService.getUserByToken()
+              .then((r) =>{
+                localStorage.setItem("user",r.data.username)
+                this.$store.commit("setUser",r.data.username );
+                localStorage.setItem("role",r.data.roles[0].roleName)
+                this.$store.commit("setRole",r.data.roles[0].roleName);
+                this.$router.replace({ name: "Profile" });
+              }).catch((e) => {
+                console.log(e);
+              });
+            
           }
         })
         .catch((error) => {
@@ -97,7 +107,9 @@ export default {
           } else {
             alert("¡Parece que hubo un error de comunicación con el servidor!");
           }
+          console.log(error)
         });
+      
 
       event.preventDefault();
     },
