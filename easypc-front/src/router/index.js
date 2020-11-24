@@ -18,6 +18,8 @@ import Expert from '@/pages/Expert'
 import UserOptions from '@/pages/UserOptions'
 import UserBuilds from '@/pages/UserBuilds'
 
+import Expert from '@/pages/Expert'
+
 Vue.use(Router)
 
 export default new Router({
@@ -121,6 +123,12 @@ export default new Router({
             path: '/InterSelection',
             name: 'InterSelection',
             component: InterSelection
+        },
+        {
+
+            path: '/Expert',
+            name: 'Expert',
+            component: Expert
         },
         {
             path: '/Login',
