@@ -226,11 +226,14 @@ export default {
           },
         };
         EasyPCService.createBuild(data)
-          .then(() => {})
+
+          .then(() => {
+            this.$router.push({name: 'MyBuilds'})
+          })
           .catch((e) => {
             console.log(e);
           });
-        this.$router.push({ name: "MyBuilds" });
+        
       }
     },
     printDiv() {

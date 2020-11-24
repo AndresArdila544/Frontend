@@ -27,11 +27,9 @@
       </div>
 
       <div class="col col-sm-12 col-md-4 col-12 boton-pop">
-        
-        <vs-button @click="sendBuild" v-if="count == 11"  block>
+        <vs-button @click="sendBuild" v-if="count == 11" block>
           <h2>Terminar</h2>
         </vs-button>
-               
       </div>
     </div>
   </div>
@@ -41,7 +39,6 @@
 import InterListItem from "./InterListItem";
 import EasyPCService from "../../services/EasyPCService";
 
-
 export default {
   name: "InterComp",
   components: {
@@ -49,19 +46,6 @@ export default {
   },
   data() {
     return {
-      CurrentBuild: [],
-      CurrentCPU: [],
-      CurrentGPU: [],
-      CurrentMotherboard: [],
-      CurrentRAM: [],
-      CurrentCooling: [],
-      CurrentSSD: [],
-      CurrentHDD: [],
-      CurrentPowerSupply: [],
-      CurrentMouse: [],
-      CurrentKeyboard: [],
-      CurrentMonitor: [],
-      CurrentCase: [],
       id: 1,
       tipo: String,
       price: "",
@@ -82,7 +66,7 @@ export default {
       ],
       skipable: [5, 6, 8, 9, 10],
       renderComponent: true,
-      defaultPart: -1,
+
       build: {
         idCPU: "",
         idMotherboard: "",
@@ -162,27 +146,23 @@ export default {
       } else {
         this.build.idMonitor = this.$store.getters["getInterSelection"][10];
       }
-      
+
       this.build.idCase = this.$store.getters["getInterSelection"][11];
-  
+
       EasyPCService.createBuildID(this.build)
         .then((response) => {
-           
           this.$store.commit("setInterIDBuild", response.data);
-          this.$router.push("/Summary")
-          
+          this.$router.push("/Summary");
         })
         .catch((e) => {
           console.log(e);
         });
-
-      
     },
   },
   beforeMount() {
     this.selectPart();
     this.$store.commit("defaultInterSelection");
-    this.count=0;
+    this.count = 0;
   },
 };
 </script>

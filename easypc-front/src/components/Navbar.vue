@@ -21,7 +21,7 @@
       </router-link>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="col-sm-12 col-md-2 col-lg-1" v-if="this.$store.state.authenticated==true">
-            <h3>{{this.$store.getters.getUser}}</h3>
+            <h3>{{this.$store.getters.getUser.toUpperCase()}}</h3>
         </div>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" v-if="this.$store.state.authenticated==false">

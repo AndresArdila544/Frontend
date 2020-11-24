@@ -133,4 +133,8 @@ export default {
 </script>
 
 <style>
+.boton-crear {
+  font-size: calc(2rem + 1.2vw);
+  font-family: 'Poppins', sans-serif;
+}
 </style>
