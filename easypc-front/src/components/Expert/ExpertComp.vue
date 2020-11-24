@@ -225,8 +225,9 @@ export default {
       }
       
       this.build.idCase = this.$store.getters["getInterSelection"][11];
-  
+
       EasyPCService.createBuildID(this.build)
+
         .then((response) => {
            
           this.$store.commit("setInterIDBuild", response.data);
@@ -243,6 +244,7 @@ export default {
   beforeMount() {
     this.selectPart();
     this.$store.commit("defaultInterSelection");
+
   },
 };
 </script>
