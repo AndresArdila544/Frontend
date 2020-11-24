@@ -34,12 +34,6 @@
         </vs-tr>
       </template>
     </vs-table>
-    <!--<span class="data">
-      <pre>
-  {{ selected.length > 0 ? selected : "Select an item in the table" }}
-        </pre
-      >
-    </span> -->
     </div>
        <vs-row>
       <vs-col  vs-type="flex" vs-justify="center" vs-align="center" w="4"> 
