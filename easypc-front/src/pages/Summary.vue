@@ -8,8 +8,8 @@
         v-if="CurrentCPU"
       >
         <ComponentView v-bind:Parte="CurrentCPU" tipo="CPU" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentCPU" tipo="CPU" class="print" />
-      </div>
+        <ComponentViewPrint v-bind:Parte="CurrentCPU" tipo="CPU" class="print" />        
+      </div>      
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentGPU"

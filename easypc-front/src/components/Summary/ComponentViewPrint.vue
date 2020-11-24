@@ -12,7 +12,7 @@
           <h3 class="titulo">{{ tipo }}</h3>
         </div>
       </div>
-      <div class="collapse show" :id="tipo" aria-labelledby="headingOne">
+      <div :id="tipo" aria-labelledby="headingOne">
         <div class="card-body">
           <div class="row">
             <div>
