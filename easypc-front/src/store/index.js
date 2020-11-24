@@ -102,6 +102,9 @@ export default new Vuex.Store({
       },
       setRole(state, status) {
         state.role = status;
+      },
+      defaultInterSelection(state){
+        state.InterSelection = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
       }
   
     }

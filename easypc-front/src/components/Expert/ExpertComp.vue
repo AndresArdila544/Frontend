@@ -242,6 +242,7 @@ export default {
   },
   beforeMount() {
     this.selectPart();
+    this.$store.commit("defaultInterSelection");
   },
 };
 </script>

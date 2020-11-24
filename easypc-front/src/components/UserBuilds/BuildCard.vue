@@ -8,11 +8,9 @@
         </div>
         <a @click="seeSummary">ver resumen</a>
         <div class="ico-card">
-            <em class="fa fa-rebel">
-            <div class="col-sm-4 col-md-6 col-lg-7 col-5 col-xl-5 justify-content-end">
+            <div class="col-sm-4 col-md-6 col-lg-7 col-5 col-xl-5 offset-sm-6 offset-6 justify-content-end">
                 <img class="img-fluid" :src="buildCaseImage" alt=""/>
             </div>
-            </em>
         </div>
       </div>
     </div> 
