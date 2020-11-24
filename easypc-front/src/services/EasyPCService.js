@@ -210,6 +210,16 @@ class EasyPCService {
     return http.post("api/quiz-beginner", answers)
   }
 
+  createBuildID(data) {
+    var access_token = getAuthenticationToken();
+    if(access_token!="null"){
+      return http.post("api/build-id", data,{ params: { access_token: getAuthenticationToken() } });
+    }else{
+      return http.post("api/build-id", data);
+    }
+    
+  }
+
   createBuild(data) {
     return http.post("api/build", data,{ params: { access_token: getAuthenticationToken() } });
   }

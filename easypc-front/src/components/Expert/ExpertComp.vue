@@ -1,51 +1,84 @@
 <template>
   <div>
-    <InterListItem
-      v-bind:tipo="components[count]"
-      v-bind:count="count"
+    <ExpertListItem
+      v-bind:tipo="components[0]"
+      v-bind:count="0"
+      v-if="renderCPU"
+      
+      @changed="changedCPU()"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[1]"
+      v-bind:count="1"
+      v-if="renderMB"
+      @changed="changedMB()"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[2]"
+      v-bind:count="2"
       v-if="renderComponent"
     />
-    <div class="row">
-      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
-        <vs-button @click="decrementCounter" v-if="count > 0" block>
-          <h2>Volver</h2>
-        </vs-button>
-      </div>
-      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
-        <vs-button
-          @click="incrementCounter"
-          v-if="skipable.includes(count)"
-          block
-        >
-          <h2>Saltar</h2>
-        </vs-button>
-      </div>
-      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
-        <vs-button @click="selectPart" v-if="count != 11" block>
-          <h2>Siguiente</h2>
-        </vs-button>
-      </div>
+    <ExpertListItem
+      v-bind:tipo="components[3]"
+      v-bind:count="3"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[4]"
+      v-bind:count="4"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[5]"
+      v-bind:count="5"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[6]"
+      v-bind:count="6"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[7]"
+      v-bind:count="7"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[8]"
+      v-bind:count="8"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[9]"
+      v-bind:count="9"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[10]"
+      v-bind:count="10"
+      v-if="renderComponent"
+    />
+    <ExpertListItem
+      v-bind:tipo="components[11]"
+      v-bind:count="11"
+      v-if="renderComponent"
+    />
 
-      <div class="col col-sm-12 col-md-4 col-12 boton-pop">
-        
-        <vs-button @click="sendBuild" v-if="count == 11"  block>
+    <vs-button @click="sendBuild"   block>
           <h2>Terminar</h2>
         </vs-button>
-               
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import InterListItem from "./InterListItem";
+import ExpertListItem from "./ExpertListItem";
 import EasyPCService from "../../services/EasyPCService";
 
 
 export default {
   name: "InterComp",
   components: {
-    InterListItem,
+    ExpertListItem,
   },
   data() {
     return {
@@ -98,6 +131,10 @@ export default {
         idCase: "",
       },
       buildId: "",
+      renderCPU: true,
+      renderMB: true,
+      selectedCPU: false,
+      selectedMB: false,
     };
   },
   methods: {
@@ -118,6 +155,30 @@ export default {
       this.$nextTick(() => {
         this.renderComponent = true;
       });
+    },
+    forceRenderCPU() {
+      this.renderCPU = false;
+      this.$nextTick(() => {
+        this.renderCPU = true;
+      });
+    },
+    forceRenderMB() {
+      this.renderMB = false;
+      this.$nextTick(() => {
+        this.renderMB = true;
+      });
+    },
+    changedCPU(){
+      if(this.selectedMB==false){
+        this.selectedMB==true;
+        this.forceRenderMB()
+      }
+    },
+    changedMB(){
+      if(this.selectedCPU==false){
+        this.selectedCPU=true;
+        this.forceRenderCPU()
+      }
     },
     selectPart() {
       if (this.$store.getters["getInterSelection"][this.count] != -1) {
