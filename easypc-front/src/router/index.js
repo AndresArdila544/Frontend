@@ -18,7 +18,7 @@ import Expert from '@/pages/Expert'
 import UserOptions from '@/pages/UserOptions'
 import UserBuilds from '@/pages/UserBuilds'
 
-import Expert from '@/pages/Expert'
+
 
 Vue.use(Router)
 
@@ -116,7 +116,16 @@ export default new Router({
         {
             path: '/Summary',
             name: 'Summary',
-            component: Summary
+            component: Summary,
+            beforeEnter: (to, from, next) => {
+                if(store.state.InterIDBuild != -1 || store.state.a3 != '') {
+
+                    next();
+                } else {
+
+                    next("/");
+                }
+            }
         },
         {
 
