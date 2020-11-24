@@ -122,23 +122,4 @@ export default {
 </script>
 
 <style scoped lang="scss" >
-.boton-login {
-  text-align: center;
-  font-size: calc(1.2rem + 0.2vw);
-  font-family: "Poppins", sans-serif;
-}
-
-.titulo-login {
-  text-align: center;
-  font-size: calc(1.9rem + 1.8vw);
-  font-family: "Poppins", sans-serif;
-}
-.campos-login {
-  font-size: calc(1rem + 0.5vw);
-  font-family: "Poppins", sans-serif;
-}
-.inputs-login {
-  font-size: calc(1rem + 0.5vw);
-  background-color: red;
-}
 </style>
