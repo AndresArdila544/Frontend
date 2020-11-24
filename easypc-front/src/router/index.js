@@ -14,6 +14,7 @@ import Register from '@/pages/Register'
 import LevelSelect from '@/pages/LevelSelect'
 import AdminCp from '@/pages/AdminCompatibility'
 import Expert from '@/pages/Expert'
+import ChangePassword from '@/pages/ChangePassword'
 
 import UserOptions from '@/pages/UserOptions'
 import UserBuilds from '@/pages/UserBuilds'
@@ -167,10 +168,17 @@ export default new Router({
             component: LevelSelect
         },
         {
-            path: '/Expert',
-            name: 'Expert',
-            component: Expert
-        },
+            path: '/ChangePassword',
+            name: 'ChangePassword', 
+            component: ChangePassword,
+            beforeEnter: (to, from, next) => {
+                if(store.state.authenticated == false) {
+                    next("/");
+                } else {
+                    next();
+                }
+            }
+        }
 
     ]
 })

@@ -267,6 +267,10 @@ class EasyPCService {
     return http.get("api/builds-user",{ params: { access_token: getAuthenticationToken() } })
   }
 
+  changeUserPassword(data){
+    return http.post("api/user/change-password", data, { params: { access_token: getAuthenticationToken() } })
+  }
+
 
 }
 
