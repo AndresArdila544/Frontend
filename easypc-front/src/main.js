@@ -12,6 +12,8 @@ import 'vuetify/dist/vuetify.min.css'
 import vuetify from './plugins/vuetify';
 
 
+
+
 Vue.use(Vuesax, {
   // options here
 })
