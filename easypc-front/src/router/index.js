@@ -7,7 +7,7 @@ import AdminD from '@/pages/AdminDeleteComp'
 import Admin from '@/pages/Admin'
 import Home from '@/pages/Home'
 import Summary from '@/pages/Summary'
-import ShowRec from '@/pages/ShowRecommendation'
+
 import InterSelection from '@/pages/InterSelection'
 import Login from '@/pages/Login'
 import Register from '@/pages/Register'
@@ -108,11 +108,7 @@ export default new Router({
                 }
             }
         },
-        {
-            path: '/ShowRec',
-            name: 'ShowRec',
-            component: ShowRec
-        },
+
         {
             path: '/Summary',
             name: 'Summary',

@@ -108,22 +108,7 @@ export default {
   },
   data() {
     return {
-      CurrentBuild: [],
-      CurrentCPU: [],
-      CurrentGPU: [],
-      CurrentMotherboard: [],
-      CurrentRAM: [],
-      CurrentCooling: [],
-      CurrentSSD: [],
-      CurrentHDD: [],
-      CurrentPowerSupply: [],
-      CurrentMouse: [],
-      CurrentKeyboard: [],
-      CurrentMonitor: [],
-      CurrentCase: [],
-      id: 1,
       tipo: String,
-      price: "",
       count: 0,
       components: [
         "cpus",
@@ -139,9 +124,7 @@ export default {
         "monitors",
         "cases",
       ],
-      skipable: [5, 6, 8, 9, 10],
       renderComponent: true,
-      defaultPart: -1,
       build: {
         idCPU: "",
         idMotherboard: "",
@@ -159,35 +142,16 @@ export default {
       buildId: "",
       renderCPU: true,
       renderMB: true,
-      selectedCPU: false,
-      selectedMB: false,
     };
   },
   methods: {
-    incrementCounter() {
-      if (this.count < 11) {
-        this.count += 1;
-      }
-      this.forceRender();
-    },
-    decrementCounter() {
-      if (this.count < 11) {
-        this.count -= 1;
-      }
-      this.forceRender();
-    },
     forceRender() {
       this.renderComponent = false;
       this.$nextTick(() => {
         this.renderComponent = true;
       });
     },
-    forceRenderCPU() {
-      this.renderCPU = false;
-      this.$nextTick(() => {
-        this.renderCPU = true;
-      });
-    },
+
     forceRenderMB() {
       this.renderMB = false;
       this.$nextTick(() => {
@@ -195,20 +159,7 @@ export default {
       });
     },
     changedCPU() {
-      if (this.selectedMB == false) {
-        this.forceRenderMB();
-      }
-    },
-    changedMB() {
-      if (this.selectedCPU == false) {
-        this.selectedCPU = true;
-        this.forceRenderCPU();
-      }
-    },
-    selectPart() {
-      if (this.$store.getters["getInterSelection"][this.count] != -1) {
-        this.incrementCounter();
-      }
+      this.forceRenderMB();
     },
     sendBuild() {
       this.build.idCPU = this.$store.getters["getInterSelection"][0];
@@ -263,7 +214,6 @@ export default {
     },
   },
   beforeMount() {
-    this.selectPart();
     this.$store.commit("defaultInterSelection");
   },
 };

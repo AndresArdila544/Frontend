@@ -13,7 +13,7 @@
         <v-select
           :items="parte_models"
           dense
-          outlined
+          solo
           hide-details
           menu-props="auto"
           single-line

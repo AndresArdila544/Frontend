@@ -26,9 +26,9 @@
           </v-row>
         </div>
       </div>
-      <!--<RecomSelect v-bind:partesList="partes" :defaultPart="Parte.model" />-->
+      
     </div>
-    <!--<p>{{cpu_models}}</p>-->
+    
   </div>
 </template>
 

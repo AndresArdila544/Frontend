@@ -34,6 +34,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" >
+ .boton-pop {
+  text-align: center;
+  font-size: calc(1.2rem + 0.2vw);
+  font-family: "Poppins", sans-serif;
+}
 </style>

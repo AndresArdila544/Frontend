@@ -11,7 +11,7 @@
           <v-select
             :items="parte_models"
             dense
-            outlined
+            solo
             hide-details
             menu-props="auto"
             single-line
@@ -113,7 +113,6 @@ export default {
       this.retrieveParts();
     }
   },
-  beforeMount() {},
-  beforeUpdate() {},
+  
 };
 </script>
