@@ -1,98 +1,111 @@
 <template>
-  <div class>
+  <div class id="printableArea">
     <p class="Summary pt-4">Resumen # {{ CurrentBuild.idBuild }}</p>
-    <p class="user">Build para {{ user}}</p>
+    <p class="user">Build para {{ user }}</p>
     <div class="pt-2 parts row accordion">
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentCPU"
       >
-        <ComponentView v-bind:Parte="CurrentCPU" tipo="CPU" />
+        <ComponentView v-bind:Parte="CurrentCPU" tipo="CPU" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentCPU" tipo="CPU" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentGPU"
       >
-        <ComponentView v-bind:Parte="CurrentGPU" tipo="GPU" />
+        <ComponentView v-bind:Parte="CurrentGPU" tipo="GPU" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentGPU" tipo="GPU" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentMotherboard"
       >
-        <ComponentView v-bind:Parte="CurrentMotherboard" tipo="Motherboard" />
+        <ComponentView v-bind:Parte="CurrentMotherboard" tipo="Motherboard" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentMotherboard" tipo="Motherboard" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentRAM"
       >
-        <ComponentView v-bind:Parte="CurrentRAM" tipo="RAM" />
+        <ComponentView v-bind:Parte="CurrentRAM" tipo="RAM" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentRAM" tipo="RAM" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentCooling"
       >
-        <ComponentView v-bind:Parte="CurrentCooling" tipo="Cooling" />
+        <ComponentView v-bind:Parte="CurrentCooling" tipo="Cooling" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentCooling" tipo="Cooling" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentSSD"
       >
-        <ComponentView v-bind:Parte="CurrentSSD" tipo="SSD" />
+        <ComponentView v-bind:Parte="CurrentSSD" tipo="SSD" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentSSD" tipo="SSD" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentHDD"
       >
-        <ComponentView v-bind:Parte="CurrentHDD" tipo="HDD" />
+        <ComponentView v-bind:Parte="CurrentHDD" tipo="HDD" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentHDD" tipo="HDD" class="print" />
+        
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentPowerSupply"
       >
-        <ComponentView v-bind:Parte="CurrentPowerSupply" tipo="PowerSupply" />
+        <ComponentView v-bind:Parte="CurrentPowerSupply" tipo="PowerSupply" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentPowerSupply" tipo="PowerSupply" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentMouse"
       >
-        <ComponentView v-bind:Parte="CurrentMouse" tipo="Mouse" />
+        <ComponentView v-bind:Parte="CurrentMouse" tipo="Mouse" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentMouse" tipo="Mouse" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentKeyboard"
       >
-        <ComponentView v-bind:Parte="CurrentKeyboard" tipo="Keyboard" />
+        <ComponentView v-bind:Parte="CurrentKeyboard" tipo="Keyboard" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentKeyboard" tipo="Keyboard" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentMonitor"
       >
-        <ComponentView v-bind:Parte="CurrentMonitor" tipo="Monitor" />
+        <ComponentView v-bind:Parte="CurrentMonitor" tipo="Monitor" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentMonitor" tipo="Monitor" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentCase"
       >
-        <ComponentView v-bind:Parte="CurrentCase" tipo="Case" />
+        <ComponentView v-bind:Parte="CurrentCase" tipo="Case" class="screen" />
+        <ComponentViewPrint v-bind:Parte="CurrentCase" tipo="Case" class="print" />
       </div>
 
       <div class="container">
         <h2 class="TotalPrice">
           Total Minimo: ${{
-          Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            Total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }}
           COP
         </h2>
       </div>
-      <div class="col-12 col-sm-6 col-md-5 offset-md-6  mb-3">
-        <vs-button
-          class=""
-          block
-          @click="saveModel"
-          color="rgb(59,22,100)"
-        >
+      <div class="col-12 col-sm-6 col-md-5 offset-md-6 mb-3">
+        <vs-button class="screen" block @click="saveModel" color="rgb(59,22,100)">
           <h2>Guardar Build</h2>
         </vs-button>
+        <div>
+          <vs-button class="screen" @click="printDiv">
+            <h2>Guardar como PDF</h2>
+          </vs-button>
+        </div>
       </div>
     </div>
   </div>
@@ -100,12 +113,14 @@
 
 <script>
 import ComponentView from "../components/Summary/ComponentView";
+import ComponentViewPrint from "../components/Summary/ComponentViewPrint";
 import EasyPCService from "../services/EasyPCService";
 
 export default {
   name: "Summary",
   components: {
     ComponentView,
+    ComponentViewPrint
   },
   data() {
     return {
@@ -124,7 +139,7 @@ export default {
       CurrentCase: [],
       user: this.$store.getters.getUser,
       Total: Number,
-      retrievedBuildID: Number, 
+      retrievedBuildID: Number,
     };
   },
   props: {
@@ -188,10 +203,10 @@ export default {
           console.log("Retrive price error: " + e);
         });
     },
-    saveModel(){
-      if(!this.$store.getters.getAuthenticated){
-        this.$router.push({name: 'Login'})
-      }else{
+    saveModel() {
+      if (!this.$store.getters.getAuthenticated) {
+        this.$router.push({ name: "Login" });
+      } else {
         var data = {
           idBuild: null,
           cpu: this.CurrentBuild.cpu,
@@ -206,19 +221,22 @@ export default {
           keyboard: this.CurrentBuild.keyboard,
           monitor: this.CurrentBuild.monitor,
           caseObj: this.CurrentBuild.caseObj,
-          user:{
-             username: this.user
-          }
-        }
+          user: {
+            username: this.user,
+          },
+        };
         EasyPCService.createBuild(data)
-          .then(() => {
-          })
+          .then(() => {})
           .catch((e) => {
             console.log(e);
           });
-        this.$router.push({name: 'MyBuilds'})
+        this.$router.push({ name: "MyBuilds" });
       }
-    }
+    },
+    printDiv() {
+      document.title = "Easy PC Build";
+      window.print();
+    },
   },
   mounted() {},
   beforeMount() {
@@ -230,7 +248,6 @@ export default {
       this.retrieveBuildFromAnswers(this.$store.getters["getAnswers"]);
       this.$store.commit("emptyAnswers");
     }
-    
   },
 };
 </script>
@@ -246,9 +263,6 @@ export default {
   font-family: "Fredoka One", cursive;
   color: #ff9941;
   background-color: rgb(24, 23, 23);
-  border-radius: 25% 25% 50% 50%;
-  border-style: none none solid none;
-  border-color: #3b1664;
 }
 
 .Summary {
@@ -266,6 +280,19 @@ export default {
   font-size: calc(1rem + 1.5vw);
   font-family: "Maven Pro", sans-serif;
   color: rgb(24, 23, 23);
+}
+
+.print{
+  display: none;
+}
+
+@media print {
+  .screen {
+    display: none;
+  }
+  .print {
+    display: block;
+  }
 }
 
 @keyframes animacion {
