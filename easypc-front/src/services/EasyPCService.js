@@ -211,13 +211,7 @@ class EasyPCService {
   }
 
   createBuildID(data) {
-    var access_token = getAuthenticationToken();
-    if(access_token!="null"){
-      return http.post("api/build-id", data,{ params: { access_token: getAuthenticationToken() } });
-    }else{
       return http.post("api/build-id", data);
-    }
-    
   }
 
   createBuild(data) {
