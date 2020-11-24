@@ -55,7 +55,7 @@
             circle
             block
             animation-type="rotate"
-            to="QuizB"
+            to="Expert"
             class="boton-level"
           >
             <h2>Experto</h2>

@@ -13,8 +13,13 @@ import Login from '@/pages/Login'
 import Register from '@/pages/Register'
 import LevelSelect from '@/pages/LevelSelect'
 import AdminCp from '@/pages/AdminCompatibility'
+import Expert from '@/pages/Expert'
+
 import UserOptions from '@/pages/UserOptions'
 import UserBuilds from '@/pages/UserBuilds'
+
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -111,13 +116,28 @@ export default new Router({
         {
             path: '/Summary',
             name: 'Summary',
-            component: Summary
+            component: Summary,
+            beforeEnter: (to, from, next) => {
+                if(store.state.InterIDBuild != -1 || store.state.a3 != '') {
+
+                    next();
+                } else {
+
+                    next("/");
+                }
+            }
         },
         {
 
             path: '/InterSelection',
             name: 'InterSelection',
             component: InterSelection
+        },
+        {
+
+            path: '/Expert',
+            name: 'Expert',
+            component: Expert
         },
         {
             path: '/Login',
@@ -149,6 +169,11 @@ export default new Router({
             path: '/LevelSelect',
             name: 'LevelSelect',
             component: LevelSelect
+        },
+        {
+            path: '/Expert',
+            name: 'Expert',
+            component: Expert
         },
 
     ]

@@ -181,6 +181,8 @@ export default {
   },
   beforeMount() {
     this.selectPart();
+    this.$store.commit("defaultInterSelection");
+    this.count=0;
   },
 };
 </script>
