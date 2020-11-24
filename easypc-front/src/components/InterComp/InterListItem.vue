@@ -55,6 +55,7 @@ export default {
     tipo: String,
     count: Number,
   },
+
   methods: {
     retrieveParts() {
       EasyPCService.getAll(this.tipo)
@@ -71,7 +72,7 @@ export default {
         });
     },
 
-    setImage: function () {
+    setImage() {
       this.pic_idx = this.parte_models.indexOf(this.defaultPart);
       this.currentImageURL = this.parte_pics[this.pic_idx];
       this.forceRerender();

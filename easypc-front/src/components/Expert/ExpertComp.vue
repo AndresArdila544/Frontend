@@ -162,48 +162,41 @@ export default {
       this.forceRenderMB();
     },
     sendBuild() {
+      this.build.idSSD = null;
+      this.build.idHDD = null;
+      this.build.idMouse = null;
+      this.build.idKeyboard = null;
+      this.build.idMonitor = null;
+
+      if (this.$store.getters["getInterSelection"][5] != -1) {
+        this.build.idSSD = this.$store.getters["getInterSelection"][5];
+      }
+
+      if (this.$store.getters["getInterSelection"][6] != -1) {
+        this.build.idHDD = this.$store.getters["getInterSelection"][6];
+      }
+
+      if (this.$store.getters["getInterSelection"][8] != -1) {
+        this.build.idMouse = this.$store.getters["getInterSelection"][8];
+      }
+
+      if (this.$store.getters["getInterSelection"][9] != -1) {
+        this.build.idKeyboard = this.$store.getters["getInterSelection"][9];
+      }
+
+      if (this.$store.getters["getInterSelection"][10] != -1) {
+        this.build.idMonitor = this.$store.getters["getInterSelection"][10];
+      }
+
       this.build.idCPU = this.$store.getters["getInterSelection"][0];
       this.build.idMotherboard = this.$store.getters["getInterSelection"][1];
       this.build.idRAM = this.$store.getters["getInterSelection"][2];
       this.build.idGPU = this.$store.getters["getInterSelection"][3];
       this.build.idCooling = this.$store.getters["getInterSelection"][4];
-
-      if (this.$store.getters["getInterSelection"][5] == -1) {
-        this.build.idSSD = null;
-      } else {
-        this.build.idSSD = this.$store.getters["getInterSelection"][5];
-      }
-
-      if (this.$store.getters["getInterSelection"][6] == -1) {
-        this.build.idHDD = null;
-      } else {
-        this.build.idHDD = this.$store.getters["getInterSelection"][6];
-      }
-
       this.build.idPowerSupply = this.$store.getters["getInterSelection"][7];
-
-      if (this.$store.getters["getInterSelection"][8] == -1) {
-        this.build.idMouse = null;
-      } else {
-        this.build.idMouse = this.$store.getters["getInterSelection"][8];
-      }
-
-      if (this.$store.getters["getInterSelection"][9] == -1) {
-        this.build.idKeyboard = null;
-      } else {
-        this.build.idKeyboard = this.$store.getters["getInterSelection"][9];
-      }
-
-      if (this.$store.getters["getInterSelection"][10] == -1) {
-        this.build.idMonitor = null;
-      } else {
-        this.build.idMonitor = this.$store.getters["getInterSelection"][10];
-      }
-
       this.build.idCase = this.$store.getters["getInterSelection"][11];
 
       EasyPCService.createBuildID(this.build)
-
         .then((response) => {
           this.$store.commit("setInterIDBuild", response.data);
           this.$router.push("/Summary");
