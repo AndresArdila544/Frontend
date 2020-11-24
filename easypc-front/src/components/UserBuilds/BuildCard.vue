@@ -1,8 +1,7 @@
 <template>
-  <div class="">
-  
-    <div class="col-md-6 col-lg-4 col-sm-10 col-12 offset-sm-1 offset-0 column justify-content-start">
-      <div class="card gr-1">
+  <div class="col-md-6 col-lg-4 col-sm-10 col-12 offset-sm-1 offset-md-0 column">
+    <div class="">
+      <div class="card gr-2">
         <div class="txt">
           <h1>BUILD #{{buildId}}</h1>
           <p>Precio: ${{buildPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} COP</p>
@@ -16,12 +15,7 @@
             </em>
         </div>
       </div>
-    </div>
-    
-    
-    
-    
-  
+    </div> 
 </div>
 </template>
 
