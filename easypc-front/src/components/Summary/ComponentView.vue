@@ -14,7 +14,7 @@
             <h3 class="titulo">{{tipo}}</h3>
           </div>
         </div>
-        <div class="collapse" :id="tipo" aria-labelledby="headingOne">
+        <div class="collapse"  :id="tipo" aria-labelledby="headingOne">
           <div class="card-body">
             <div class="row">
               <div class="col-12 text-center">

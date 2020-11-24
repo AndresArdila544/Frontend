@@ -102,7 +102,7 @@
           <h2>Guardar Build</h2>
         </vs-button>
         <div>
-          <vs-button class="screen" @click="printDiv">
+          <vs-button class="screen" @click="printDiv" color="rgb(59,22,100)">
             <h2>Guardar como PDF</h2>
           </vs-button>
         </div>
