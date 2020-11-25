@@ -4,15 +4,11 @@
       <div class="row">
         <div
           class="col-12"
-          type="button"
-          :data-target="'#' + tipo"
-          aria-expanded="true"
-          :aria-controls="tipo"
         >
           <h3 class="titulo">{{ tipo }}</h3>
         </div>
       </div>
-      <div :id="tipo" aria-labelledby="headingOne">
+      <div>
         <div class="card-body">
           <div class="row">
             <div>
@@ -27,8 +23,7 @@
               <div class="col" v-if="Parte.linkSL || Parte.priceSL">
                 <div class="product__view--more">
                   <a
-                    target="_blank"
-                     
+                    target="_blank"                     
                     :href="Parte.linkSL"
                     v-if="Parte.linkSL"
                     >Link SpeedLogic</a

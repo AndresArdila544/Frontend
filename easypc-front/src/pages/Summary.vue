@@ -1,5 +1,5 @@
 <template>
-  <div class id="printableArea">
+  <div>
     <p class="Summary pt-4">Resumen # {{ CurrentBuild.idBuild }}</p>
     <p class="user">Build para {{ user }}</p>
     <div class="pt-2 parts row accordion">
@@ -8,87 +8,165 @@
         v-if="CurrentCPU"
       >
         <ComponentView v-bind:Parte="CurrentCPU" tipo="CPU" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentCPU" tipo="CPU" class="print" />        
-      </div>      
+      </div>
+
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentGPU"
       >
         <ComponentView v-bind:Parte="CurrentGPU" tipo="GPU" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentGPU" tipo="GPU" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentMotherboard"
       >
-        <ComponentView v-bind:Parte="CurrentMotherboard" tipo="Motherboard" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentMotherboard" tipo="Motherboard" class="print" />
+        <ComponentView
+          v-bind:Parte="CurrentMotherboard"
+          tipo="Motherboard"
+          class="screen"
+        />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentRAM"
       >
         <ComponentView v-bind:Parte="CurrentRAM" tipo="RAM" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentRAM" tipo="RAM" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentCooling"
       >
-        <ComponentView v-bind:Parte="CurrentCooling" tipo="Cooling" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentCooling" tipo="Cooling" class="print" />
+        <ComponentView
+          v-bind:Parte="CurrentCooling"
+          tipo="Cooling"
+          class="screen"
+        />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentSSD"
       >
         <ComponentView v-bind:Parte="CurrentSSD" tipo="SSD" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentSSD" tipo="SSD" class="print" />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentHDD"
       >
         <ComponentView v-bind:Parte="CurrentHDD" tipo="HDD" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentHDD" tipo="HDD" class="print" />
-        
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentPowerSupply"
       >
-        <ComponentView v-bind:Parte="CurrentPowerSupply" tipo="PowerSupply" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentPowerSupply" tipo="PowerSupply" class="print" />
+        <ComponentView
+          v-bind:Parte="CurrentPowerSupply"
+          tipo="PowerSupply"
+          class="screen"
+        />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentMouse"
       >
-        <ComponentView v-bind:Parte="CurrentMouse" tipo="Mouse" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentMouse" tipo="Mouse" class="print" />
+        <ComponentView
+          v-bind:Parte="CurrentMouse"
+          tipo="Mouse"
+          class="screen"
+        />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentKeyboard"
       >
-        <ComponentView v-bind:Parte="CurrentKeyboard" tipo="Keyboard" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentKeyboard" tipo="Keyboard" class="print" />
+        <ComponentView
+          v-bind:Parte="CurrentKeyboard"
+          tipo="Keyboard"
+          class="screen"
+        />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentMonitor"
       >
-        <ComponentView v-bind:Parte="CurrentMonitor" tipo="Monitor" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentMonitor" tipo="Monitor" class="print" />
+        <ComponentView
+          v-bind:Parte="CurrentMonitor"
+          tipo="Monitor"
+          class="screen"
+        />
       </div>
       <div
         class="p-1 col-12 col-md-8 col-lg-6 offset-lg-0 offset-md-2 offset-sm-0"
         v-if="CurrentCase"
       >
         <ComponentView v-bind:Parte="CurrentCase" tipo="Case" class="screen" />
-        <ComponentViewPrint v-bind:Parte="CurrentCase" tipo="Case" class="print" />
       </div>
-
+      <div>
+        <ComponentViewPrint
+          v-bind:Parte="CurrentCPU"
+          tipo="CPU"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentGPU"
+          tipo="GPU"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentMotherboard"
+          tipo="Motherboard"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentRAM"
+          tipo="RAM"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentCooling"
+          tipo="Cooling"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentSSD"
+          v-if="CurrentSSD"
+          tipo="SSD"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentHDD"
+          v-if="CurrentHDD"
+          tipo="HDD"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentPowerSupply"
+          tipo="PowerSupply"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentMouse"
+          v-if="CurrentMouse"
+          tipo="Mouse"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentKeyboard"
+          v-if="CurrentKeyboard"
+          tipo="Keyboard"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentMonitor"
+          v-if="CurrentMonitor"
+          tipo="Monitor"
+          class="print"
+        />
+        <ComponentViewPrint
+          v-bind:Parte="CurrentCase"
+          tipo="Case"
+          class="print"
+        />
+      </div>
       <div class="container">
         <h2 class="TotalPrice">
           Total Minimo: ${{
@@ -98,7 +176,12 @@
         </h2>
       </div>
       <div class="col-12 col-sm-6 col-md-5 offset-md-6 mb-3">
-        <vs-button class="screen" block @click="saveModel" color="rgb(59,22,100)">
+        <vs-button
+          class="screen"
+          block
+          @click="saveModel"
+          color="rgb(59,22,100)"
+        >
           <h2>Guardar Build</h2>
         </vs-button>
         <div>
@@ -120,7 +203,7 @@ export default {
   name: "Summary",
   components: {
     ComponentView,
-    ComponentViewPrint
+    ComponentViewPrint,
   },
   data() {
     return {
@@ -228,12 +311,11 @@ export default {
         EasyPCService.createBuild(data)
 
           .then(() => {
-            this.$router.push({name: 'MyBuilds'})
+            this.$router.push({ name: "MyBuilds" });
           })
           .catch((e) => {
             console.log(e);
           });
-        
       }
     },
     printDiv() {
@@ -285,7 +367,7 @@ export default {
   color: rgb(24, 23, 23);
 }
 
-.print{
+.print {
   display: none;
 }
 
