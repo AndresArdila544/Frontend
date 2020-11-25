@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     
       <h1 class="col pregunta">¿Qué tanta capacidad de disco necesitas?</h1>
       <div class="col col-12">

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <div class="col pregunta">
       <h1 class="pt-4 d-flex justify-content-start">¿Cómo quieres que se vean los juegos?</h1>
     </div>

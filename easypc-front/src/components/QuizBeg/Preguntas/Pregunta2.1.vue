@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <h1 class="col pregunta">¿Qué programas quieres correr?</h1>
     <div class="col col-12">
       <div class="col col-md-12 opciones">

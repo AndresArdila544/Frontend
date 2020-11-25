@@ -1,11 +1,9 @@
 <template>
   <div>
-    <v-app id="app" fluid> 
+    <v-app id="app"> 
       <Navbar />
       <v-main>
-        <v-container fluid>
           <router-view />
-        </v-container>
       </v-main>
     </v-app>
   </div>
@@ -29,11 +27,11 @@ export default {
 
 <style>
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  background-color:#66bfbf;
-  display: block;
-  height: 100%;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-align: center !important;
+  background-color:#66bfbf !important;
+  display: block !important;
+  height: 100% !important;
 }
 </style>

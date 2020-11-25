@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <div class="col pregunta">
       <h1 class>¿Con qué propósito jugarás videojuegos?</h1>
     </div>
