@@ -39,6 +39,14 @@
                 ></v-text-field>
               </div>
             </div>
+            <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+            <vue-recaptcha
+                ref="recaptcha"
+                @verify="onVerify"
+                sitekey="6Ld3z_oZAAAAAMV9tfvKNVSPEICWmqFJIe28xHlp"
+                class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
+            ></vue-recaptcha>
+              </div>
             <div class="col-12 col-sm-12 col-md-10 mb-3">
               <vs-button
                 class="col col-sm-10 col-md-10 offset-sm-1 offset-md-2 boton-register"
@@ -60,9 +68,12 @@
 <script>
 import EasyPCService from "../services/EasyPCService";
 import {setAuthenticationToken} from '@/dataStorage';
+import VueRecaptcha from "vue-recaptcha";
 export default {
   name: "ChangePassword.vue",
-  components: {},
+  components: {
+      "vue-recaptcha": VueRecaptcha,
+  },
   data() {
     return {
       password1: "",
@@ -71,10 +82,15 @@ export default {
       rules: {
         required: (value) => !!value || "Required.",
       },
+      robot: false,
     };
   },
   methods: {
+    onVerify: function (response) {
+      if (response) this.robot = true;
+    },
     changePass(event) {
+      if (this.robot){
       if (this.verification(this.password1, this.password2) == false) {
         alert("Clave no igual");
       } else {
@@ -94,7 +110,7 @@ export default {
           });
 
         event.preventDefault();
-      }
+      }}
     },
 
     verification(pass1, pass2) {

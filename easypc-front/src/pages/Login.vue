@@ -4,10 +4,15 @@
       <div class="col-12 mx-auto">
         <div>
           <form class="form-inline" @submit="login">
-            <div class="col-12 text-center mb-5 titulo-login d-none d-sm-block">Iniciar Sesi&oacute;n</div>
+            <div
+              class="col-12 text-center mb-5 titulo-login d-none d-sm-block"
+            >Iniciar Sesi&oacute;n</div>
 
             <div class="col-12 form-group">
-              <label for="username" class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start  campos-login">Nombre de Usuario</label>
+              <label
+                for="username"
+                class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login"
+              >Nombre de Usuario</label>
               <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
                 <v-text-field
                   v-model="username"
@@ -15,13 +20,16 @@
                   placeholder="NoobMaster69"
                   :rules="[rules.required]"
                   required
-                  append-icon=""
+                  append-icon
                   color="rgb(59,22,100)"
                 ></v-text-field>
               </div>
             </div>
             <div class="col-12 form-group">
-              <label for="password" class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login">Contrase&ntilde;a</label>
+              <label
+                for="password"
+                class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login"
+              >Contrase&ntilde;a</label>
               <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
                 <v-text-field
                   v-model="password"
@@ -34,7 +42,17 @@
                 ></v-text-field>
               </div>
             </div>
+            <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+            <vue-recaptcha
+                ref="recaptcha"
+                @verify="onVerify"
+                sitekey="6Ld3z_oZAAAAAMV9tfvKNVSPEICWmqFJIe28xHlp"
+                class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
+            ></vue-recaptcha>
+              </div>
+            
             <div class="col-12 col-sm-12 col-md-10 mb-3">
+              
               <vs-button
                 class="col col-sm-10 col-md-10 offset-sm-1 offset-md-2 boton-login"
                 type="submit"
@@ -42,21 +60,17 @@
               >
                 <h2>Iniciar Sesi&oacute;n</h2>
               </vs-button>
+              
             </div>
             <div class="col-12 col-sm-12 col-md-5 text-center mb-3 mx-auto">
               <span class>
                 <small>
-                  <router-link
-                    :to="{ name: 'SignUp' }"
-                  >
-                  <h4>
-                    &iquest;No tienes una cuenta? &iexcl;Registrate!
-                  </h4>
+                  <router-link :to="{ name: 'SignUp' }">
+                    <h4>&iquest;No tienes una cuenta? &iexcl;Registrate!</h4>
                   </router-link>
                 </small>
               </span>
             </div>
-            
           </form>
         </div>
       </div>
@@ -65,10 +79,14 @@
 </template>
 <script>
 import EasyPCService from "../services/EasyPCService";
-import {setAuthenticationToken} from '@/dataStorage';
+import { setAuthenticationToken } from "@/dataStorage";
+import VueRecaptcha from "vue-recaptcha";
+
 export default {
-  name: "Login.vue",
-  components: {},
+  name: "Login",
+  components: {
+    "vue-recaptcha": VueRecaptcha,
+  },
   data() {
     return {
       username: "",
@@ -77,41 +95,48 @@ export default {
       rules: {
         required: (value) => !!value || "Required.",
       },
+      robot: false,
     };
   },
   methods: {
+    onVerify: function (response) {
+      if (response) this.robot = true;
+    },
     login(event) {
-      EasyPCService.authentication(this.username, this.password)
-        .then((response) => {
-          if (response.status !== 200) {
-            alert("Error en la autenticación");
-          } else {
-            setAuthenticationToken( response.data.access_token );
-            this.$store.commit("setAuthentication", true);
-            EasyPCService.getUserByToken()
-              .then((r) =>{
-                localStorage.setItem("user",r.data.username)
-                this.$store.commit("setUser",r.data.username );
-                localStorage.setItem("role",r.data.roles[0].roleName)
-                this.$store.commit("setRole",r.data.roles[0].roleName);
-                this.$router.replace({ name: "Profile" });
-              }).catch((e) => {
-                console.log(e);
-              });
-            
-          }
-        })
-        .catch((error) => {
-          if (error.response.status === 400) {
-            alert("Credenciales incorrectas");
-          } else {
-            alert("¡Parece que hubo un error de comunicación con el servidor!");
-          }
-          console.log(error)
-        });
-      
+      if (this.robot) {
+        EasyPCService.authentication(this.username, this.password)
+          .then((response) => {
+            if (response.status !== 200) {
+              alert("Error en la autenticación");
+            } else {
+              setAuthenticationToken(response.data.access_token);
+              this.$store.commit("setAuthentication", true);
+              EasyPCService.getUserByToken()
+                .then((r) => {
+                  localStorage.setItem("user", r.data.username);
+                  this.$store.commit("setUser", r.data.username);
+                  localStorage.setItem("role", r.data.roles[0].roleName);
+                  this.$store.commit("setRole", r.data.roles[0].roleName);
+                  this.$router.replace({ name: "Profile" });
+                })
+                .catch((e) => {
+                  console.log(e);
+                });
+            }
+          })
+          .catch((error) => {
+            if (error.response.status === 400) {
+              alert("Credenciales incorrectas");
+            } else {
+              alert(
+                "¡Parece que hubo un error de comunicación con el servidor!"
+              );
+            }
+            console.log(error);
+          });
 
-      event.preventDefault();
+        event.preventDefault();
+      }
     },
   },
 };
