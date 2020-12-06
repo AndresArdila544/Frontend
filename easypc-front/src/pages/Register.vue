@@ -165,7 +165,7 @@ export default {
 
         event.preventDefault();
         }
-      }
+      
     },
 
     verification(user, pass1, pass2) {
