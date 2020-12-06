@@ -1,26 +1,38 @@
 <template>
   <div class="row">
-    <v-card color="#FEDC00" class="col col-md-8 col-lg-6 offset-lg-3 offset-md-0 mx-auto">
+    <v-card
+      color="#FEDC00"
+      class="col col-md-8 col-lg-6 offset-lg-3 offset-md-0 mx-auto"
+    >
       <div class="col-12 mx-auto">
         <div>
-          <form class="form-inline" @submit="login">
-            <div
-              class="col-12 text-center mb-5 titulo-login d-none d-sm-block"
-            >Iniciar Sesi&oacute;n</div>
+
+          <form class="form-inline" >
+            <div class="col-12 text-center mb-5 titulo-login d-none d-sm-block">
+              Iniciar Sesi&oacute;n
+            </div>
+
 
             <div class="col-12 form-group">
               <label
                 for="username"
                 class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login"
-              >Nombre de Usuario</label>
-              <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+
+                >Nombre de Usuario</label
+              >
+              <div
+                class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
+              >
+
                 <v-text-field
                   v-model="username"
                   type="text"
                   placeholder="NoobMaster69"
-                  :rules="[rules.required]"
+                  :rules="[rules.required, rules.max]"
                   required
+
                   append-icon
+
                   color="rgb(59,22,100)"
                 ></v-text-field>
               </div>
@@ -29,12 +41,19 @@
               <label
                 for="password"
                 class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login"
-              >Contrase&ntilde;a</label>
-              <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+
+                >Contrase&ntilde;a</label
+              >
+              <div
+                class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
+              >
+
                 <v-text-field
                   v-model="password"
                   :append-icon="show_pass ? 'mdi-eye' : 'mdi-eye-off'"
-                  :rules="[rules.required]"
+                  :rules="[rules.required, rules.max]"
+                  required
+                  max
                   :type="show_pass ? 'text' : 'password'"
                   placeholder="12345"
                   color="rgb(59,22,100)"
@@ -55,8 +74,10 @@
               
               <vs-button
                 class="col col-sm-10 col-md-10 offset-sm-1 offset-md-2 boton-login"
-                type="submit"
+                
                 color="rgb(59,22,100)"
+                @click="login"
+
               >
                 <h2>Iniciar Sesi&oacute;n</h2>
               </vs-button>
@@ -80,7 +101,11 @@
 <script>
 import EasyPCService from "../services/EasyPCService";
 import { setAuthenticationToken } from "@/dataStorage";
+
 import VueRecaptcha from "vue-recaptcha";
+
+import jsSHA from "jssha";
+
 
 export default {
   name: "Login",
@@ -94,6 +119,7 @@ export default {
       show_pass: false,
       rules: {
         required: (value) => !!value || "Required.",
+        max: (v) => v.length <= 16 || "Max 16 characters",
       },
       robot: false,
     };
@@ -103,8 +129,10 @@ export default {
       if (response) this.robot = true;
     },
     login(event) {
-      if (this.robot) {
-        EasyPCService.authentication(this.username, this.password)
+
+      if (this.username.length <= 16 && this.password.length <= 16 && this.robot) {
+        const hash = this.hashing(this.password)
+        EasyPCService.authentication(this.username, hash)
           .then((response) => {
             if (response.status !== 200) {
               alert("Error en la autenticación");
@@ -136,7 +164,17 @@ export default {
           });
 
         event.preventDefault();
+
+      }else{
+        alert("Max 16 caracteres");
       }
+    },
+    hashing(name) {
+      const shaObj = new jsSHA("SHA-512", "TEXT", { encoding: "UTF8" });
+      shaObj.update(name);
+      const hash = shaObj.getHash("HEX");
+      return hash;
+
     },
   },
 };
