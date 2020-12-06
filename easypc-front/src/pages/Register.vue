@@ -78,6 +78,14 @@
                 ></v-text-field>
               </div>
             </div>
+            <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+            <vue-recaptcha
+                ref="recaptcha"
+                @verify="onVerify"
+                sitekey="6Ld3z_oZAAAAAMV9tfvKNVSPEICWmqFJIe28xHlp"
+                class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
+            ></vue-recaptcha>
+              </div>
             <div class="col-12 col-sm-12 col-md-10 mb-3">
               <vs-button
                 class="col col-sm-10 col-md-10 offset-sm-1 offset-md-2 boton-register"
@@ -96,9 +104,17 @@
 
 <script>
 import EasyPCService from "../services/EasyPCService";
+
+import VueRecaptcha from "vue-recaptcha";
+
 import jsSHA from "jssha";
 
+
 export default {
+  name:"Register",
+  components:{
+    "vue-recaptcha": VueRecaptcha,
+  },
   data() {
     return {
       username: "",
@@ -109,13 +125,18 @@ export default {
         required: (value) => !!value || "Required.",
          max: (v) => v.length <= 16 || "Max 16 characters",
       },
+      robot: false,
     };
   },
   methods: {
+    onVerify: function (response) {
+      if (response) this.robot = true;
+    },
     register(event) {
+
       if (
         this.verification(this.username, this.password1, this.password2) ==
-        false
+        false && this.robot == true
       ) {
         alert("Clave no igual. Max 16 caracteres");
       } else {
@@ -143,6 +164,7 @@ export default {
           });
 
         event.preventDefault();
+        }
       }
     },
 

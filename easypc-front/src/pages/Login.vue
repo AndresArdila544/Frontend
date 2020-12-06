@@ -6,28 +6,33 @@
     >
       <div class="col-12 mx-auto">
         <div>
+
           <form class="form-inline" >
             <div class="col-12 text-center mb-5 titulo-login d-none d-sm-block">
               Iniciar Sesi&oacute;n
             </div>
 
+
             <div class="col-12 form-group">
               <label
                 for="username"
                 class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login"
+
                 >Nombre de Usuario</label
               >
               <div
                 class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
               >
+
                 <v-text-field
                   v-model="username"
                   type="text"
                   placeholder="NoobMaster69"
                   :rules="[rules.required, rules.max]"
                   required
-                  max
-                  append-icon=""
+
+                  append-icon
+
                   color="rgb(59,22,100)"
                 ></v-text-field>
               </div>
@@ -36,11 +41,13 @@
               <label
                 for="password"
                 class="col col-md-3 col-lg-3 col-12 d-flex justify-content-xs-start campos-login"
+
                 >Contrase&ntilde;a</label
               >
               <div
                 class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
               >
+
                 <v-text-field
                   v-model="password"
                   :append-icon="show_pass ? 'mdi-eye' : 'mdi-eye-off'"
@@ -54,7 +61,17 @@
                 ></v-text-field>
               </div>
             </div>
+            <div class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto">
+            <vue-recaptcha
+                ref="recaptcha"
+                @verify="onVerify"
+                sitekey="6Ld3z_oZAAAAAMV9tfvKNVSPEICWmqFJIe28xHlp"
+                class="col col-sm-10 col-md-9 offset-md-1 col-lg-8 offset-lg-0 mx-auto"
+            ></vue-recaptcha>
+              </div>
+            
             <div class="col-12 col-sm-12 col-md-10 mb-3">
+              
               <vs-button
                 class="col col-sm-10 col-md-10 offset-sm-1 offset-md-2 boton-login"
                 
@@ -64,6 +81,7 @@
               >
                 <h2>Iniciar Sesi&oacute;n</h2>
               </vs-button>
+              
             </div>
             <div class="col-12 col-sm-12 col-md-5 text-center mb-3 mx-auto">
               <span class>
@@ -83,11 +101,17 @@
 <script>
 import EasyPCService from "../services/EasyPCService";
 import { setAuthenticationToken } from "@/dataStorage";
+
+import VueRecaptcha from "vue-recaptcha";
+
 import jsSHA from "jssha";
 
+
 export default {
-  name: "Login.vue",
-  components: {},
+  name: "Login",
+  components: {
+    "vue-recaptcha": VueRecaptcha,
+  },
   data() {
     return {
       username: "",
@@ -97,11 +121,16 @@ export default {
         required: (value) => !!value || "Required.",
         max: (v) => v.length <= 16 || "Max 16 characters",
       },
+      robot: false,
     };
   },
   methods: {
+    onVerify: function (response) {
+      if (response) this.robot = true;
+    },
     login(event) {
-      if (this.username.length <= 16 && this.password.length <= 16) {
+
+      if (this.username.length <= 16 && this.password.length <= 16 && this.robot) {
         const hash = this.hashing(this.password)
         EasyPCService.authentication(this.username, hash)
           .then((response) => {
@@ -135,6 +164,7 @@ export default {
           });
 
         event.preventDefault();
+
       }else{
         alert("Max 16 caracteres");
       }
@@ -144,6 +174,7 @@ export default {
       shaObj.update(name);
       const hash = shaObj.getHash("HEX");
       return hash;
+
     },
   },
 };
