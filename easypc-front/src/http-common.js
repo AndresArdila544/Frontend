@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default axios.create({
 
-  baseURL: 'https://thawing-badlands-02533.herokuapp.com/',
+  baseURL: 'http://localhost:8080/',
   headers: {
     "Content-type": "application/json",
   }
